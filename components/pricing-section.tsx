@@ -11,8 +11,8 @@ const plans = [
     name: "Starter",
     icon: Zap,
     description: "Perfect for small businesses starting their SEO journey",
-    monthlyPrice: 497,
-    yearlyPrice: 397,
+    monthlyPrice: 199,
+    yearlyPrice: 150,
     features: [
       "5 Target Keywords",
       "Technical SEO Audit",
@@ -33,8 +33,8 @@ const plans = [
     name: "Growth",
     icon: Crown,
     description: "For established businesses ready to dominate their market",
-    monthlyPrice: 997,
-    yearlyPrice: 797,
+    monthlyPrice: 499,
+    yearlyPrice: 399,
     features: [
       "15 Target Keywords",
       "Full Technical Audit",

@@ -1,39 +1,70 @@
-import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next"
+import { Inter, Space_Grotesk } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
+import "./globals.css"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
-  variable: '--font-inter',
+  variable: "--font-inter",
 })
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: '--font-space-grotesk',
+  variable: "--font-space-grotesk",
 })
 
 export const metadata: Metadata = {
-  title: 'RankFlow | #1 AI-Powered SEO Agency 2026 - Dominate Search Rankings',
-  description: 'Transform your online presence with RankFlow. We combine cutting-edge AI technology with proven SEO strategies to deliver 10x organic traffic growth. Trusted by 500+ brands worldwide.',
-  keywords: 'SEO agency, AI SEO, digital marketing, search engine optimization, organic traffic, keyword ranking',
+  metadataBase: new URL("https://codedseo.com"),
+
+  title: "Best Digital Marketing Agency | AI-Powered SEO | CodedSEO",
+
+  description:
+    "CodedSEO is the best digital marketing agency for brands ready to grow globally. AI-powered SEO strategies that deliver real traffic, leads, and revenue.",
+
+  alternates: {
+    canonical: "https://codedseo.com/",
+  },
+
   openGraph: {
-    title: 'RankFlow | #1 AI-Powered SEO Agency 2026',
-    description: 'Transform your online presence with AI-powered SEO strategies that deliver 10x organic traffic growth.',
-    type: 'website',
+    title: "Best Digital Marketing Agency | AI-Powered SEO | CodedSEO",
+    description:
+      "CodedSEO is the best digital marketing agency combining AI with proven SEO strategies for global brands.",
+    url: "https://codedseo.com/",
+    type: "website",
+  },
+
+  icons: {
+    icon: "/favicon.png",
   },
 }
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6WFDP34879"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6WFDP34879');
+          `}
+        </Script>
+      </head>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background`}
+      >
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   )

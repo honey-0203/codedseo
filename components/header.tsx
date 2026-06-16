@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { 
-  Menu, X, ChevronDown, ChevronRight, Zap, Search, TrendingUp, 
+import {
+  Menu, X, ChevronDown, ChevronRight, Zap, Search, TrendingUp,
   Globe, ShoppingCart, Bot, Link2, Users, Building2, Target,
   Megaphone, Share2, PenTool, Code, UserCheck, Headphones, Tag, Rocket,
   Award, Video, FileText, Lightbulb, BookOpen, BarChart3, MapPin, Play
@@ -37,6 +37,11 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
+  {
+    name: "Home",
+    href: "/",
+  },
+
   {
     name: "Who We Are",
     href: "/about",
@@ -182,25 +187,20 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-lg"
-          : "bg-background/80 backdrop-blur-md"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-lg"
+        : "bg-background/80 backdrop-blur-md"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse" />
-            </div>
-            <span className="text-xl font-bold tracking-tight">
-              Rank<span className="text-primary">Flow</span>
-            </span>
+          <Link href="/" className="flex items-center">
+            <img
+              src="/codedseo.png"
+              alt="CodedSEO Logo"
+              className="h-30 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -214,11 +214,10 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    activeMenu === item.name
-                      ? "text-primary bg-primary/5"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
+                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeMenu === item.name
+                    ? "text-primary bg-primary/5"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    }`}
                 >
                   {item.name}
                   {(item.submenu || item.megaMenu) && (
@@ -314,15 +313,50 @@ export function Header() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/contact">Free Audit</Link>
-            </Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25" asChild>
-              <Link href="/contact">Get Started</Link>
-            </Button>
-          </div>
+          {/* Premium CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
 
+            {/* Contact Button */}
+            <Link
+              href="/contact"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:border-green-500 hover:text-green-600 hover:shadow-lg"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Contact Us
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
+            </Link>
+
+            {/* Book Meeting Button */}
+            <a
+              href="https://calendly.com/codedseo-sales/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-green-600 px-7 py-3 text-sm font-bold text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] transition-all duration-300 hover:scale-105 hover:bg-green-700"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 opacity-100"></span>
+
+              <span className="relative z-10 flex items-center gap-2">
+                Book a Meeting
+
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-all duration-300 group-hover:translate-x-1">
+                  →
+                </div>
+              </span>
+            </a>
+          </div>
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -356,7 +390,7 @@ export function Header() {
                         <ChevronRight className={`w-4 h-4 transition-transform ${activeMobileSubmenu === item.name ? "rotate-90" : ""}`} />
                       )}
                     </button>
-                    
+
                     <AnimatePresence>
                       {activeMobileSubmenu === item.name && (
                         <motion.div
@@ -399,7 +433,7 @@ export function Header() {
                     </AnimatePresence>
                   </div>
                 ))}
-                
+
                 <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border">
                   <Button variant="outline" className="w-full" asChild>
                     <Link href="/contact">Free SEO Audit</Link>
