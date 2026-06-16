@@ -155,7 +155,7 @@ export function ServicesSection() {
 
                 {/* Link */}
                 <Link 
-                  href="#contact"
+                  href="https://www.codedseo.com/contact"
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
                 >
                   Learn More
@@ -181,7 +181,7 @@ export function ServicesSection() {
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
             asChild
           >
-            <Link href="#contact">
+            <Link href="https://www.codedseo.com/contact">
               Get Custom Proposal
               <ArrowUpRight className="ml-2 w-4 h-4" />
             </Link>

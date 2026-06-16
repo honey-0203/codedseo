@@ -87,7 +87,7 @@ export function Footer() {
             </div>
 
             <Link
-              href="#contact"
+              href="https://calendly.com/codedseo-sales/30min"
               className="group inline-flex items-center gap-3 rounded-full bg-green-500 px-8 py-5 text-sm font-bold text-black shadow-[0_0_50px_rgba(34,197,94,0.4)] transition-all duration-300 hover:scale-105 hover:bg-green-400"
             >
               Start Free Audit

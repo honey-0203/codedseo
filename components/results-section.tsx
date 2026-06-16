@@ -75,10 +75,10 @@ const caseStudies = [
 ]
 
 const stats = [
-  { icon: TrendingUp, value: "10M+", label: "Keywords Ranked", description: "Across all clients" },
-  { icon: Trophy, value: "500+", label: "Success Stories", description: "Happy clients worldwide" },
+  { icon: TrendingUp, value: "1M+", label: "Keywords Ranked", description: "Across all clients" },
+  { icon: Trophy, value: "100+", label: "Success Stories", description: "Happy clients worldwide" },
   { icon: Target, value: "97%", label: "First Page Rankings", description: "Within 6 months" },
-  { icon: BarChart3, value: "$50M+", label: "Revenue Generated", description: "For our clients" },
+  { icon: BarChart3, value: "$2M+", label: "Revenue Generated", description: "For our clients" },
 ]
 
 export function ResultsSection() {
@@ -241,7 +241,7 @@ export function ResultsSection() {
 
                 {/* CTA */}
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                  <Link href="#contact">
+                  <Link href="https://calendly.com/codedseo-sales/30min">
                     Get Similar Results
                     <ExternalLink className="ml-2 w-4 h-4" />
                   </Link>

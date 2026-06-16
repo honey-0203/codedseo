@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const stats = [
-  { icon: TrendingUp, value: "10M+", label: "Keywords Ranked" },
-  { icon: Users, value: "500+", label: "Happy Clients" },
+  { icon: TrendingUp, value: "1M+", label: "Keywords Ranked" },
+  { icon: Users, value: "100+", label: "Happy Clients" },
   { icon: Award, value: "98%", label: "Client Retention" },
 ]
 
@@ -70,8 +70,8 @@ export function HeroSection() {
                 className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl shadow-primary/30 text-base h-14 px-8 animate-pulse-glow"
                 asChild
               >
-                <Link href="#contact">
-                  Get Free SEO Audit
+                <Link href="https://www.codedseo.com/contact">
+                  Talk Experts Team
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
@@ -81,9 +81,9 @@ export function HeroSection() {
                 className="h-14 px-8 text-base border-2"
                 asChild
               >
-                <Link href="#results">
+                <Link href="https://calendly.com/codedseo-sales/30min">
                   <Play className="mr-2 w-5 h-5" />
-                  See Our Results
+                  Book a Meetings
                 </Link>
               </Button>
             </div>

@@ -231,7 +231,7 @@ export function PricingSection() {
                 }`}
                 asChild
               >
-                <Link href="#contact">
+                <Link href="https://calendly.com/codedseo-sales/30min">
                   {plan.cta}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
