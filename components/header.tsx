@@ -65,6 +65,7 @@ const menuItems: MenuItem[] = [
             { name: "E-commerce SEO", href: "/services/ecommerce-seo", description: "Boost product visibility", icon: <ShoppingCart className="w-4 h-4" /> },
             { name: "AI-Powered SEO", href: "/services/ai-seo", description: "Next-gen optimization", icon: <Bot className="w-4 h-4" /> },
             { name: "Local SEO", href: "/services/local-seo", description: "Dominate local search", icon: <MapPin className="w-4 h-4" /> },
+            { name: "Small Business SEO", href: "/seo", description: "SEO built for small businesses", icon: <TrendingUp className="w-4 h-4" /> },
           ]
         },
         {
