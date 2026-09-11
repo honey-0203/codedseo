@@ -398,8 +398,8 @@ export default function SeoPage() {
 
       <linearGradient id="chartGradient">
 
-      <stop offset="0%" stopColor="#49dc52"/>
-      <stop offset="100%" stopColor="#b1ef51"/>
+      <stop offset="0%" stopColor="#16a34a"/>
+      <stop offset="100%" stopColor="#4ade80"/>
 
       </linearGradient>
 
@@ -1012,7 +1012,7 @@ export default function SeoPage() {
 
       </div>
 
-      <p style={{color:'#77847b',fontSize:'13px'}}>
+      <p style={{color:'#5b6b60',fontSize:'13px'}}>
       For businesses starting their SEO journey.
       </p>
 
@@ -1050,7 +1050,7 @@ export default function SeoPage() {
 
       </div>
 
-      <p style={{color:'#77847b',fontSize:'13px'}}>
+      <p style={{color:'#5b6b60',fontSize:'13px'}}>
       For established businesses ready to grow faster.
       </p>
 
@@ -1084,7 +1084,7 @@ export default function SeoPage() {
 
       </div>
 
-      <p style={{color:'#77847b',fontSize:'13px'}}>
+      <p style={{color:'#5b6b60',fontSize:'13px'}}>
       For businesses with more complex SEO requirements.
       </p>
 
