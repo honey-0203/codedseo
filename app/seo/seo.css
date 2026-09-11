@@ -125,13 +125,13 @@
     background-image:
 
         linear-gradient(
-            rgba(110,255,120,.045) 1px,
+            rgba(22,163,74,.08) 1px,
             transparent 1px
         ),
 
         linear-gradient(
             90deg,
-            rgba(110,255,120,.045) 1px,
+            rgba(22,163,74,.08) 1px,
             transparent 1px
         );
 
@@ -227,7 +227,7 @@
 }
 
 .seo-page .logo span{
-    color:#75e85c;
+    color:#16a34a;
 }
 
 .seo-page .nav-links{
@@ -236,7 +236,7 @@
 
     gap:28px;
 
-    color:#b9c5bc;
+    color:#41514a;
 
     font-size:14px;
 
@@ -249,7 +249,7 @@
 }
 
 .seo-page .nav-links a:hover{
-    color:#78ed5b;
+    color:#16a34a;
 }
 
 .seo-page .nav-btn{
@@ -260,7 +260,7 @@
 
     background:var(--gradient);
 
-    color:#061007;
+    color:#ffffff;
 
     font-weight:700;
 
@@ -299,7 +299,7 @@
 
 .seo-page .btn-primary{
 
-    color:#061006;
+    color:#ffffff;
 
     background:var(--gradient);
 
@@ -323,13 +323,13 @@
 
     background:rgba(12,44,26,.03);
 
-    color:#e7eee8;
+    color:#14301f;
 
 }
 
 .seo-page .btn-outline:hover{
 
-    border-color:#66dc51;
+    border-color:#16a34a;
 
     background:rgba(100,230,70,.06);
 
@@ -390,13 +390,13 @@
 
     padding:7px 12px;
 
-    border:1px solid rgba(115,235,83,.2);
+    border:1px solid rgba(22,163,74,.25);
 
     border-radius:50px;
 
-    background:rgba(100,230,80,.05);
+    background:rgba(34,197,94,.08);
 
-    color:#9aed7d;
+    color:#16a34a;
 
     font-size:12px;
 
@@ -413,9 +413,9 @@
 
     border-radius:50%;
 
-    background:#72e955;
+    background:#16a34a;
 
-    box-shadow:0 0 14px #72e955;
+    box-shadow:0 0 14px #16a34a;
 
 }
 
@@ -448,7 +448,7 @@
 
 .seo-page .hero-description{
 
-    color:#a9b6ac;
+    color:#44544c;
 
     font-size:17px;
 
@@ -532,7 +532,7 @@
     width:470px;
     height:470px;
 
-    border:1px solid rgba(110,230,80,.13);
+    border:1px solid rgba(22,163,74,.18);
 
     border-radius:50%;
 
@@ -551,10 +551,10 @@
 
     border-radius:50%;
 
-    background:#72ed58;
+    background:#16a34a;
 
     box-shadow:
-        0 0 25px #72ed58;
+        0 0 25px #16a34a;
 
     top:45px;
     left:80px;
@@ -661,7 +661,7 @@
 
     font-size:10px;
 
-    color:#8ce873;
+    color:#16a34a;
 
     display:flex;
 
@@ -678,7 +678,7 @@
 
     border-radius:50%;
 
-    background:#74e75c;
+    background:#16a34a;
 
 }
 
@@ -802,7 +802,7 @@
 
 .seo-page .up{
 
-    color:#75e45c;
+    color:#16a34a;
 
     font-size:10px;
 
@@ -831,7 +831,7 @@
 
 .seo-page .section-tag{
 
-    color:#77e85d;
+    color:#16a34a;
 
     text-transform:uppercase;
 
@@ -860,7 +860,7 @@
 
 .seo-page .section-head p{
 
-    color:#8f9d93;
+    color:#46564d;
 
     margin-top:18px;
 
@@ -976,7 +976,7 @@
     background:
         rgba(100,230,80,.08);
 
-    color:#78e95d;
+    color:#16a34a;
 
     margin-bottom:20px;
 
@@ -1048,9 +1048,9 @@
 .seo-page .service-tab.active{
 
     border-left:
-        2px solid #70e457;
+        2px solid #16a34a;
 
-    color:#eaffeb;
+    color:#14301f;
 
     background:
         linear-gradient(
@@ -1103,7 +1103,7 @@
 
 .seo-page .service-number{
 
-    color:#6ee357;
+    color:#16a34a;
 
     font-family:"Poppins";
 
@@ -1153,7 +1153,7 @@
     background:
         rgba(12,44,26,.035);
 
-    color:#b9c4bb;
+    color:#41514a;
 
     font-size:13px;
 
@@ -1163,7 +1163,7 @@
 
     content:"✓";
 
-    color:#71e458;
+    color:#16a34a;
 
     margin-right:8px;
 
@@ -1217,7 +1217,7 @@
 
 .seo-page .result span{
 
-    color:#748078;
+    color:#4a5a51;
 
     font-size:12px;
 
@@ -1225,7 +1225,7 @@
 
 .seo-page .result small{
 
-    color:#70e657;
+    color:#16a34a;
 
     display:block;
 
@@ -1315,7 +1315,7 @@
     background:
         var(--gradient);
 
-    color:#061007;
+    color:#ffffff;
 
 }
 
@@ -1362,7 +1362,7 @@
 
     margin:20px 0 28px;
 
-    color:#173019;
+    color:rgba(255,255,255,.92);
 
     line-height:1.7;
 
@@ -1372,7 +1372,7 @@
 
     background:#061007;
 
-    color:#d9ffd2;
+    color:#ffffff;
 
 }
 
@@ -1430,7 +1430,7 @@
 
     font-family:"Poppins";
 
-    color:#67db50;
+    color:#16a34a;
 
     font-size:12px;
 
@@ -1448,7 +1448,7 @@
 
 .seo-page .process-card p{
 
-    color:#7f8c83;
+    color:#41514a;
 
     font-size:13px;
 
@@ -1505,7 +1505,7 @@
 
 .seo-page .goal-btn.active{
 
-    color:#081008;
+    color:#ffffff;
 
     background:var(--gradient);
 
@@ -1557,7 +1557,7 @@
 
     border:1px solid var(--border);
 
-    color:#b3c0b6;
+    color:#3f4f47;
 
     font-size:12px;
 
@@ -1636,7 +1636,7 @@
 
     background:var(--gradient);
 
-    color:#061006;
+    color:#ffffff;
 
     font-weight:800;
 
@@ -1682,7 +1682,7 @@
 
 .seo-page .price-card li{
 
-    color:#919e95;
+    color:#46564d;
 
     padding:10px 0;
 
@@ -1696,7 +1696,7 @@
 
     content:"✓";
 
-    color:#70e358;
+    color:#16a34a;
 
     margin-right:9px;
 
@@ -1742,7 +1742,7 @@
 
     background:rgba(12,44,26,.025);
 
-    color:#a7b3aa;
+    color:#44544c;
 
     white-space:nowrap;
 
@@ -1849,7 +1849,7 @@
     background:
         linear-gradient(
             145deg,
-            rgba(100,230,80,.07),
+            rgba(34,197,94,.10),
             rgba(12,44,26,.015)
         );
 
@@ -1893,7 +1893,7 @@
 
     background:var(--gradient);
 
-    color:#061006;
+    color:#ffffff;
 
     font-weight:800;
 
@@ -1903,7 +1903,7 @@
 
     display:block;
 
-    color:#748078;
+    color:#4a5a51;
 
     font-size:11px;
 
@@ -1934,7 +1934,7 @@
 
 .seo-page .small-review p{
 
-    color:#9ba79e;
+    color:#4a5a51;
 
     line-height:1.7;
 
@@ -2003,7 +2003,7 @@
 
 .seo-page .choose-num{
 
-    color:#68df52;
+    color:#16a34a;
 
     font-family:"Poppins";
 
@@ -2070,7 +2070,7 @@
 
     border:0;
 
-    color:#e7eee9;
+    color:#0c1a12;
 
     text-align:left;
 
@@ -2113,7 +2113,7 @@
 
 .seo-page .faq-answer p{
 
-    color:#7f8c83;
+    color:#41514a;
 
     line-height:1.8;
 
@@ -2139,7 +2139,7 @@
 
     background:var(--gradient);
 
-    color:#061006;
+    color:#ffffff;
 
     transform:rotate(45deg);
 
@@ -2172,7 +2172,7 @@
 
 .seo-page .footer-brand p{
 
-    color:#748078;
+    color:#4a5a51;
 
     line-height:1.7;
 
@@ -2196,7 +2196,7 @@
 
     list-style:none;
 
-    color:#748078;
+    color:#4a5a51;
 
     font-size:13px;
 
