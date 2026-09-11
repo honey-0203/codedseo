@@ -132,7 +132,7 @@ export default function SeoPage() {
   useEffect(() => {
     const cleanups: Array<() => void> = [];
 
-    /* ---------- SMOOTH SCROLL + FULL HEIGHT ---------- */
+    /* ---------- SMOOTH SCROLL ---------- */
     const prevScroll = document.documentElement.style.scrollBehavior;
     document.documentElement.style.scrollBehavior = "smooth";
     cleanups.push(() => {
@@ -286,32 +286,6 @@ export default function SeoPage() {
     <div className="seo-page">
       <div className="noise"></div>
       <div className="glow" id="cursorGlow"></div>
-
-      <header>
-
-      <nav className="navbar">
-
-          <a href="#" className="logo">
-              Coded<span>SEO</span>
-          </a>
-
-          <div className="nav-links">
-
-              <a href="#services">Services</a>
-              <a href="#results">Results</a>
-              <a href="#process">Process</a>
-              <a href="#pricing">Pricing</a>
-              <a href="#faq">FAQs</a>
-
-          </div>
-
-          <a href="#contact" className="nav-btn">
-              Get Free SEO Audit
-          </a>
-
-      </nav>
-
-      </header>
 
       <main>
 
@@ -1753,94 +1727,6 @@ export default function SeoPage() {
       </div>
 
       </section>
-
-      <footer>
-
-      <div className="container">
-
-      <div className="footer-grid">
-
-      <div className="footer-brand">
-
-      <a href="#" className="logo">
-      Coded<span>SEO</span>
-      </a>
-
-      <p>
-      AI-powered SEO strategies, technical optimization and growth-focused
-      search marketing for ambitious businesses.
-      </p>
-
-      </div>
-
-      <div>
-
-      <h4>
-      SEO
-      </h4>
-
-      <ul>
-
-      <li>Small Business SEO</li>
-      <li>Technical SEO</li>
-      <li>Local SEO</li>
-      <li>Content SEO</li>
-
-      </ul>
-
-      </div>
-
-      <div>
-
-      <h4>
-      Company
-      </h4>
-
-      <ul>
-
-      <li>About</li>
-      <li>Case Studies</li>
-      <li>Contact</li>
-      <li>Resources</li>
-
-      </ul>
-
-      </div>
-
-      <div>
-
-      <h4>
-      Connect
-      </h4>
-
-      <ul>
-
-      <li>LinkedIn</li>
-      <li>Instagram</li>
-      <li>Facebook</li>
-      <li>Email Us</li>
-
-      </ul>
-
-      </div>
-
-      </div>
-
-      <div className="footer-bottom">
-
-      <span>
-      © 2026 CodedSEO. All rights reserved.
-      </span>
-
-      <span>
-      Built for businesses ready to grow.
-      </span>
-
-      </div>
-
-      </div>
-
-      </footer>
 
       </main>
     </div>
