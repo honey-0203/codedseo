@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import "./seo.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 type TabData = {
   title: string;
@@ -283,7 +285,9 @@ export default function SeoPage() {
   }, []);
 
   return (
-    <div className="seo-page">
+    <>
+      <Header />
+      <div className="seo-page">
       <div className="noise"></div>
       <div className="glow" id="cursorGlow"></div>
 
@@ -1729,6 +1733,8 @@ export default function SeoPage() {
       </section>
 
       </main>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
