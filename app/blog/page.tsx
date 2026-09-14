@@ -1,29 +1,38 @@
 import BlogClient from "./blog-client"
+import { client } from "@/sanity/client"
+import imageUrlBuilder from "@sanity/image-url"
 
-async function getWordPressPosts() {
+const builder = imageUrlBuilder(client)
+
+async function getSanityPosts() {
   try {
-    const res = await fetch(
-      "https://codedseo.com/wp-json/wp/v2/posts?per_page=100&_embed",
-      { next: { revalidate: 3600 } }
-    )
-    const posts = await res.json()
+    const query = `*[_type == "post"] | order(publishedAt desc){
+      _id,
+      title,
+      excerpt,
+      author,
+      publishedAt,
+      "slug": slug.current,
+      coverImage
+    }`
+    const posts = await client.fetch(query, {}, { next: { revalidate: 60 } })
+
     return posts.map((post: any) => ({
-      id: post.id,
-      title: post.title.rendered,
-      excerpt: post.excerpt.rendered.replace(/<[^>]*>/g, ""),
-      category: "SEO",
-      author: post._embedded?.author?.[0]?.name || "CodedSEO Team",
-      date: new Date(post.date).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
-      readTime: `${Math.ceil(
-        post.content.rendered.split(" ").length / 200
-      )} min read`,
-      featured: post.sticky || false,
-      slug: post.slug,
-      image: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+      id: post._id,
+      title: post.title || "",
+      excerpt: post.excerpt || "",
+      category: "AI SEO",
+      author: post.author || "CodedSEO Team",
+      date: post.publishedAt
+        ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+        : "",
+      readTime: "10 min read",
+      slug: post.slug || "",
+      image: post.coverImage ? builder.image(post.coverImage).width(800).url() : "",
     }))
   } catch (error) {
     return []
@@ -31,6 +40,6 @@ async function getWordPressPosts() {
 }
 
 export default async function BlogPage() {
-  const posts = await getWordPressPosts()
+  const posts = await getSanityPosts()
   return <BlogClient initialPosts={posts} />
 }
