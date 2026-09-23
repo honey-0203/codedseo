@@ -9,7 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
-import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
+import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, findObjectives, ObjectiveBox, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
 export const revalidate = 60;
@@ -115,6 +115,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const body = post.body || [];
   const { toc, ids } = buildToc(body);
   const checklistKeys = findChecklistKeys(body);
+  const objectives = findObjectives(body);
   const takeaways = (post.keyTakeaways || []).filter(Boolean);
   const faqs = (post.faqs || []).filter((f) => f?.question && f?.answer);
   const ctaSource: CtaData = post.cta ? resolveCta(post.cta) : {};
@@ -142,6 +143,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       h3: ({ children, value }) => <h3 id={value._key ? ids[value._key] : undefined}>{children}</h3>,
       h1: ({ children }) => <h2>{children}</h2>,
       h4: ({ children }) => <h4>{children}</h4>,
+      normal: ({ children, value }) => {
+        const obj = value._key ? objectives[value._key] : undefined;
+        return obj ? <ObjectiveBox label={obj.label} text={obj.text} /> : <p>{children}</p>;
+      },
       blockquote: ({ children }) => <blockquote className="bp-quote">{children}</blockquote>,
     },
     list: {

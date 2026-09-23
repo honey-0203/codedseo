@@ -188,3 +188,40 @@ export const CheckIcon = () => (
     <circle cx="12" cy="12" r="9.5" /><path d="M8 12.5l2.7 2.7L16.5 9" />
   </svg>
 );
+
+/* ---------------- Objective / Summary box ----------------
+   Content me jo paragraph "Objective:", "Summary:" ya "TL;DR:" se shuru ho,
+   wo apne aap highlight card ban jata hai. */
+const OBJECTIVE_RE = /^\s*(objective|summary|tl;?dr|in short)\s*[:\-–]\s*/i;
+
+export function findObjectives(body: PTBlock[] = []): Record<string, { label: string; text: string }> {
+  const out: Record<string, { label: string; text: string }> = {};
+  for (const b of body) {
+    if (b._type !== "block" || b.listItem || (b.style && b.style !== "normal")) continue;
+    const text = (b.children || []).map((c) => c.text || "").join("");
+    const m = text.match(OBJECTIVE_RE);
+    if (!m) continue;
+    const rest = text.slice(m[0].length).trim();
+    if (!rest) continue;
+    const raw = m[1].toLowerCase();
+    const label = raw.startsWith("tl") ? "TL;DR" : raw === "in short" ? "In short" : raw[0].toUpperCase() + raw.slice(1);
+    out[b._key] = { label, text: rest };
+  }
+  return out;
+}
+
+export function ObjectiveBox({ label, text }: { label: string; text: string }) {
+  return (
+    <aside className="bp-objective" aria-label={label}>
+      <div className="bp-objective-head">
+        <span className="bp-objective-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="1" fill="currentColor" />
+          </svg>
+        </span>
+        <span className="bp-objective-label">{label}</span>
+      </div>
+      <p className="bp-objective-text">{text}</p>
+    </aside>
+  );
+}

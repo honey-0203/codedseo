@@ -342,3 +342,15 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
     .bp-article .bp-body ul.bp-check-grid{ grid-template-columns:1fr; }
     .bp-article .bp-check-title{ font-size:22px; }
 }
+
+/* ---------- Objective / Summary box ("Objective:" se shuru hone wala paragraph) ---------- */
+.bp-objective{ position:relative; margin:8px 0 34px; padding:22px 26px 22px; background:#fff; border:1px solid var(--border); border-radius:20px; box-shadow:0 14px 40px rgba(26,40,30,.06); overflow:hidden; }
+.bp-objective:before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:linear-gradient(180deg,var(--green),var(--green-dark)); }
+.bp-objective-head{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.bp-objective-icon{ width:32px; height:32px; border-radius:10px; display:grid; place-items:center; background:var(--green-soft); color:#5f8f14; flex-shrink:0; }
+.bp-objective-label{ font-size:15px; font-weight:700; color:var(--heading); letter-spacing:-.2px; }
+.bp-article .bp-objective-text{ margin:0; font-size:16px; line-height:1.8; color:#46514a; }
+@media(max-width:760px){
+    .bp-objective{ padding:18px 18px 18px 22px; border-radius:16px; }
+    .bp-article .bp-objective-text{ font-size:15px; }
+}
