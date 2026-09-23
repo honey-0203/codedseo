@@ -9,7 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
-import { CtaBox, Callout, DataTable, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
+import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
 export const revalidate = 60;
@@ -114,6 +114,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   const body = post.body || [];
   const { toc, ids } = buildToc(body);
+  const checklistKeys = findChecklistKeys(body);
   const takeaways = (post.keyTakeaways || []).filter(Boolean);
   const faqs = (post.faqs || []).filter((f) => f?.question && f?.answer);
   const ctaSource: CtaData = post.cta ? resolveCta(post.cta) : {};
@@ -143,6 +144,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       h4: ({ children }) => <h4>{children}</h4>,
       blockquote: ({ children }) => <blockquote className="bp-quote">{children}</blockquote>,
     },
+    list: {
+      bullet: ({ children, value }) =>
+        checklistKeys.has(value.children?.[0]?._key || "") ? (
+          <div className="bp-check bp-check--auto"><ul className="bp-check-grid">{children}</ul></div>
+        ) : <ul>{children}</ul>,
+      number: ({ children, value }) =>
+        checklistKeys.has(value.children?.[0]?._key || "") ? (
+          <div className="bp-check bp-check--auto"><ul className="bp-check-grid">{children}</ul></div>
+        ) : <ol>{children}</ol>,
+    },
+    listItem: {
+      bullet: ({ children, value }) =>
+        checklistKeys.has(value._key || "") ? <li><CheckIcon /><span>{children}</span></li> : <li>{children}</li>,
+      number: ({ children, value }) =>
+        checklistKeys.has(value._key || "") ? <li><CheckIcon /><span>{children}</span></li> : <li>{children}</li>,
+    },
     marks: {
       link: ({ children, value }) => {
         const href: string = value?.href || "#";
@@ -164,6 +181,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       ctaBlock: ({ value }) => <CtaBox value={value} />,
       infoBox: ({ value }) => <Callout value={value} />,
       tableBlock: ({ value }) => <DataTable value={value} />,
+      checklistBlock: ({ value }) => <Checklist value={value} />,
     },
   };
 

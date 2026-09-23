@@ -125,3 +125,66 @@ export function DataTable({ value }: { value: { rows?: string; hasHeader?: boole
     </figure>
   );
 }
+
+/* ---------------- Checklist ---------------- */
+export function Checklist({ value }: { value: { title?: string; intro?: string; items?: string } }) {
+  const items = (value?.items || "")
+    .replace(/\r/g, "")
+    .split("\n")
+    .map((l) => l.replace(/^\s*(?:[-*•●▪◦✓✔]|\d+[.)]|\[[ xX]?\])\s*/, "").trim())
+    .filter(Boolean);
+  if (!items.length) return null;
+
+  return (
+    <section className="bp-check" aria-label={value.title || "Checklist"}>
+      {value.title && <h3 className="bp-check-title">{value.title}</h3>}
+      {value.intro && <p className="bp-check-intro">{value.intro}</p>}
+      <ul className="bp-check-grid">
+        {items.map((item, i) => (
+          <li key={i}>
+            <CheckIcon />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/* ---------------- Auto checklist ----------------
+   Jis heading me "checklist" word ho, uske neeche wali bullet/number list
+   apne aap checklist design me dikhegi. */
+type PTBlock = { _type: string; _key: string; style?: string; listItem?: string; children?: { text?: string }[] };
+
+export function findChecklistKeys(body: PTBlock[] = []): Set<string> {
+  const keys = new Set<string>();
+  let active = false;
+  let gap = 0;
+  let found = false;
+  for (const b of body) {
+    const isHeading = b._type === "block" && /^h[1-4]$/.test(b.style || "");
+    if (isHeading) {
+      const text = (b.children || []).map((c) => c.text || "").join("");
+      active = /check\s*-?\s*list/i.test(text);
+      gap = 0;
+      found = false;
+      continue;
+    }
+    if (!active) continue;
+    if (b._type === "block" && b.listItem) {
+      keys.add(b._key);
+      found = true;
+    } else if (b._type === "block" && !b.listItem && !found && gap < 2) {
+      gap++; // heading ke baad 1-2 intro lines chal jayengi
+    } else {
+      active = false;
+    }
+  }
+  return keys;
+}
+
+export const CheckIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <circle cx="12" cy="12" r="9.5" /><path d="M8 12.5l2.7 2.7L16.5 9" />
+  </svg>
+);

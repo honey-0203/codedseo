@@ -327,3 +327,18 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
     .bp-article h2{ font-size:25px; }
     .bp-article h3{ font-size:20px; }
 }
+
+/* ---------- Checklist (Studio: Checklist + "Checklist" heading ke neeche ki list) ---------- */
+.bp-check{ margin:36px 0; padding:30px 28px 28px; background:#fff; border:1px solid var(--border); border-radius:22px; box-shadow:0 14px 40px rgba(26,40,30,.05); }
+.bp-check--auto{ padding:22px; }
+.bp-article .bp-check-title{ margin:0 0 10px; font-size:26px; letter-spacing:-.6px; }
+.bp-article .bp-check-intro{ margin:0 0 22px; font-size:15px; line-height:1.75; }
+.bp-article .bp-body ul.bp-check-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.bp-article .bp-check-grid li{ display:flex; gap:11px; align-items:flex-start; padding:15px 16px; margin:0; background:#fff; border:1px solid var(--border); border-radius:14px; box-shadow:0 6px 18px rgba(26,40,30,.05); font-size:14px; line-height:1.55; color:#3f4a43; }
+.bp-article .bp-check-grid li::marker{ content:none; }
+.bp-check-grid svg{ flex-shrink:0; margin-top:1px; color:#e0902a; }
+@media(max-width:760px){
+    .bp-check{ padding:22px 16px 18px; }
+    .bp-article .bp-body ul.bp-check-grid{ grid-template-columns:1fr; }
+    .bp-article .bp-check-title{ font-size:22px; }
+}

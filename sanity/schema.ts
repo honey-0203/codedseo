@@ -93,6 +93,26 @@ const tableBlock = defineType({
   },
 });
 
+/* ---------- Checklist: har line ek point ---------- */
+const checklistBlock = defineType({
+  name: "checklistBlock",
+  title: "Checklist",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Title (optional)", type: "string", description: "Jaise: AI SEO Checklist" }),
+    defineField({ name: "intro", title: "Intro line (optional)", type: "text", rows: 2 }),
+    defineField({
+      name: "items", title: "Points (har line ek point)", type: "text", rows: 10,
+      description: "Google Doc se bullet list copy karke paste karo. Har line ek checklist point banegi.",
+      validation: (R) => R.required(),
+    }),
+  ],
+  preview: {
+    select: { title: "title", items: "items" },
+    prepare: ({ title, items }) => ({ title: `Checklist: ${title || ""}`, subtitle: `${(items || "").split("\n").filter((l: string) => l.trim()).length} points` }),
+  },
+});
+
 export const post = defineType({
   name: "post",
   title: "Blog Post",
@@ -163,6 +183,7 @@ export const post = defineType({
         defineArrayMember({ type: "ctaBlock" }),
         defineArrayMember({ type: "infoBox" }),
         defineArrayMember({ type: "tableBlock" }),
+        defineArrayMember({ type: "checklistBlock" }),
       ],
     }),
 
@@ -220,5 +241,5 @@ export const post = defineType({
 });
 
 export const schema = {
-  types: [post, savedCta, ctaBlock, infoBox, tableBlock],
+  types: [post, savedCta, ctaBlock, infoBox, tableBlock, checklistBlock],
 };
