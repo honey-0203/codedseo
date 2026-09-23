@@ -231,3 +231,28 @@
 .bp-figure figcaption{ font-size:13px; color:var(--muted); margin-top:10px; text-align:center; }
 .bp-cta-inline{ margin:45px 0; padding:34px; }
 .bp-cta-inline h2{ font-size:26px; }
+
+/* ---------- Inline CTA box (Studio: CTA Box) ---------- */
+.bp-icta{ position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:28px; margin:44px 0; padding:30px 32px; border-radius:22px; }
+.bp-icta--dark{
+    background:
+        radial-gradient(circle at 0% 100%, rgba(169,232,63,.22), transparent 45%),
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        #17211c;
+    background-size:100% 100%, 28px 28px, 28px 28px, 100% 100%;
+}
+.bp-icta--light{ background:var(--green-soft); border:1px solid #dceec1; }
+.bp-icta-copy{ position:relative; max-width:520px; }
+.bp-article .bp-icta-title{ margin:0 0 8px; font-size:22px; line-height:1.3; font-weight:700; letter-spacing:-.4px; color:#fff; }
+.bp-article .bp-icta-text{ margin:0; font-size:14.5px; line-height:1.65; color:#b9c2bd; }
+.bp-icta--light .bp-icta-title{ color:var(--heading); }
+.bp-icta--light .bp-icta-text{ color:#4d5a45; }
+.bp-icta-actions{ position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:10px; flex-shrink:0; }
+.bp-body .bp-icta a{ text-decoration:none; }
+.bp-icta-btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border-radius:12px; background:var(--green); color:#1d2a12 !important; font-size:13.5px; font-weight:800; white-space:nowrap; transition:transform .2s, box-shadow .2s; }
+.bp-icta-btn svg{ transition:transform .2s; }
+.bp-icta-btn:hover{ box-shadow:0 10px 28px rgba(169,232,63,.35); }
+.bp-icta-btn:hover svg{ transform:translateX(3px); }
+.bp-icta-btn:focus-visible,.bp-icta-link:focus-visible{ outline:2px solid var(--green); outline-offset:3px; }
+.bp-icta--light

@@ -9,6 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
+import { CtaBox, Callout, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
 export const revalidate = 60;
@@ -31,7 +32,7 @@ type Post = {
   body?: Block[];
   keyTakeaways?: string[];
   faqs?: Faq[];
-  cta?: Cta;
+  cta?: CtaData;
   showStats?: boolean;
   metaTitle?: string;
   metaDescription?: string;
@@ -44,11 +45,14 @@ type Post = {
   latest?: RelatedPost[];
 };
 
+const CTA_FIELDS = `heading, text, buttonText, buttonLink, secondaryText, secondaryLink, style`;
 const RELATED_FIELDS = `_id, title, "slug": slug.current, excerpt, category`;
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   _id, _updatedAt, title, "slug": slug.current, category, author, authorRole,
-  publishedAt, excerpt, coverImage, body, keyTakeaways, faqs, cta, showStats,
+  publishedAt, excerpt, coverImage, keyTakeaways, faqs, showStats,
+  "body": body[]{ ..., _type == "ctaBlock" => { ..., "preset": preset->{ ${CTA_FIELDS} } } },
+  "cta": cta{ ..., "preset": preset->{ ${CTA_FIELDS} } },
   metaTitle, metaDescription, focusKeyword, ogImage, canonicalUrl, noindex,
   "picked": relatedPosts[]->{ ${RELATED_FIELDS} },
   "sameCategory": *[_type == "post" && _id != ^._id && defined(slug.current) && category == ^.category]
@@ -102,17 +106,6 @@ export async function generateMetadata(
   };
 }
 
-/* ---------------- Helpers ---------------- */
-const isExternal = (href = "") => /^https?:\/\//i.test(href) && !href.startsWith(SITE_URL);
-
-function CtaLink({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
-  return isExternal(href) ? (
-    <a href={href} className={className} target="_blank" rel="noopener noreferrer">{children}</a>
-  ) : (
-    <Link href={href} className={className}>{children}</Link>
-  );
-}
-
 /* ---------------- Page ---------------- */
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -123,7 +116,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const { toc, ids } = buildToc(body);
   const takeaways = (post.keyTakeaways || []).filter(Boolean);
   const faqs = (post.faqs || []).filter((f) => f?.question && f?.answer);
-  const cta = { ...DEFAULT_CTA, ...Object.fromEntries(Object.entries(post.cta || {}).filter(([, v]) => v)) } as Required<Cta>;
+  const ctaSource: CtaData = post.cta ? resolveCta(post.cta) : {};
+  const cta = { ...DEFAULT_CTA, ...Object.fromEntries(Object.entries(ctaSource).filter(([k, v]) => v && typeof v === "string" && k !== "_type")) } as Required<Cta>;
   const minutes = readingTime(body, takeaways.join(" ") + " " + faqs.map((f) => f.answer).join(" "));
   const date = formatDate(post.publishedAt);
   const category = post.category || "AI SEO";
@@ -145,7 +139,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     block: {
       h2: ({ children, value }) => <h2 id={value._key ? ids[value._key] : undefined}>{children}</h2>,
       h3: ({ children, value }) => <h3 id={value._key ? ids[value._key] : undefined}>{children}</h3>,
-        h1: ({ children }) => <h2>{children}</h2>,
+      h1: ({ children }) => <h2>{children}</h2>,
+      h4: ({ children }) => <h4>{children}</h4>,
       blockquote: ({ children }) => <blockquote className="bp-quote">{children}</blockquote>,
     },
     marks: {
@@ -166,21 +161,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             {value.caption && <figcaption>{value.caption}</figcaption>}
           </figure>
         ) : null,
-      ctaBlock: ({ value }) => (
-        <section className="bp-cta bp-cta-inline">
-          <h2>{value.heading}</h2>
-          {value.text && <p>{value.text}</p>}
-          {value.buttonText && value.buttonLink && (
-            <CtaLink href={value.buttonLink} className="bp-cta-btn">{value.buttonText} →</CtaLink>
-          )}
-        </section>
-      ),
-      infoBox: ({ value }) => (
-        <div className="bp-info-box">
-          {value.title && <strong>{value.title}</strong>}
-          {value.text}
-        </div>
-      ),
+      ctaBlock: ({ value }) => <CtaBox value={value} />,
+      infoBox: ({ value }) => <Callout value={value} />,
     },
   };
 
@@ -347,7 +329,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               <section className="bp-cta">
                 <h2>{cta.heading}</h2>
                 <p>{cta.text}</p>
-                <CtaLink href={cta.buttonLink} className="bp-cta-btn">{cta.buttonText} →</CtaLink>
+                <SmartLink href={cta.buttonLink} className="bp-cta-btn">{cta.buttonText} →</SmartLink>
               </section>
 
               {/* Dynamic FAQ */}
