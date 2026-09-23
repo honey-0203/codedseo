@@ -41,7 +41,7 @@ export function BlogPostScripts() {
     copyBtn?.addEventListener("click", copyLink);
 
     // TOC active on scroll
-    const sections = document.querySelectorAll<HTMLElement>(".bp-article section[id], .bp-article div[id]");
+    const sections = document.querySelectorAll<HTMLElement>(".bp-article [id]");
     const tocLinks = document.querySelectorAll<HTMLAnchorElement>(".bp-toc a");
     const onScroll = () => {
       let current = "";
