@@ -354,3 +354,6 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
     .bp-objective{ padding:18px 18px 18px 22px; border-radius:16px; }
     .bp-article .bp-objective-text{ font-size:15px; }
 }
+/* ---------- Colors: checklist tick green, list dots/numbers dark ---------- */
+.bp-check-grid svg{ color:#5f8f14; }
+.bp-article .bp-body li::marker{ color:var(--heading); font-weight:700; }
