@@ -145,7 +145,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     block: {
       h2: ({ children, value }) => <h2 id={value._key ? ids[value._key] : undefined}>{children}</h2>,
       h3: ({ children, value }) => <h3 id={value._key ? ids[value._key] : undefined}>{children}</h3>,
-      h4: ({ children }) => <h4>{children}</h4>,
+        h1: ({ children }) => <h2>{children}</h2>,
       blockquote: ({ children }) => <blockquote className="bp-quote">{children}</blockquote>,
     },
     marks: {
