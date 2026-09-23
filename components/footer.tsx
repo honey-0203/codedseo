@@ -134,14 +134,9 @@ export function Footer() {
             <div className="mt-8 flex items-center gap-4">
 
               {socialLinks.map((social) => (
-                
-                  key={social.name}
-                  href={social.href}
-                  aria-label={social.name}
-                  className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-zinc-300 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-green-500/30 hover:bg-green-500/10 hover:text-green-400"
-                >
+                <Link key={social.name} href={social.href} aria-label={social.name} className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-zinc-300 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-green-500/30 hover:bg-green-500/10 hover:text-green-400">
                   <social.icon className="h-5 w-5" />
-                </a>
+                </Link>
               ))}
             </div>
 
