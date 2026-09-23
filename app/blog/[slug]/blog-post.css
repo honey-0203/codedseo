@@ -255,4 +255,24 @@
 .bp-icta-btn:hover{ box-shadow:0 10px 28px rgba(169,232,63,.35); }
 .bp-icta-btn:hover svg{ transform:translateX(3px); }
 .bp-icta-btn:focus-visible,.bp-icta-link:focus-visible{ outline:2px solid var(--green); outline-offset:3px; }
-.bp-icta--light
+.bp-icta--light .bp-icta-btn{ background:var(--heading); color:var(--green) !important; }
+.bp-icta--light .bp-icta-btn:hover{ box-shadow:0 10px 28px rgba(23,33,28,.25); }
+.bp-icta-link{ font-size:13px; font-weight:600; color:#dfe6e1 !important; text-decoration:underline !important; text-underline-offset:3px; }
+.bp-icta--light .bp-icta-link{ color:var(--heading) !important; }
+
+/* ---------- Pro tip / Expert insight / Note ---------- */
+.bp-callout{ display:flex; gap:14px; align-items:flex-start; margin:30px 0; padding:18px 22px; border-radius:16px; border-left:4px solid; }
+.bp-callout-icon{ flex-shrink:0; margin-top:3px; }
+.bp-article .bp-callout p{ margin:0; font-size:15px; line-height:1.7; color:#4a544e; }
+.bp-callout strong{ color:var(--heading); margin-right:6px; }
+.bp-callout--tip{ background:#fff7ec; border-color:#f59e0b; }
+.bp-callout--tip .bp-callout-icon{ color:#d97706; }
+.bp-callout--insight{ background:#f3fbe6; border-color:var(--green-dark); }
+.bp-callout--insight .bp-callout-icon{ color:#5f8f14; }
+.bp-callout--note{ background:#f4f6f5; border-color:#9aa59f; }
+.bp-callout--note .bp-callout-icon{ color:#6b756f; }
+
+@media (max-width:760px){
+    .bp-icta{ flex-direction:column; align-items:flex-start; padding:26px 22px; gap:20px; }
+    .bp-article .bp-icta-title{ font-size:20px; }
+}git add .
