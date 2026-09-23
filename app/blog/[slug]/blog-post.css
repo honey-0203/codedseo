@@ -357,3 +357,42 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
 /* ---------- Colors: checklist tick green, list dots/numbers dark ---------- */
 .bp-check-grid svg{ color:#5f8f14; }
 .bp-article .bp-body li::marker{ color:var(--heading); font-weight:700; }
+/* ---------- Hero: date, read time aur author ek line me ---------- */
+.bp-hero{ display:grid; grid-template-columns:repeat(3,auto) 1fr; justify-items:start; align-items:center; column-gap:10px; }
+.bp-hero > .bp-category,.bp-hero > h1,.bp-hero > .bp-hero-description{ grid-column:1 / -1; }
+.bp-hero > .bp-hero-description{ margin-bottom:22px; }
+.bp-hero .bp-meta-actions{ display:contents; }
+.bp-hero .bp-meta-item{ height:44px; margin:0; white-space:nowrap; }
+.bp-hero > .bp-author-section{ height:44px; margin:0; padding:0 14px 0 6px; gap:10px; border-radius:11px; background:#f6f8f5; width:auto; }
+.bp-hero .bp-author-avatar{ width:32px; height:32px; font-size:11px; border-width:2px; }
+.bp-hero .bp-author-info{ flex-direction:row; align-items:center; gap:8px; white-space:nowrap; }
+.bp-hero .bp-author-name{ font-size:13px; }
+.bp-hero .bp-verified{ width:15px; height:15px; font-size:9px; }
+.bp-hero .bp-author-role{ font-size:12px; padding-left:8px; border-left:1px solid var(--border); }
+@media(max-width:760px){
+    .bp-hero{ grid-template-columns:auto auto minmax(0,1fr); column-gap:6px; }
+    .bp-hero .bp-meta-item:has(time){ font-size:0; }
+    .bp-hero .bp-meta-item:has(time) time{ font-size:11px; }
+    .bp-hero > .bp-author-section{ max-width:100%; overflow:hidden; }
+    .bp-hero .bp-author-info{ min-width:0; }
+    .bp-hero .bp-author-name{ overflow:hidden; text-overflow:ellipsis; }
+    .bp-hero .bp-meta-item{ width:auto; height:34px; padding:0 9px; font-size:11px; gap:5px; }
+    .bp-hero .bp-meta-item svg{ width:13px; height:13px; }
+    .bp-hero > .bp-author-section{ width:auto; height:34px; padding:0 9px 0 3px; gap:6px; }
+    .bp-hero .bp-author-avatar{ width:27px; height:27px; font-size:9.5px; }
+    .bp-hero .bp-author-name{ font-size:11.5px; gap:4px; }
+    .bp-hero .bp-verified{ display:none; }
+    .bp-hero .bp-author-role{ display:none; }
+}
+@media(max-width:380px){
+    .bp-hero .bp-meta-item svg{ display:none; }
+}
+
+/* ---------- Hero buttons: Google Preferred Source + Summarize in ChatGPT ---------- */
+.bp-hero > .bp-hero-actions{ grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+.bp-hero-actions a{ display:inline-flex; align-items:center; gap:10px; background:#000; color:#fff !important; border:1px solid rgba(255,255,255,.15); font-size:13px !important; font-weight:600; padding:11px 16px !important; border-radius:12px !important; box-shadow:0 10px 26px rgba(23,33,28,.18); transition:transform .2s, box-shadow .2s; }
+.bp-hero-actions a:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(23,33,28,.26); }
+@media(max-width:760px){
+    .bp-hero-actions{ flex-direction:column; align-items:stretch; }
+    .bp-hero-actions a{ justify-content:center; }
+}

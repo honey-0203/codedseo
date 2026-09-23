@@ -9,6 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
+import { PreferredSourceButton, SummarizeButton } from "@/components/preferred-source-button";
 import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, findObjectives, ObjectiveBox, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
@@ -277,6 +278,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 <div className="bp-author-role">{authorRole}</div>
               </div>
             </div>
+
+            <div className="bp-hero-actions">
+              <PreferredSourceButton />
+              <SummarizeButton url={pageUrl} />
+            </div>
           </section>
 
           <section className="bp-featured-wrap">
@@ -346,7 +352,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <p>Get CodedSEO content more easily when researching AI SEO and search trends.</p>
                   </div>
                 </div>
-                <a href="https://www.google.com/preferences/source" target="_blank" rel="noopener noreferrer" className="bp-preferred-btn">Add Preferred Source</a>
+                <a href="https://www.google.com/preferences/source?q=codedseo.com" target="_blank" rel="noopener noreferrer" className="bp-preferred-btn">Add Preferred Source</a>
               </div>
 
               {/* Dynamic bottom CTA */}

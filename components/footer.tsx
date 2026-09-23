@@ -10,6 +10,7 @@ import {
 } from "lucide-react"
 
 import Link from "next/link"
+import { PreferredSourceButton } from "@/components/preferred-source-button"
 
 const footerLinks = {
   services: [
@@ -133,7 +134,7 @@ export function Footer() {
             <div className="mt-8 flex items-center gap-4">
 
               {socialLinks.map((social) => (
-                <a
+                
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}
@@ -142,6 +143,11 @@ export function Footer() {
                   <social.icon className="h-5 w-5" />
                 </a>
               ))}
+            </div>
+
+            {/* Google Preferred Source */}
+            <div className="mt-6">
+              <PreferredSourceButton />
             </div>
           </div>
 
