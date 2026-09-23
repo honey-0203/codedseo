@@ -219,3 +219,15 @@
     .bp-preferred-btn{ width:100%; justify-content:center; }
     .bp-cta{ padding:28px; }
 }
+/* ---------- Dynamic content (Sanity) ---------- */
+.bp-article [id]{ scroll-margin-top:110px; }
+.bp-toc li.bp-toc-sub a{ padding-left:30px; font-size:13px; }
+.bp-body h4{ font-size:18px; margin:28px 0 10px; }
+.bp-body a{ color:#4f7a12; text-decoration:underline; text-underline-offset:3px; }
+.bp-body ul,.bp-body ol{ padding-left:22px; margin-bottom:19px; }
+.bp-quote{ margin:30px 0; padding:4px 0 4px 22px; border-left:4px solid var(--green); font-size:18px; font-style:italic; color:var(--heading); }
+.bp-figure{ margin:32px 0; }
+.bp-figure img{ width:100%; height:auto; border-radius:18px; border:1px solid var(--border); display:block; }
+.bp-figure figcaption{ font-size:13px; color:var(--muted); margin-top:10px; text-align:center; }
+.bp-cta-inline{ margin:45px 0; padding:34px; }
+.bp-cta-inline h2{ font-size:26px; }
