@@ -276,3 +276,15 @@
     .bp-icta{ flex-direction:column; align-items:flex-start; padding:26px 22px; gap:20px; }
     .bp-article .bp-icta-title{ font-size:20px; }
 }
+
+/* ---------- Table (Studio: Table) ---------- */
+.bp-table{ margin:32px 0; }
+.bp-table-scroll{ overflow-x:auto; border:1px solid var(--border); border-radius:18px; background:#fff; }
+.bp-table table{ width:100%; min-width:560px; border-collapse:collapse; font-size:14.5px; line-height:1.55; }
+.bp-table th,.bp-table td{ padding:14px 18px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border); color:#4a544e; }
+.bp-table thead th{ background:#17211c; color:#fff; font-weight:700; font-size:13.5px; }
+.bp-table thead th:first-child{ color:var(--green); }
+.bp-table tbody th{ color:var(--heading); font-weight:700; background:#fbfcfa; }
+.bp-table tbody tr:last-child th,.bp-table tbody tr:last-child td{ border-bottom:0; }
+.bp-table tbody tr:hover td,.bp-table tbody tr:hover th{ background:var(--green-soft); }
+.bp-table figcaption{ font-size:13px; color:var(--muted); margin-top:10px; text-align:center; }

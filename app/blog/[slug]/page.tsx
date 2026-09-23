@@ -9,7 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
-import { CtaBox, Callout, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
+import { CtaBox, Callout, DataTable, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
 export const revalidate = 60;
@@ -163,6 +163,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         ) : null,
       ctaBlock: ({ value }) => <CtaBox value={value} />,
       infoBox: ({ value }) => <Callout value={value} />,
+      tableBlock: ({ value }) => <DataTable value={value} />,
     },
   };
 

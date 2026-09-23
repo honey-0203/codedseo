@@ -73,6 +73,26 @@ const infoBox = defineType({
   },
 });
 
+/* ---------- Table: Google Doc / Excel se copy karke paste karo ---------- */
+const tableBlock = defineType({
+  name: "tableBlock",
+  title: "Table",
+  type: "object",
+  fields: [
+    defineField({
+      name: "rows", title: "Table paste karo", type: "text", rows: 8,
+      description: "Google Doc ya Excel me poori table select karke copy karo aur yahan paste karo. Har line = ek row.",
+      validation: (R) => R.required(),
+    }),
+    defineField({ name: "hasHeader", title: "Pehli row heading hai?", type: "boolean", initialValue: true }),
+    defineField({ name: "caption", title: "Caption (optional)", type: "string" }),
+  ],
+  preview: {
+    select: { rows: "rows" },
+    prepare: ({ rows }) => ({ title: `Table: ${(rows || "").split("\n")[0].replace(/\t/g, " | ").slice(0, 60)}` }),
+  },
+});
+
 export const post = defineType({
   name: "post",
   title: "Blog Post",
@@ -142,6 +162,7 @@ export const post = defineType({
         }),
         defineArrayMember({ type: "ctaBlock" }),
         defineArrayMember({ type: "infoBox" }),
+        defineArrayMember({ type: "tableBlock" }),
       ],
     }),
 
@@ -199,5 +220,5 @@ export const post = defineType({
 });
 
 export const schema = {
-  types: [post, savedCta, ctaBlock, infoBox],
+  types: [post, savedCta, ctaBlock, infoBox, tableBlock],
 };

@@ -85,3 +85,43 @@ export function Callout({ value }: { value: { variant?: string; title?: string; 
     </div>
   );
 }
+
+/* ---------------- Table (paste se) ---------------- */
+function parseRows(raw = ""): string[][] {
+  const lines = raw.replace(/\r/g, "").split("\n").map((l) => l.trim()).filter(Boolean);
+  const rows = lines.map((line) => {
+    if (line.includes("\t")) return line.split("\t").map((c) => c.trim());
+    if (line.includes("|")) return line.replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+    return [line];
+  });
+  // markdown separator rows (---|---) hata do
+  return rows.filter((r) => !r.every((c) => /^:?-{2,}:?$/.test(c)));
+}
+
+export function DataTable({ value }: { value: { rows?: string; hasHeader?: boolean; caption?: string } }) {
+  const rows = parseRows(value?.rows);
+  if (!rows.length) return null;
+  const cols = Math.max(...rows.map((r) => r.length));
+  const pad = (r: string[]) => [...r, ...Array(cols - r.length).fill("")];
+  const hasHeader = value.hasHeader !== false;
+  const head = hasHeader ? pad(rows[0]) : null;
+  const body = (hasHeader ? rows.slice(1) : rows).map(pad);
+
+  return (
+    <figure className="bp-table">
+      <div className="bp-table-scroll">
+        <table>
+          {head && (
+            <thead><tr>{head.map((c, i) => <th key={i} scope="col">{c}</th>)}</tr></thead>
+          )}
+          <tbody>
+            {body.map((r, i) => (
+              <tr key={i}>{r.map((c, j) => (j === 0 ? <th key={j} scope="row">{c}</th> : <td key={j}>{c}</td>))}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {value.caption && <figcaption>{value.caption}</figcaption>}
+    </figure>
+  );
+}
