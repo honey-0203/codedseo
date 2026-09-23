@@ -288,3 +288,42 @@
 .bp-table tbody tr:last-child th,.bp-table tbody tr:last-child td{ border-bottom:0; }
 .bp-table tbody tr:hover td,.bp-table tbody tr:hover th{ background:var(--green-soft); }
 .bp-table figcaption{ font-size:13px; color:var(--muted); margin-top:10px; text-align:center; }
+
+/* ---------- Clean-up: typography, cover image, TOC ---------- */
+html:has(.blog-post-page){ scroll-behavior:smooth; }
+.blog-post-page main h1{ font-weight:800; }
+.blog-post-page main h2,.blog-post-page main h3{ font-weight:700; }
+.blog-post-page main h4{ font-weight:600; }
+.bp-article p strong,.bp-article li strong{ font-weight:700; }
+.bp-article .bp-body ul{ list-style:disc; }
+.bp-article .bp-body ol{ list-style:decimal; }
+.bp-article .bp-body li::marker{ color:var(--green-dark); }
+.bp-takeaways ul{ list-style:none; margin:0; padding:0; }
+.bp-takeaways li{ position:relative; padding:7px 0 7px 30px; }
+.bp-takeaways li:before{ content:""; position:absolute; left:0; top:12px; width:18px; height:18px; border-radius:50%; background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d2a12' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat; }
+
+.bp-breadcrumb,.bp-hero,.bp-featured-wrap{ max-width:1085px; margin-left:auto; margin-right:auto; }
+.bp-hero{ padding:26px 0 8px; }
+.bp-hero h1{ font-size:clamp(32px,4.2vw,52px); line-height:1.12; letter-spacing:-1.5px; max-width:900px; }
+.bp-hero-description{ font-size:17px; max-width:760px; }
+.bp-featured-wrap{ margin-top:36px; }
+.bp-featured-wrap img.bp-featured-visual{ min-height:0; height:auto; aspect-ratio:1200/630; border-radius:24px; }
+.bp-layout{ padding:64px 0 80px; }
+
+.bp-toc li.bp-toc-sub{ display:none; }
+.bp-toc ul{ max-height:calc(100vh - 170px); overflow-y:auto; scrollbar-width:thin; }
+.bp-toc li a{ padding:7px 10px 7px 16px; }
+
+@media(max-width:1000px){
+    .bp-toc ul{ max-height:300px; }
+}
+@media(max-width:760px){
+    .bp-hero h1{ font-size:30px; letter-spacing:-1px; }
+    .bp-meta-actions{ flex-direction:row; align-items:center; }
+    .bp-meta-item{ width:auto; }
+    .bp-featured-wrap{ margin-top:26px; }
+    .bp-featured-wrap img.bp-featured-visual{ border-radius:16px; }
+    .bp-layout{ padding:36px 0 60px; }
+    .bp-article h2{ font-size:25px; }
+    .bp-article h3{ font-size:20px; }
+}
