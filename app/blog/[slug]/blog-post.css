@@ -404,3 +404,16 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
     .bp-hero-actions{ flex-direction:column; }
     .bp-hero-actions a{ justify-content:flex-start !important; }
 }
+/* ---------- Hero buttons: Google (white) + ChatGPT (glass) ---------- */
+.bp-hero > .bp-hero-actions{ grid-column:1 / -1; display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:16px; }
+.bp-hero-actions a{ display:inline-flex !important; align-items:center; color:#1d1d1f !important; line-height:1.3 !important; transition:transform .2s, box-shadow .2s, background .2s; }
+.bp-hero-actions a.ps-google{ gap:12px !important; background:#fff !important; border:0 !important; font-size:14px !important; font-weight:500 !important; padding:12px 20px !important; border-radius:12px !important; box-shadow:0 6px 20px rgba(0,0,0,.10) !important; }
+.bp-hero-actions a.ps-google span span{ color:#4285F4 !important; font-weight:600; }
+.bp-hero-actions a.ps-gpt{ gap:10px !important; background:rgba(255,255,255,.6) !important; border:1px solid rgba(0,0,0,.10) !important; font-size:15px !important; font-weight:400 !important; padding:10px 16px !important; border-radius:12px !important; box-shadow:none !important; backdrop-filter:blur(10px); }
+.bp-hero-actions a:hover{ transform:translateY(-2px); }
+.bp-hero-actions a.ps-gpt:hover{ background:rgba(255,255,255,.85) !important; }
+@media(max-width:760px){
+    .bp-hero-actions{ flex-direction:column; align-items:stretch; }
+    .bp-hero-actions a{ justify-content:center !important; }
+    .bp-hero-actions a.ps-google{ font-size:13px !important; padding:12px 14px !important; }
+}
