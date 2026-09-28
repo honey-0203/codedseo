@@ -339,7 +339,7 @@ function Monthly() {
           <div>
             <p className="eyebrow">How we work</p>
             <h2>Professional SEO Services You Can Actually See Working</h2>
-            <p className="grey">Most businesses that come to us have paid an agency before and could not tell what they were paying for. We built CodedSEO the other way around: every task is visible, every report ties back to leads, and you can leave any month.</p>
+            <p className="grey">Getting professional SEO services in USA should not feel like a black box. Most businesses that come to us have paid an agency before and could not tell what they were paying for. We built CodedSEO the other way around: every task is visible, every report ties back to leads, and you can leave any month.</p>
             <div className="mini-links">
               <Link href="/why-choose-us">Why clients choose us</Link>
               <Link href="/reviews">Read client reviews</Link>
@@ -378,7 +378,7 @@ function About() {
         <div>
           <p className="eyebrow">About CodedSEO</p>
           <h2>An SEO Provider Built for the Way Americans Search in 2026</h2>
-          <p className="grey">CodedSEO is an SEO and AI search agency working with businesses across the United States. Unlike many SEO providers in the USA, our team combines technical SEO, content strategy and development, so the person who finds a problem on your site is usually the person who can fix it.</p>
+          <p className="grey">CodedSEO is an SEO and AI search agency working with businesses across the United States. Compared to other SEO providers USA businesses have tried, our team combines technical SEO, content strategy and development, so the person who finds a problem on your site is usually the person who can fix it.</p>
           <p className="grey">We started because search changed faster than most agencies did. Buyers now compare options on Google, in Maps and inside AI assistants. We optimize for all three, and we write for people first.</p>
           <div className="hero-cta">
             <Link className="btn" href="/about">More about us <Chevron /></Link>
@@ -409,7 +409,7 @@ function Roadmap() {
         <div className="head">
           <p className="eyebrow">Your first 90 days</p>
           <h2>What Happens After You Hire Our SEO Agency in the USA</h2>
-          <p className="grey">No mystery months. Here is the order we work in and what you should see at each stage. For finished projects, see our <Link href="/case-studies">case studies</Link>.</p>
+          <p className="grey">No mystery months. When you hire SEO agency USA partners, you should know what happens every week. Here is the order we work in and what you should see at each stage. For finished projects, see our <Link href="/case-studies">case studies</Link>.</p>
         </div>
         <div className="phase-tabs" role="tablist">
           {ROADMAP.map((r, idx) => (
@@ -466,9 +466,9 @@ function ServiceTabs() {
     <section className="sec pb0">
       <div className="wrap">
         <div className="head">
-          <p className="eyebrow">Search engine optimization services USA</p>
+          <p className="eyebrow">Our services</p>
           <h2>SEO Services in the United States for Every Stage of Growth</h2>
-          <p className="grey">Pick one service or combine them. Every plan starts with the same audit, so we fix the biggest problems first. We also offer <Link href="/services">Digital PR services</Link>, <Link href="/services">guest posting services</Link> and the <Link href="/digital-marketing">best digital marketing services</Link> to support your rankings.</p>
+          <p className="grey">These are the search engine optimization services USA clients ask us for most. Pick one service or combine them. Every plan starts with the same audit, so we fix the biggest problems first. We also offer <Link href="/services">Digital PR services</Link>, <Link href="/services">guest posting services</Link> and the <Link href="/digital-marketing">best digital marketing services</Link> to support your rankings.</p>
         </div>
         <div className="svc">
           <div className="svc-nav">
@@ -512,7 +512,7 @@ function Audiences() {
         <div className="head">
           <p className="eyebrow">Who we work with</p>
           <h2>SEO for Small Businesses, Ecommerce and B2B Across the USA</h2>
-          <p className="grey">A roofer in Dallas and a SaaS company in San Francisco need very different SEO. We shape the plan around your sales cycle.</p>
+          <p className="grey">A roofer in Dallas and a SaaS company in San Francisco need very different SEO. As an SEO agency USA for small businesses and growing brands, we shape the plan around your sales cycle.</p>
         </div>
         <div className="grid3">
           {AUDIENCES.map((a) => (
@@ -540,7 +540,7 @@ function Benefits() {
         <div className="sticky">
           <p className="eyebrow">Why SEO</p>
           <h2>Why US Businesses Invest in Search Engine Optimization</h2>
-          <p className="grey">SEO is the process of making your website the best answer for the searches your customers make, on Google and now in AI tools. Done well, it becomes the channel that keeps working after the budget is spent.</p>
+          <p className="grey">SEO is the process of making your website the best answer for the searches your customers make. The search engine optimization USA companies invest in today has to cover Google and AI tools. Done well, it becomes the channel that keeps working after the budget is spent.</p>
           <div className="goal">
             <strong>Want the full picture?</strong>
             <span>Read <Link href="/blog/how-ai-search-is-changing-seo-in-2026">how AI search is changing SEO in 2026</Link>.</span>
@@ -583,9 +583,9 @@ function Packages() {
     <section className="sec pt0" id="seo-packages">
       <div className="wrap">
         <div className="head">
-          <p className="eyebrow">SEO packages USA</p>
+          <p className="eyebrow">Pricing</p>
           <h2>Transparent SEO Packages for US Businesses</h2>
-          <p className="grey">Clear monthly prices, no setup fees and no long-term contracts. Every package includes the free audit and our 90-day results guarantee. Full details are on our <Link href="/#pricing">pricing section</Link>.</p>
+          <p className="grey">Many SEO packages USA agencies sell hide what is included. Ours have clear monthly prices, no setup fees and no long-term contracts. Every package includes the free audit and our 90-day results guarantee. Full details are on our <Link href="/#pricing">pricing section</Link>.</p>
         </div>
         <div className="pack-grid">
           {PACKAGES.map((pk) => (
@@ -634,7 +634,7 @@ function Industries() {
         <div className="head">
           <p className="eyebrow">Industries</p>
           <h2>Industries We Help Rank Across the US</h2>
-          <p className="grey">Each industry has its own search habits, rules and competitors. These are the ones we know best.</p>
+          <p className="grey">Each industry has its own search habits, rules and competitors. Many SEO services United States businesses buy are one-size-fits-all; ours are shaped around the industries below.</p>
         </div>
         <div className="ind-grid">
           {INDUSTRIES.map((ind) => (
@@ -710,7 +710,7 @@ function Process() {
         <div className="head">
           <p className="eyebrow dark">Getting started</p>
           <h2>From First Call to First Results</h2>
-          <p>Five steps, no long sales process. Most clients go from discovery call to live work in under two weeks.</p>
+          <p>Five steps, no long sales process. Whether you need one SEO service in USA markets or a full campaign, most clients go from discovery call to live work in under two weeks.</p>
         </div>
         <div className="slider visible">
           <div className="track" style={{ transform: `translateX(-${(s.i * 100) / per}%)` }}>
@@ -789,7 +789,7 @@ function FinalCta() {
       <div className="wrap final-in">
         <div>
           <h2>Ready to Grow Your Organic Traffic?</h2>
-          <p>Get a free SEO audit and see exactly what is holding your site back.</p>
+          <p>Work with the SEO agency USA businesses trust. Get a free SEO audit and see exactly what is holding your site back.</p>
         </div>
         <div className="cta-btns">
           <Link className="btn light" href="/free-audit">Get my free audit <Chevron /></Link>
