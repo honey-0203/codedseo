@@ -11,9 +11,9 @@ const poppins = Poppins({
 });
 
 const URL = "https://codedseo.com/seo-agency-usa";
-const TITLE = "SEO Company in the USA | SEO & AI SEO Services | CodedSEO";
+const TITLE = "SEO Agency USA | Professional SEO Services | CodedSEO";
 const DESC =
-  "CodedSEO is an SEO company helping US businesses rank on Google and in AI search. Technical SEO, content and AI SEO with transparent reporting. Get a free audit.";
+  "CodedSEO is an SEO agency in the USA offering professional SEO services, AI SEO and affordable SEO packages for small businesses. Get a free SEO audit today.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -35,7 +35,7 @@ const schema = {
       logo: "https://codedseo.com/codedseo.png",
       email: "hello@codedseo.com",
       areaServed: { "@type": "Country", name: "United States" },
-      serviceType: ["SEO services", "AI SEO", "Technical SEO audit", "Local SEO"],
+      serviceType: ["SEO services", "Local SEO services", "Technical SEO services", "AI SEO services", "Link building services", "SEO content writing"],
     },
     {
       "@type": "WebPage",
@@ -51,7 +51,7 @@ const schema = {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://codedseo.com" },
-        { "@type": "ListItem", position: 2, name: "SEO Company USA", item: URL },
+        { "@type": "ListItem", position: 2, name: "SEO Agency USA", item: URL },
       ],
     },
   ],

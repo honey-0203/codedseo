@@ -21,7 +21,7 @@ const HERO_POINTS = [
 
 const STATS = [
   { value: "1M", suffix: "+", label: "Keywords ranked", sub: "Tracked across client campaigns" },
-  { value: "100", suffix: "+", label: "Businesses served", sub: "Local, ecommerce, SaaS and B2B" },
+  { value: "100", suffix: "+", label: "Businesses served", sub: "Across the United States and beyond" },
   { value: "98", suffix: "%", label: "Client retention", sub: "Clients who stay with us" },
   { value: "ET–PT", suffix: "", label: "Time-zone coverage", sub: "Calls and reports on your hours" },
 ];
@@ -59,38 +59,50 @@ const ROADMAP = [
 const SERVICES = [
   {
     id: "organic", tab: "Organic SEO", title: "Organic SEO Services", href: "/services/organic-seo",
-    desc: "Organic SEO is how we grow traffic you do not pay for per click. We fix what stops Google from understanding your site, then build pages and authority around the searches your buyers use before they call.",
-    provide: ["Keyword research mapped to revenue", "On-page optimization for service pages", "Internal linking and site structure", "Content briefs and publishing", "Monthly rank and traffic reporting"],
+    desc: "Organic SEO grows the traffic you do not pay for per click. We fix what stops Google from understanding your site, then build pages and authority around the searches your buyers use before they call.",
+    provide: ["Keyword research mapped to revenue", "On-page optimization for service pages", "Internal linking and site structure", "Topical authority content plans", "Monthly rank and traffic reporting"],
     result: ["More qualified organic traffic", "Less reliance on paid ads", "Rankings that hold after updates"],
   },
   {
-    id: "ai", tab: "AI SEO & GEO", title: "AI SEO and Generative Engine Optimization", href: "/blog/what-is-ai-seo",
-    desc: "More US buyers now ask ChatGPT, Gemini, Perplexity and Google AI Overviews before they search. We structure your content, entities and citations so AI tools can find, trust and mention your brand.",
-    provide: ["AI visibility audit across major assistants", "Entity and knowledge graph optimization", "Answer-ready content and FAQ blocks", "Schema markup and llms.txt setup", "Brand mention and citation building"],
-    result: ["Your brand named in AI answers", "Traffic from AI search referrals", "Stronger topical authority"],
+    id: "local", tab: "Local SEO & GMB", title: "Local SEO Services", href: "/services",
+    desc: "For businesses that serve a city or region, the Google Maps pack is where the calls come from. Our GMB services and local SEO put you in front of nearby buyers searching \"near me\" on desktop, mobile and voice search.",
+    provide: ["Google Business Profile (GMB) optimization", "Google Maps ranking and review strategy", "Location pages for every city you serve", "Local citations and NAP cleanup", "Voice search optimization for local queries"],
+    result: ["More calls and direction requests", "Visibility in the Map Pack", "Consistent listings across the web"],
   },
   {
-    id: "technical", tab: "Technical SEO Audit", title: "Technical SEO Audit", href: "/free-audit",
-    desc: "If Google cannot crawl, render or index a page, nothing else matters. Our audit checks every page for indexing, speed, Core Web Vitals, duplicate content and structured data, then ranks fixes by impact.",
-    provide: ["Full site crawl and index coverage review", "Core Web Vitals and page speed fixes", "Canonical, redirect and sitemap cleanup", "Schema validation", "Prioritized fix list for your developers"],
+    id: "technical", tab: "Technical SEO", title: "Technical SEO Services", href: "/free-audit",
+    desc: "If Google cannot crawl, render or index a page, nothing else matters. Our technical SEO services check every page for indexing, speed, Core Web Vitals, duplicate content and structured data, then rank fixes by impact.",
+    provide: ["Full site crawl and index coverage review", "Core Web Vitals and page speed fixes", "Canonical, redirect and sitemap cleanup", "Schema and structured data", "Prioritized fix list for your developers"],
     result: ["Pages Google can actually index", "Faster, more usable pages", "A clear list of what to fix first"],
   },
   {
-    id: "seo", tab: "SEO Consulting", title: "SEO Strategy and Consulting", href: "/seo",
-    desc: "For in-house teams that want a senior second opinion. We review your strategy, content plan and technical setup, and give your team a roadmap they can run themselves.",
-    provide: ["Strategy and competitor review", "Content and keyword roadmap", "Migration and redesign planning", "Team training sessions", "Quarterly strategy check-ins"],
-    result: ["A plan your team can execute", "Fewer costly migration mistakes", "Faster decisions with expert input"],
+    id: "ai", tab: "AI SEO & GEO", title: "AI SEO Services", href: "/blog/what-is-ai-seo",
+    desc: "More US buyers now ask ChatGPT, Gemini, Perplexity and Google AI Overviews before they search. Our AI SEO services cover AEO, GEO and LLM optimization so AI tools can find, trust and mention your brand.",
+    provide: ["AI visibility audit across major assistants", "Answer Engine Optimization (AEO)", "Generative Engine Optimization (GEO)", "Entity-based SEO and knowledge graph signals", "Schema markup and llms.txt setup"],
+    result: ["Your brand named in AI answers", "Traffic from generative search", "Stronger entity and topical authority"],
   },
   {
-    id: "marketing", tab: "Digital Marketing", title: "Digital Marketing that Supports SEO", href: "/digital-marketing",
-    desc: "SEO works best with the rest of your marketing. We connect search with paid ads, content, email and conversion work so every channel feeds the others instead of competing for budget.",
+    id: "links", tab: "Link Building & PR", title: "Link Building Services", href: "/services",
+    desc: "Links from respected sites are still one of the strongest signals Google uses. Our link building services earn editorial mentions through outreach, Digital PR and guest posting, never through paid link schemes.",
+    provide: ["Editorial outreach and niche edits", "Digital PR services and data stories", "Guest posting services on relevant sites", "Unlinked brand mention recovery", "Backlink profile audits and cleanup"],
+    result: ["Higher domain authority", "Rankings for competitive terms", "Brand mentions AI tools pick up"],
+  },
+  {
+    id: "content", tab: "SEO Content Writing", title: "SEO Content Writing", href: "/digital-marketing",
+    desc: "Good SEO content answers the question better than anyone else ranking. Our writers start from keyword research and real expertise, then write pages with the contextual relevance Google's NLP systems look for.",
+    provide: ["Keyword research and content briefs", "Service, location and landing pages", "Blog and content marketing articles", "Expert interviews and fact checks", "Refresh of pages that lost rankings"],
+    result: ["Pages that match search intent", "Content that earns links", "More leads from existing traffic"],
+  },
+  {
+    id: "marketing", tab: "Digital Marketing", title: "Digital Marketing Services", href: "/digital-marketing",
+    desc: "SEO works best with the rest of your marketing. We connect search with paid ads, content marketing, email and conversion work so every channel feeds the others instead of competing for budget.",
     provide: ["Google Ads alongside organic keywords", "Content marketing and distribution", "Conversion rate optimization", "Landing pages for campaigns", "Unified reporting across channels"],
     result: ["Lower blended cost per lead", "Faster wins while SEO builds", "One team, one report"],
   },
 ];
 
 const AUDIENCES = [
-  { t: "Local service businesses", d: "Plumbers, HVAC, roofers, law firms and clinics that need to show up in the Google Map Pack for their city.", href: "/services" },
+  { t: "Small businesses", d: "Local shops, clinics, law firms and home service companies that need affordable SEO and a strong spot in Google Maps for their city.", href: "/services" },
   { t: "Ecommerce stores", d: "Shopify and WooCommerce brands that need category and product pages to rank without cannibalizing each other.", href: "/services" },
   { t: "SaaS and B2B companies", d: "Software and service companies that sell on long research cycles and need content that ranks at every stage.", href: "/seo" },
   { t: "Agencies (white label)", d: "Marketing agencies that want reliable SEO fulfillment under their own brand, with reports they can resell.", href: "/digital-marketing" },
@@ -99,7 +111,7 @@ const AUDIENCES = [
 
 const BENEFITS = [
   { t: "Leads that come to you", d: "People who find you through search are already looking for what you sell. That is why organic leads usually close faster than cold outreach." },
-  { t: "Visibility in AI answers", d: "Google AI Overviews, ChatGPT and Perplexity pull from pages they trust. The same work that builds rankings gets your brand cited in AI answers." },
+  { t: "Visibility in AI and zero-click results", d: "Google AI Overviews, featured snippets, voice assistants and ChatGPT answer many questions without a click. Zero-click search optimization makes sure your brand is the one they quote." },
   { t: "Costs that go down over time", d: "Paid ads stop the day the budget stops. Pages that rank keep bringing visitors for months without paying per click." },
   { t: "Trust before the first call", d: "A business on page one with clear, expert content looks established. Buyers arrive already convinced you are a real option." },
   { t: "Decisions based on data", d: "Search Console and GA4 show exactly which searches bring customers, so you invest more in what works and stop what does not." },
@@ -122,15 +134,15 @@ const INDUSTRIES = [
 const EEAT = [
   { k: "E", t: "Experience", d: "We show real first-hand work on your pages: project photos, before-and-after results, and the specifics only someone who does the job would know." },
   { k: "E", t: "Expertise", d: "Content is written from interviews with you or your team, reviewed for accuracy and signed with real author names and credentials." },
-  { k: "A", t: "Authoritativeness", d: "We earn mentions and links from sites your industry already respects, so Google and AI tools see others vouching for you." },
+  { k: "A", t: "Authoritativeness", d: "We build topical authority around your core services and earn mentions from sites your industry respects, so Google and AI tools see others vouching for you." },
   { k: "T", t: "Trust", d: "Clear contact details, reviews, policies, secure pages and honest claims. Trust is the part of E-E-A-T Google weighs most." },
 ];
 
 const READING = [
   { t: "What is AI SEO?", d: "A plain-English guide to optimizing for AI search tools and what changes for your content.", href: "/blog/what-is-ai-seo", tag: "Blog" },
   { t: "How AI Search Is Changing SEO in 2026", d: "What Google AI Overviews and chat assistants mean for rankings, clicks and brand visibility.", href: "/blog/how-ai-search-is-changing-seo-in-2026", tag: "Blog" },
-  { t: "SEO learning hub", d: "Short lessons on the basics of search, from keywords to technical SEO.", href: "/learn", tag: "Learn" },
-  { t: "Free SEO tools", d: "Tools we use ourselves to check pages, titles and technical issues.", href: "/tools", tag: "Tools" },
+  { t: "SEO learning hub", d: "Short lessons on the basics of search, from keywords to internal linking and technical SEO.", href: "/learn", tag: "Learn" },
+  { t: "Free SEO tools", d: "Tools for keyword research, title checks and technical issues that we use ourselves.", href: "/tools", tag: "Tools" },
 ];
 
 const PROCESS = [
@@ -141,13 +153,32 @@ const PROCESS = [
   { t: "Review and scale", d: "Monthly reports and quarterly reviews decide what to double down on next." },
 ];
 
+const PACKAGES = [
+  { name: "Starter", price: "$199", note: "per month", for: "Small businesses starting with SEO", items: ["5 target keywords", "Technical SEO audit", "On-page optimization", "Google Business Profile setup", "Monthly reporting"], cta: "/free-audit", ctaText: "Start with a free audit" },
+  { name: "Growth", price: "$499", note: "per month", for: "Established businesses ready to compete", items: ["15 target keywords", "Full technical audit", "AI-powered content strategy", "Link building (10 per month)", "Local SEO and weekly reporting"], cta: "/free-audit", ctaText: "Get my free audit", popular: true },
+  { name: "Enterprise", price: "Custom", note: "quoted after audit", for: "Multi-location and large sites", items: ["Unlimited keywords", "Enterprise technical SEO", "Multi-location SEO", "Link building (50+ per month)", "Dedicated account team"], cta: "/contact", ctaText: "Talk to sales" },
+];
+
+const GLOSSARY = [
+  { t: "AEO", full: "Answer Engine Optimization", d: "Structuring answers so Google snippets, voice assistants and chatbots can quote them directly." },
+  { t: "GEO", full: "Generative Engine Optimization", d: "Making your content easy for generative search tools to summarize and cite as a source." },
+  { t: "LLM optimization", full: "AI visibility", d: "Tracking and improving how often large language models mention your brand for your topics." },
+  { t: "Entity-based SEO", full: "Knowledge graph signals", d: "Defining who you are, what you do and where, so search engines connect your brand to the right topics." },
+  { t: "Topical authority", full: "Depth over volume", d: "Covering a subject completely with linked pages, so Google sees you as a go-to source." },
+  { t: "Zero-click search", full: "Visibility without a visit", d: "Owning snippets, maps and AI answers where people get what they need on the results page." },
+  { t: "Voice search", full: "Conversational queries", d: "Optimizing for spoken questions on phones and smart speakers, often with local intent." },
+  { t: "NLP & context", full: "Contextual relevance", d: "Writing with the entities and related terms Google's language models expect for a topic." },
+];
+
 const TOOLS = ["Google Search Console", "Google Analytics 4", "Google Business Profile", "Looker Studio", "Ahrefs", "Semrush", "Screaming Frog", "PageSpeed Insights", "Schema Validator", "Surfer"];
 
 const FAQS = [
-  { q: "How much do SEO services cost in the USA?", a: "CodedSEO plans start at $199 per month for the Starter plan and $499 per month for Growth, with custom pricing for enterprise and multi-location brands. There are no hidden fees and no long-term contracts. The free audit tells you which plan fits your competition and goals." },
+  { q: "How much do SEO services cost in the USA?", a: "Our SEO packages start at $199 per month for Starter and $499 per month for Growth, with custom pricing for enterprise and multi-location brands. There are no hidden fees and no long-term contracts. The free audit tells you which package fits your competition and goals." },
+  { q: "How do I hire an SEO agency in the USA?", a: "Start with a free audit and a short call. A good SEO agency should explain what is holding your site back, show a written plan with timelines, and tell you exactly what you will get each month. Avoid anyone who promises a specific ranking or will not show their work." },
+  { q: "Are your SEO services good for small businesses?", a: "Yes. Our Starter package was built for small businesses in the USA that need local SEO, a Google Business Profile that ranks in Google Maps and a technically sound website, without an enterprise budget." },
   { q: "How long does SEO take to show results?", a: "Technical fixes and quick wins can show movement within the first 30 to 60 days. Competitive keywords usually take three to six months. We share Search Console data every month so you can see progress before rankings peak." },
-  { q: "Do you work with businesses in every US state?", a: "Yes. We work remotely with businesses across the United States and schedule calls and reports in your time zone, from Eastern to Pacific." },
-  { q: "What is AI SEO and do I need it?", a: "AI SEO makes your brand easier for tools like ChatGPT, Gemini and Google AI Overviews to find and cite. If your buyers research online, some of them already ask AI tools first, so it is worth building into your strategy now." },
+  { q: "Do you work with businesses in every US state?", a: "Yes. We provide SEO services across the United States and schedule calls and reports in your time zone, from Eastern to Pacific." },
+  { q: "What is AI SEO, AEO and GEO?", a: "AI SEO makes your brand easier for tools like ChatGPT, Gemini and Google AI Overviews to find and cite. AEO (Answer Engine Optimization) targets direct answers and featured snippets, and GEO (Generative Engine Optimization) targets AI-generated results. We include all three in our strategy." },
   { q: "Do you guarantee first-page rankings?", a: "No one controls Google, so we never promise a specific position. What we do offer is a 90-day results guarantee: if you do not see measurable ranking improvements, we keep working for free until you do." },
   { q: "Will I own the content and links you build?", a: "Yes. Every page, article and account we create belongs to you. If you leave, everything stays on your site and in your accounts." },
   { q: "Can you work with our in-house team or developer?", a: "Yes. Many clients have their own developers or writers. We provide clear briefs and fix lists and handle the parts your team does not have time for." },
@@ -245,9 +276,9 @@ function Hero() {
     <section className="hero">
       <div className="wrap hero-grid">
         <div className="hero-copy">
-          <p className="pill">SEO company for US businesses</p>
-          <h1>The SEO Company in the USA That Gets You Found on <span className="hl">Google and in AI Search</span></h1>
-          <p className="lead">CodedSEO helps American businesses rank for the searches that bring in customers. We combine technical SEO, expert content and AI search optimization, and we show you every change we make.</p>
+          <p className="pill">Professional SEO services in the USA</p>
+          <h1>SEO Agency USA: Get Found on <span className="hl">Google and in AI Search</span></h1>
+          <p className="lead">CodedSEO is a <Link href="/">search engine optimization company</Link> helping American businesses rank for the searches that bring in customers. Our SEO services in the USA combine technical SEO, expert content and AI search optimization, and we show you every change we make.</p>
           <ul className="ticks two">
             {HERO_POINTS.map((p) => <li key={p}>{p}</li>)}
           </ul>
@@ -307,7 +338,7 @@ function Monthly() {
         <div className="split-card">
           <div>
             <p className="eyebrow">How we work</p>
-            <h2>SEO You Can Actually See Working</h2>
+            <h2>Professional SEO Services You Can Actually See Working</h2>
             <p className="grey">Most businesses that come to us have paid an agency before and could not tell what they were paying for. We built CodedSEO the other way around: every task is visible, every report ties back to leads, and you can leave any month.</p>
             <div className="mini-links">
               <Link href="/why-choose-us">Why clients choose us</Link>
@@ -346,8 +377,8 @@ function About() {
       <div className="wrap two-col">
         <div>
           <p className="eyebrow">About CodedSEO</p>
-          <h2>A Search Team Built for the Way Americans Search in 2026</h2>
-          <p className="grey">CodedSEO is an SEO and AI search agency working with businesses across the United States. Our team combines technical SEO, content strategy and development, so the person who finds a problem on your site is usually the person who can fix it.</p>
+          <h2>An SEO Provider Built for the Way Americans Search in 2026</h2>
+          <p className="grey">CodedSEO is an SEO and AI search agency working with businesses across the United States. Unlike many SEO providers in the USA, our team combines technical SEO, content strategy and development, so the person who finds a problem on your site is usually the person who can fix it.</p>
           <p className="grey">We started because search changed faster than most agencies did. Buyers now compare options on Google, in Maps and inside AI assistants. We optimize for all three, and we write for people first.</p>
           <div className="hero-cta">
             <Link className="btn" href="/about">More about us <Chevron /></Link>
@@ -377,7 +408,7 @@ function Roadmap() {
       <div className="wrap">
         <div className="head">
           <p className="eyebrow">Your first 90 days</p>
-          <h2>What Happens After You Hire Us</h2>
+          <h2>What Happens After You Hire Our SEO Agency in the USA</h2>
           <p className="grey">No mystery months. Here is the order we work in and what you should see at each stage. For finished projects, see our <Link href="/case-studies">case studies</Link>.</p>
         </div>
         <div className="phase-tabs" role="tablist">
@@ -435,9 +466,9 @@ function ServiceTabs() {
     <section className="sec pb0">
       <div className="wrap">
         <div className="head">
-          <p className="eyebrow">SEO services USA</p>
-          <h2>SEO Services for Every Stage of Growth</h2>
-          <p className="grey">Pick one service or combine them. Every plan starts with the same audit, so we fix the biggest problems first. See the full list on our <Link href="/services">services page</Link>.</p>
+          <p className="eyebrow">Search engine optimization services USA</p>
+          <h2>SEO Services in the United States for Every Stage of Growth</h2>
+          <p className="grey">Pick one service or combine them. Every plan starts with the same audit, so we fix the biggest problems first. We also offer <Link href="/services">Digital PR services</Link>, <Link href="/services">guest posting services</Link> and the <Link href="/digital-marketing">best digital marketing services</Link> to support your rankings.</p>
         </div>
         <div className="svc">
           <div className="svc-nav">
@@ -480,7 +511,7 @@ function Audiences() {
       <div className="wrap">
         <div className="head">
           <p className="eyebrow">Who we work with</p>
-          <h2>SEO Built Around How Your Customers Buy</h2>
+          <h2>SEO for Small Businesses, Ecommerce and B2B Across the USA</h2>
           <p className="grey">A roofer in Dallas and a SaaS company in San Francisco need very different SEO. We shape the plan around your sales cycle.</p>
         </div>
         <div className="grid3">
@@ -508,7 +539,7 @@ function Benefits() {
       <div className="wrap two-col top">
         <div className="sticky">
           <p className="eyebrow">Why SEO</p>
-          <h2>Why US Businesses Invest in SEO</h2>
+          <h2>Why US Businesses Invest in Search Engine Optimization</h2>
           <p className="grey">SEO is the process of making your website the best answer for the searches your customers make, on Google and now in AI tools. Done well, it becomes the channel that keeps working after the budget is spent.</p>
           <div className="goal">
             <strong>Want the full picture?</strong>
@@ -541,6 +572,55 @@ function CtaBand({ eyebrow, title, text, points }: { eyebrow: string; title: str
             <a className="btn outline" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a call</a>
           </div>
           <ul className="cta-trust">{points.map((t) => <li key={t}>{t}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Packages() {
+  return (
+    <section className="sec pt0" id="seo-packages">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">SEO packages USA</p>
+          <h2>Transparent SEO Packages for US Businesses</h2>
+          <p className="grey">Clear monthly prices, no setup fees and no long-term contracts. Every package includes the free audit and our 90-day results guarantee. Full details are on our <Link href="/#pricing">pricing section</Link>.</p>
+        </div>
+        <div className="pack-grid">
+          {PACKAGES.map((pk) => (
+            <div key={pk.name} className={`pack ${pk.popular ? "pop" : ""}`}>
+              {pk.popular && <span className="pack-badge">Most popular</span>}
+              <h3>{pk.name}</h3>
+              <p className="pack-for">{pk.for}</p>
+              <p className="pack-price">{pk.price} <small>{pk.note}</small></p>
+              <ul className="ticks">{pk.items.map((it) => <li key={it}>{it}</li>)}</ul>
+              <Link className={`btn ${pk.popular ? "" : "line"}`} href={pk.cta}>{pk.ctaText} <Chevron /></Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Glossary() {
+  return (
+    <section className="sec">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">Generative search</p>
+          <h2>SEO Beyond the Ten Blue Links</h2>
+          <p className="grey">Search now happens in Google, Maps, voice assistants and AI agents. These are the parts of modern SEO we build into every plan, explained in plain English.</p>
+        </div>
+        <div className="gloss">
+          {GLOSSARY.map((g) => (
+            <div key={g.t} className="gloss-item">
+              <h3>{g.t}</h3>
+              <p className="gloss-full">{g.full}</p>
+              <p>{g.d}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -683,7 +763,7 @@ function Faq() {
       <div className="wrap narrow">
         <div className="head">
           <p className="eyebrow">FAQ</p>
-          <h2>Questions About Hiring an SEO Company in the USA</h2>
+          <h2>Questions About Hiring an SEO Agency in the USA</h2>
         </div>
         <div className="faq">
           {FAQS.map((f, idx) => (
@@ -746,6 +826,7 @@ export default function UsaHome() {
           <ServiceTabs />
           <Audiences />
           <Benefits />
+          <Packages />
           <CtaBand
             eyebrow="Free, no obligation"
             title="Find Out What Is Stopping You From Ranking"
@@ -754,6 +835,7 @@ export default function UsaHome() {
           />
           <Industries />
           <Eeat />
+          <Glossary />
           <Reading />
           <Process />
           <Tools />
