@@ -294,3 +294,5 @@
   .isu .cta-band { padding: 44px 22px; }
   .isu .sec { padding: 56px 0; }
 }
+/* Mobile fix: grid ke andar slider bahar na nikle */
+.isu .split-card > *, .isu .two-col > *, .isu .phase > *, .isu .svc > *, .isu .hero-grid > * { min-width: 0; }
