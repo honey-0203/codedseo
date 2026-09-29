@@ -1,12 +1,14 @@
 import { client } from "@/sanity/client";
 import { SITE_URL } from "@/sanity/blog-utils";
+import { getSitePages } from "@/lib/site-pages";
 
 // Har 10 minute me naya blog list apne aap update hoga
 export const revalidate = 600;
 
 type Post = { title: string; slug: string; excerpt?: string; category?: string; publishedAt?: string };
 
-const INTRO = `# CodedSEO
+function intro(PAGES: string) {
+  return `# CodedSEO
 
 > CodedSEO.com is a digital marketing agency for brands ready to grow globally
 > through AI-powered SEO and digital marketing services.
@@ -19,20 +21,23 @@ const INTRO = `# CodedSEO
 - Local SEO
 - Analytics & Reporting
 
-## Pages
-- Homepage: ${SITE_URL}
-- Services: ${SITE_URL}/services
-- Contact: ${SITE_URL}/contact
-- Blog: ${SITE_URL}/blog
-- Free Audit: ${SITE_URL}/free-audit
-- Case Studies: ${SITE_URL}/case-studies
+${PAGES}
 
 ## About
 - Website: ${SITE_URL}
 - Specialty: AI-Powered SEO & Digital Marketing
 - Clients: Global Businesses`;
+}
 
 export async function GET() {
+  // Website ke saare pages app folder se apne aap
+  const PAGES =
+    "## Pages\n" +
+    getSitePages()
+      .map((p) => `- ${p.title}: ${SITE_URL}${p.path}`)
+      .join("\n");
+  const INTRO = intro(PAGES);
+
   let posts: Post[] = [];
   try {
     posts = await client.fetch(
