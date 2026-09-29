@@ -7,7 +7,8 @@ export const revalidate = 600;
 const STATIC_PAGES: { path: string; priority: number }[] = [
   { path: "", priority: 1 },
   { path: "/services", priority: 0.9 },
-   { path: "/seo-agency-usa", priority: 0.8 },
+  { path: "/services/organic-seo", priority: 0.8 },
+  { path: "/seo-agency-usa", priority: 0.8 },
   { path: "/seo", priority: 0.8 },
   { path: "/digital-marketing", priority: 0.8 },
   { path: "/free-audit", priority: 0.8 },
@@ -23,6 +24,7 @@ const STATIC_PAGES: { path: string; priority: number }[] = [
   { path: "/insights", priority: 0.5 },
   { path: "/learn", priority: 0.5 },
   { path: "/tools", priority: 0.5 },
+  { path: "/legal-disclaimer", priority: 0.3 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
