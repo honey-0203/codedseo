@@ -10,6 +10,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { LOCATIONS } from "@/lib/locations"
 
 interface SubMenuItem {
   name: string
@@ -22,6 +23,7 @@ interface MenuItem {
   name: string
   href: string
   submenu?: SubMenuItem[]
+  locationMenu?: boolean
   megaMenu?: {
     sections: {
       title: string
@@ -133,6 +135,11 @@ const menuItems: MenuItem[] = [
     }
   },
   {
+    name: "Locations",
+    href: LOCATIONS[0]?.href ?? "/seo-agency-usa",
+    locationMenu: true,
+  },
+  {
     name: "Case Studies",
     href: "/case-studies",
     submenu: [
@@ -154,6 +161,75 @@ const menuItems: MenuItem[] = [
     ]
   }
 ]
+
+function LocationsMega() {
+  const [active, setActive] = useState(0)
+  const country = LOCATIONS[active] ?? LOCATIONS[0]
+  if (!country) return null
+
+  return (
+    <div className="grid grid-cols-[220px_1fr_230px]">
+      {/* Countries */}
+      <div className="border-r border-border bg-muted/40 p-4">
+        <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Countries</p>
+        <div className="space-y-1">
+          {LOCATIONS.map((loc, i) => (
+            <Link key={loc.href} href={loc.href} onMouseEnter={() => setActive(i)} className={`flex items-center justify-between gap-2 rounded-xl px-2 py-2.5 text-sm font-medium transition-colors ${i === active ? "bg-background text-primary shadow-sm" : "text-foreground hover:bg-background"}`}>
+              <span className="flex items-center gap-2.5">
+                <span className="flex h-6 w-7 items-center justify-center rounded-md bg-primary/10 text-[10px] font-bold text-primary">{loc.code}</span>
+                {loc.label}
+              </span>
+              <ChevronRight className="h-4 w-4 opacity-60" />
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Cities or overview */}
+      <div className="p-5">
+        {country.cities.length > 0 ? (
+          <>
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cities</p>
+              <Link href={country.href} className="text-xs font-semibold text-primary hover:underline">View country page →</Link>
+            </div>
+            <div className="grid max-h-[300px] grid-cols-2 gap-1 overflow-y-auto pr-1">
+              {country.cities.map((city) => (
+                <Link key={city.href} href={city.href} className="flex items-center gap-2.5 rounded-lg p-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><MapPin className="h-4 w-4" /></span>
+                  {city.name}
+                </Link>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Overview</p>
+            <h4 className="text-lg font-bold text-foreground">{country.label}</h4>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{country.blurb}</p>
+            <ul className="mt-4 space-y-2">
+              {country.highlights.map((h) => (
+                <li key={h} className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {h}
+                </li>
+              ))}
+            </ul>
+            <Link href={country.href} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">View {country.label} →</Link>
+          </>
+        )}
+      </div>
+
+      {/* CTA */}
+      <div className="m-3 flex flex-col justify-end rounded-xl bg-[#0a0f1e] p-5 text-white">
+        <span className="mb-auto flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary"><Globe className="h-5 w-5" /></span>
+        <h4 className="mt-6 font-bold leading-snug">Need SEO in your market?</h4>
+        <p className="mt-1.5 text-sm leading-relaxed text-white/70">Get a free audit built around your city, competitors and customers.</p>
+        <Link href="/free-audit" className="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90">Free SEO audit</Link>
+      </div>
+    </div>
+  )
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -196,7 +272,7 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex shrink-0 items-center">
             <img
               src="/codedseo.png"
               alt="CodedSEO Logo"
@@ -205,7 +281,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-0.5 2xl:gap-1">
             {menuItems.map((item) => (
               <div
                 key={item.name}
@@ -215,13 +291,13 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeMenu === item.name
+                  className={`flex items-center gap-1 whitespace-nowrap px-2.5 2xl:px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeMenu === item.name
                     ? "text-primary bg-primary/5"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                 >
                   {item.name}
-                  {(item.submenu || item.megaMenu) && (
+                  {(item.submenu || item.megaMenu || item.locationMenu) && (
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeMenu === item.name ? "rotate-180" : ""}`} />
                   )}
                 </Link>
@@ -255,6 +331,19 @@ export function Header() {
                           </Link>
                         ))}
                       </div>
+                    </motion.div>
+                  )}
+
+                  {/* Locations Menu */}
+                  {activeMenu === item.name && item.locationMenu && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+                    >
+                      <LocationsMega />
                     </motion.div>
                   )}
 
@@ -315,12 +404,12 @@ export function Header() {
 
           {/* CTA Buttons */}
           {/* Premium CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden xl:flex shrink-0 items-center gap-3 2xl:gap-4">
 
             {/* Contact Button */}
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:border-green-500 hover:text-green-600 hover:shadow-lg"
+              className="group relative hidden 2xl:inline-flex whitespace-nowrap items-center justify-center overflow-hidden rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:border-green-500 hover:text-green-600 hover:shadow-lg"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Contact Us
@@ -341,12 +430,7 @@ export function Header() {
             </Link>
 
             {/* Book Meeting Button */}
-            <a
-              href="https://calendly.com/codedseo-sales/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-green-600 px-7 py-3 text-sm font-bold text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] transition-all duration-300 hover:scale-105 hover:bg-green-700"
-            >
+            <a href="https://calendly.com/codedseo-sales/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-full bg-green-600 px-5 2xl:px-6 py-3 text-sm font-bold text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] transition-all duration-300 hover:scale-105 hover:bg-green-700">
               <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 opacity-100"></span>
 
               <span className="relative z-10 flex items-center gap-2">
@@ -361,7 +445,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            className="xl:hidden p-2 rounded-lg hover:bg-muted transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -376,21 +460,27 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background border-b border-border max-h-[80vh] overflow-y-auto"
+            className="xl:hidden bg-background border-b border-border max-h-[80vh] overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col gap-1">
                 {menuItems.map((item) => (
                   <div key={item.name}>
+                    {!(item.submenu || item.megaMenu || item.locationMenu) ? (
+                      <Link href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between w-full py-3 px-4 rounded-xl text-foreground hover:bg-muted transition-colors">
+                        <span className="font-medium">{item.name}</span>
+                      </Link>
+                    ) : (
                     <button
                       onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === item.name ? null : item.name)}
                       className="flex items-center justify-between w-full py-3 px-4 rounded-xl text-foreground hover:bg-muted transition-colors"
                     >
                       <span className="font-medium">{item.name}</span>
-                      {(item.submenu || item.megaMenu) && (
+                      {(item.submenu || item.megaMenu || item.locationMenu) && (
                         <ChevronRight className={`w-4 h-4 transition-transform ${activeMobileSubmenu === item.name ? "rotate-90" : ""}`} />
                       )}
                     </button>
+                    )}
 
                     <AnimatePresence>
                       {activeMobileSubmenu === item.name && (
@@ -410,6 +500,20 @@ export function Header() {
                               {subItem.icon}
                               <span>{subItem.name}</span>
                             </Link>
+                          ))}
+                          {item.locationMenu && LOCATIONS.map((loc) => (
+                            <div key={loc.href} className="mb-2">
+                              <Link href={loc.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3 py-2.5 px-4 text-foreground hover:text-primary transition-colors">
+                                <span className="flex h-6 w-7 items-center justify-center rounded-md bg-primary/10 text-[10px] font-bold text-primary">{loc.code}</span>
+                                <span>{loc.label}</span>
+                              </Link>
+                              {loc.cities.map((city) => (
+                                <Link key={city.href} href={city.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3 py-2 pl-14 pr-4 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                                  <MapPin className="w-3.5 h-3.5" />
+                                  <span>{city.name}</span>
+                                </Link>
+                              ))}
+                            </div>
                           ))}
                           {item.megaMenu && item.megaMenu.sections.map((section) => (
                             <div key={section.title} className="mb-3">
@@ -437,7 +541,7 @@ export function Header() {
 
                 <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border">
                   <Button variant="outline" className="w-full" asChild>
-                    <Link href="/contact">Free SEO Audit</Link>
+                    <Link href="/free-audit">Free SEO Audit</Link>
                   </Button>
                   <Button className="w-full bg-primary hover:bg-primary/90" asChild>
                     <Link href="/contact">Get Started</Link>
