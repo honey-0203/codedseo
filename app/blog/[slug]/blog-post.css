@@ -264,13 +264,19 @@
 .bp-callout{ display:flex; gap:14px; align-items:flex-start; margin:30px 0; padding:18px 22px; border-radius:16px; border-left:4px solid; }
 .bp-callout-icon{ flex-shrink:0; margin-top:3px; }
 .bp-article .bp-callout p{ margin:0; font-size:15px; line-height:1.7; color:#4a544e; }
-.bp-callout strong{ color:var(--heading); margin-right:6px; }
+.bp-callout strong{ color:var(--heading); }
+.bp-callout-title{ margin-right:6px; }
 .bp-callout--tip{ background:#fff7ec; border-color:#f59e0b; }
 .bp-callout--tip .bp-callout-icon{ color:#d97706; }
 .bp-callout--insight{ background:#f3fbe6; border-color:var(--green-dark); }
 .bp-callout--insight .bp-callout-icon{ color:#5f8f14; }
 .bp-callout--note{ background:#f4f6f5; border-color:#9aa59f; }
 .bp-callout--note .bp-callout-icon{ color:#6b756f; }
+.bp-callout--fact{ display:block; background:#fdf6e6; border-color:#f5b400; border-radius:0 14px 14px 0; padding:22px 26px; }
+.bp-article .bp-callout--fact .bp-callout-head{ margin:0 0 10px; font-size:16px; font-weight:700; color:var(--heading); }
+.bp-article .bp-callout--fact .bp-callout-body{ font-style:italic; font-size:15.5px; line-height:1.8; color:#1f2622; }
+.bp-callout--fact a{ color:#0e9fc0 !important; text-decoration:none !important; }
+.bp-callout--fact a:hover{ text-decoration:underline !important; }
 
 @media (max-width:760px){
     .bp-icta{ flex-direction:column; align-items:flex-start; padding:26px 22px; gap:20px; }
@@ -417,3 +423,12 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
     .bp-hero-actions a{ justify-content:center !important; }
     .bp-hero-actions a.ps-google{ font-size:13px !important; padding:12px 14px !important; }
 }
+/* ---------- Numbered list (1, 2, 3...) apne aap card design ---------- */
+.bp-article .bp-body ol{ list-style:none; counter-reset:bp-num; margin:0 0 28px; padding:0; display:grid; gap:10px; }
+.bp-article .bp-body ol > li{ counter-increment:bp-num; position:relative; padding:13px 18px 13px 62px; background:#fff; border:1px solid var(--border); border-radius:14px; color:#3f4a43; line-height:1.65; transition:border-color .2s, box-shadow .2s; }
+.bp-article .bp-body ol > li::marker{ content:""; }
+.bp-article .bp-body ol > li::before{ content:counter(bp-num); position:absolute; left:16px; top:11px; width:30px; height:30px; border-radius:9px; background:var(--heading); color:var(--green); font-size:13px; font-weight:800; display:grid; place-items:center; }
+.bp-article .bp-body ol > li:hover{ border-color:#d6e9b8; box-shadow:0 8px 22px rgba(40,60,40,.06); }
+.bp-article .bp-body li ol{ margin:10px 0 0; gap:4px; }
+.bp-article .bp-body li ol > li{ padding:6px 0 6px 38px; background:none; border:0; box-shadow:none; }
+.bp-article .bp-body li ol > li::before{ left:0; top:6px; width:26px; height:26px; border-radius:8px; font-size:12px; background:var(--green-soft); color:#4f7a12; }

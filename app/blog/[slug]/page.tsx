@@ -10,7 +10,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogPostScripts } from "./scripts";
 import { PreferredSourceButton, SummarizeButton } from "@/components/preferred-source-button";
-import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, findObjectives, ObjectiveBox, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
+import { CtaBox, Callout, DataTable, Checklist, CheckIcon, findChecklistKeys, findObjectives, ObjectiveBox, prepareFacts, FactBox, SmartLink, isExternal, resolveCta, type CtaData } from "./blocks";
 import "./blog-post.css";
 
 export const revalidate = 60;
@@ -113,7 +113,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug);
   if (!post) notFound();
 
-  const body = post.body || [];
+  const { body, factLinks } = prepareFacts(post.body || []);
   const { toc, ids } = buildToc(body);
   const checklistKeys = findChecklistKeys(body);
   const objectives = findObjectives(body);
@@ -145,6 +145,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       h1: ({ children }) => <h2>{children}</h2>,
       h4: ({ children }) => <h4>{children}</h4>,
       normal: ({ children, value }) => {
+        if ((value as { _fact?: boolean })._fact) return <FactBox>{children}</FactBox>;
         const obj = value._key ? objectives[value._key] : undefined;
         return obj ? <ObjectiveBox label={obj.label} text={obj.text} /> : <p>{children}</p>;
       },
@@ -169,10 +170,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     marks: {
       link: ({ children, value }) => {
         const href: string = value?.href || "#";
-        const rel = [value?.newTab || isExternal(href) ? "noopener noreferrer" : "", value?.nofollow ? "nofollow" : ""]
+        // "Fact:" box ke andar ke bahar wale links: nofollow + new tab
+        const factExternal = !!value?._key && factLinks.has(value._key) && isExternal(href);
+        const newTab = value?.newTab || factExternal;
+        const rel = [newTab || isExternal(href) ? "noopener noreferrer" : "", value?.nofollow || factExternal ? "nofollow" : ""]
           .filter(Boolean).join(" ") || undefined;
         return (
-          <a href={href} target={value?.newTab ? "_blank" : undefined} rel={rel}>{children}</a>
+          <a href={href} target={newTab ? "_blank" : undefined} rel={rel}>{children}</a>
         );
       },
     },

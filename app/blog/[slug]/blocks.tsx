@@ -58,7 +58,24 @@ export function CtaBox({ value }: { value: CtaData }) {
 }
 
 /* ---------------- Pro tip / Expert insight / Note ---------------- */
-const CALLOUT_LABEL = { tip: "Pro tip", insight: "Expert insight", note: "Note" } as const;
+const CALLOUT_LABEL = { tip: "Pro tip", insight: "Expert insight", note: "Note", fact: "Did You Know?" } as const;
+
+/* **bold** aur [text](https://link) ko asli bold / link banata hai */
+function renderInline(text: string): React.ReactNode[] {
+  const out: React.ReactNode[] = [];
+  const re = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
+  let last = 0;
+  let i = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m[1]) out.push(<strong key={i++}>{m[1]}</strong>);
+    else out.push(<SmartLink key={i++} href={m[3]}>{m[2]}</SmartLink>);
+    last = re.lastIndex;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
 
 const CalloutIcon = ({ variant }: { variant: keyof typeof CALLOUT_LABEL }) =>
   variant === "tip" ? (
@@ -78,10 +95,19 @@ const CalloutIcon = ({ variant }: { variant: keyof typeof CALLOUT_LABEL }) =>
 export function Callout({ value }: { value: { variant?: string; title?: string; text?: string } }) {
   const variant = (value?.variant && value.variant in CALLOUT_LABEL ? value.variant : "tip") as keyof typeof CALLOUT_LABEL;
   if (!value?.text) return null;
+  const title = value.title || CALLOUT_LABEL[variant];
+  if (variant === "fact") {
+    return (
+      <div className="bp-callout bp-callout--fact">
+        <p className="bp-callout-head">{title}</p>
+        <p className="bp-callout-body">{renderInline(value.text)}</p>
+      </div>
+    );
+  }
   return (
     <div className={`bp-callout bp-callout--${variant}`}>
       <span className="bp-callout-icon"><CalloutIcon variant={variant} /></span>
-      <p><strong>{value.title || CALLOUT_LABEL[variant]}</strong>{value.text}</p>
+      <p><strong className="bp-callout-title">{title}</strong>{renderInline(value.text)}</p>
     </div>
   );
 }
@@ -98,8 +124,15 @@ function parseRows(raw = ""): string[][] {
   return rows.filter((r) => !r.every((c) => /^:?-{2,}:?$/.test(c)));
 }
 
-export function DataTable({ value }: { value: { rows?: string; hasHeader?: boolean; caption?: string } }) {
-  const rows = parseRows(value?.rows);
+export function DataTable({ value }: { value: { rows?: string; hasHeader?: boolean; caption?: string; columns?: number } }) {
+  let rows = parseRows(value?.rows);
+  // har cell alag line mein aaya ho to "Kitne columns?" ke hisaab se rows banao
+  const n = Math.floor(value?.columns || 0);
+  if (n >= 2 && rows.every((r) => r.length === 1)) {
+    const flat = rows.map((r) => r[0]);
+    rows = [];
+    for (let i = 0; i < flat.length; i += n) rows.push(flat.slice(i, i + n));
+  }
   if (!rows.length) return null;
   const cols = Math.max(...rows.map((r) => r.length));
   const pad = (r: string[]) => [...r, ...Array(cols - r.length).fill("")];
@@ -223,5 +256,46 @@ export function ObjectiveBox({ label, text }: { label: string; text: string }) {
       </div>
       <p className="bp-objective-text">{text}</p>
     </aside>
+  );
+}
+
+/* ---------------- Fact / Did You Know (auto) ----------------
+   Content me jo paragraph "Fact:" ya "Did you know:" se shuru ho,
+   wo apne aap "Did You Know?" box ban jata hai. Uske bahar wale links nofollow. */
+const FACT_RE = /^\s*(fact|did you know\??)\s*[:\-–]\s*/i;
+type FactSpan = { _type?: string; text?: string; marks?: string[] };
+type FactBlock = { _type: string; _key: string; style?: string; listItem?: string; children?: FactSpan[]; markDefs?: { _key: string }[] };
+
+export function prepareFacts<T>(body: T[] = []): { body: T[]; factLinks: Set<string> } {
+  const factLinks = new Set<string>();
+  const out = body.map((raw) => {
+    const b = raw as unknown as FactBlock;
+    if (b._type !== "block" || b.listItem || (b.style && b.style !== "normal")) return raw;
+    const children = b.children || [];
+    const text = children.map((c) => c.text || "").join("");
+    const m = text.match(FACT_RE);
+    if (!m || !text.slice(m[0].length).trim()) return raw;
+    // "Fact:" wala hissa hatao, baaki bold / links waise hi rahenge
+    let cut = m[0].length;
+    const kept: FactSpan[] = [];
+    for (const c of children) {
+      const t = c.text || "";
+      if (cut >= t.length) { cut -= t.length; continue; }
+      kept.push({ ...c, text: t.slice(cut) });
+      cut = 0;
+    }
+    if (kept[0]) kept[0] = { ...kept[0], text: (kept[0].text || "").replace(/^\s+/, "") };
+    (b.markDefs || []).forEach((d) => factLinks.add(d._key));
+    return { ...b, children: kept, _fact: true } as unknown as T;
+  });
+  return { body: out, factLinks };
+}
+
+export function FactBox({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bp-callout bp-callout--fact">
+      <p className="bp-callout-head">Did You Know?</p>
+      <p className="bp-callout-body">{children}</p>
+    </div>
   );
 }

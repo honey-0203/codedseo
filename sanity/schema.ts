@@ -1,4 +1,5 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
+import { TableInput } from "./table-input";
 
 /* ---------- Blog categories (listing page filters se match karti hain) ---------- */
 export const BLOG_CATEGORIES = [
@@ -62,14 +63,14 @@ const infoBox = defineType({
   fields: [
     defineField({
       name: "variant", title: "Type", type: "string", initialValue: "tip",
-      options: { list: [{ title: "Pro Tip (orange)", value: "tip" }, { title: "Expert Insight (green)", value: "insight" }, { title: "Note (grey)", value: "note" }], layout: "radio", direction: "horizontal" },
+      options: { list: [{ title: "Pro Tip (orange)", value: "tip" }, { title: "Expert Insight (green)", value: "insight" }, { title: "Note (grey)", value: "note" }, { title: "Did You Know? (yellow)", value: "fact" }], layout: "radio", direction: "horizontal" },
     }),
-    defineField({ name: "title", title: "Title", type: "string", description: "Khali chhodoge to Type ka naam aayega (Pro tip / Expert insight / Note)" }),
-    defineField({ name: "text", title: "Text", type: "text", rows: 3, validation: (R) => R.required() }),
+    defineField({ name: "title", title: "Title", type: "string", description: "Khali chhodoge to Type ka naam aayega (Pro tip / Expert insight / Note / Did You Know?)" }),
+    defineField({ name: "text", title: "Text", type: "text", rows: 3, validation: (R) => R.required(), description: "Bold ke liye **text** likho. Link ke liye [Google](https://google.com) likho." }),
   ],
   preview: {
     select: { title: "title", variant: "variant", subtitle: "text" },
-    prepare: ({ title, variant, subtitle }) => ({ title: `${variant === "insight" ? "Insight" : variant === "note" ? "Note" : "Tip"}: ${title || ""}`, subtitle }),
+    prepare: ({ title, variant, subtitle }) => ({ title: `${variant === "insight" ? "Insight" : variant === "note" ? "Note" : variant === "fact" ? "Did You Know" : "Tip"}: ${title || ""}`, subtitle }),
   },
 });
 
@@ -81,8 +82,13 @@ const tableBlock = defineType({
   fields: [
     defineField({
       name: "rows", title: "Table paste karo", type: "text", rows: 8,
-      description: "Google Doc ya Excel me poori table select karke copy karo aur yahan paste karo. Har line = ek row.",
+      description: "Google Doc ya Excel me sirf table select karke copy karo aur yahan paste karo. Columns khud ban jayenge.",
       validation: (R) => R.required(),
+      components: { input: TableInput },
+    }),
+    defineField({
+      name: "columns", title: "Kitne columns? (optional)", type: "number",
+      description: "Sirf tab bharo jab table ek hi lambe column mein dikhe. Jaise 4 columns ho to 4 likho.",
     }),
     defineField({ name: "hasHeader", title: "Pehli row heading hai?", type: "boolean", initialValue: true }),
     defineField({ name: "caption", title: "Caption (optional)", type: "string" }),
@@ -92,7 +98,6 @@ const tableBlock = defineType({
     prepare: ({ rows }) => ({ title: `Table: ${(rows || "").split("\n")[0].replace(/\t/g, " | ").slice(0, 60)}` }),
   },
 });
-
 /* ---------- Checklist: har line ek point ---------- */
 const checklistBlock = defineType({
   name: "checklistBlock",
@@ -186,60 +191,59 @@ export const post = defineType({
         defineArrayMember({ type: "checklistBlock" }),
       ],
     }),
-
-    /* ===== Takeaways, FAQ & CTA ===== */
-    defineField({
-      name: "keyTakeaways", title: "Key Takeaways", type: "array", group: "extras",
-      of: [{ type: "string" }],
-      description: "Khali chhodoge to ye box blog me nahi dikhega.",
-    }),
-    defineField({
-      name: "faqs", title: "FAQs", type: "array", group: "extras",
-      description: "Google ke liye FAQ schema apne aap banega.",
-      of: [
-        defineArrayMember({
-          type: "object", name: "faq",
-          fields: [
-            defineField({ name: "question", title: "Question", type: "string", validation: (R) => R.required() }),
-            defineField({ name: "answer", title: "Answer", type: "text", rows: 3, validation: (R) => R.required() }),
-          ],
-          preview: { select: { title: "question", subtitle: "answer" } },
+        /* ===== Takeaways, FAQ & CTA ===== */
+        defineField({
+          name: "keyTakeaways", title: "Key Takeaways", type: "array", group: "extras",
+          of: [{ type: "string" }],
+          description: "Khali chhodoge to ye box blog me nahi dikhega.",
         }),
+        defineField({
+          name: "faqs", title: "FAQs", type: "array", group: "extras",
+          description: "Google ke liye FAQ schema apne aap banega.",
+          of: [
+            defineArrayMember({
+              type: "object", name: "faq",
+              fields: [
+                defineField({ name: "question", title: "Question", type: "string", validation: (R) => R.required() }),
+                defineField({ name: "answer", title: "Answer", type: "text", rows: 3, validation: (R) => R.required() }),
+              ],
+              preview: { select: { title: "question", subtitle: "answer" } },
+            }),
+          ],
+        }),
+        defineField({
+          name: "cta", title: "Bottom CTA", type: "object", group: "extras",
+          description: "Khali chhodoge to default CTA dikhega.",
+          fields: [
+            defineField({ name: "preset", title: "Saved CTA chuno", type: "reference", to: [{ type: "savedCta" }] }),
+            defineField({ name: "heading", title: "Heading", type: "string" }),
+            defineField({ name: "text", title: "Text", type: "text", rows: 3 }),
+            defineField({ name: "buttonText", title: "Button Text", type: "string" }),
+            defineField({ name: "buttonLink", title: "Button Link", type: "string" }),
+          ],
+        }),
+        defineField({ name: "showStats", title: "Stats section dikhana hai?", type: "boolean", group: "extras", initialValue: true }),
+        defineField({
+          name: "relatedPosts", title: "Related Posts", type: "array", group: "extras",
+          description: "Khali chhodoge to same category ke latest posts apne aap dikhenge.",
+          of: [{ type: "reference", to: [{ type: "post" }] }],
+          validation: (R) => R.max(3),
+        }),
+    
+        /* ===== SEO ===== */
+        defineField({ name: "metaTitle", title: "Meta Title", type: "string", group: "seo", description: "50–60 characters. Khali ho to Title use hoga.", validation: (R) => R.max(65).warning("60 characters se lamba title Google me cut ho sakta hai") }),
+        defineField({ name: "metaDescription", title: "Meta Description", type: "text", rows: 3, group: "seo", description: "140–160 characters. Khali ho to Short Description use hoga.", validation: (R) => R.max(165).warning("160 characters se lamba description Google me cut ho sakta hai") }),
+        defineField({ name: "focusKeyword", title: "Focus Keyword", type: "string", group: "seo" }),
+        defineField({ name: "ogImage", title: "Social Share Image", type: "image", group: "seo", description: "Khali ho to Cover Image use hogi. Size 1200×630." }),
+        defineField({ name: "canonicalUrl", title: "Canonical URL", type: "url", group: "seo", description: "Sirf tab bharo jab ye content kisi aur URL ka copy ho." }),
+        defineField({ name: "noindex", title: "Google se chhupao (noindex)", type: "boolean", group: "seo", initialValue: false }),
       ],
-    }),
-    defineField({
-      name: "cta", title: "Bottom CTA", type: "object", group: "extras",
-      description: "Khali chhodoge to default CTA dikhega.",
-      fields: [
-        defineField({ name: "preset", title: "Saved CTA chuno", type: "reference", to: [{ type: "savedCta" }] }),
-        defineField({ name: "heading", title: "Heading", type: "string" }),
-        defineField({ name: "text", title: "Text", type: "text", rows: 3 }),
-        defineField({ name: "buttonText", title: "Button Text", type: "string" }),
-        defineField({ name: "buttonLink", title: "Button Link", type: "string" }),
-      ],
-    }),
-    defineField({ name: "showStats", title: "Stats section dikhana hai?", type: "boolean", group: "extras", initialValue: true }),
-    defineField({
-      name: "relatedPosts", title: "Related Posts", type: "array", group: "extras",
-      description: "Khali chhodoge to same category ke latest posts apne aap dikhenge.",
-      of: [{ type: "reference", to: [{ type: "post" }] }],
-      validation: (R) => R.max(3),
-    }),
-
-    /* ===== SEO ===== */
-    defineField({ name: "metaTitle", title: "Meta Title", type: "string", group: "seo", description: "50–60 characters. Khali ho to Title use hoga.", validation: (R) => R.max(65).warning("60 characters se lamba title Google me cut ho sakta hai") }),
-    defineField({ name: "metaDescription", title: "Meta Description", type: "text", rows: 3, group: "seo", description: "140–160 characters. Khali ho to Short Description use hoga.", validation: (R) => R.max(165).warning("160 characters se lamba description Google me cut ho sakta hai") }),
-    defineField({ name: "focusKeyword", title: "Focus Keyword", type: "string", group: "seo" }),
-    defineField({ name: "ogImage", title: "Social Share Image", type: "image", group: "seo", description: "Khali ho to Cover Image use hogi. Size 1200×630." }),
-    defineField({ name: "canonicalUrl", title: "Canonical URL", type: "url", group: "seo", description: "Sirf tab bharo jab ye content kisi aur URL ka copy ho." }),
-    defineField({ name: "noindex", title: "Google se chhupao (noindex)", type: "boolean", group: "seo", initialValue: false }),
-  ],
-  orderings: [{ title: "Newest first", name: "publishedDesc", by: [{ field: "publishedAt", direction: "desc" }] }],
-  preview: {
-    select: { title: "title", subtitle: "category", media: "coverImage" },
-  },
-});
-
-export const schema = {
-  types: [post, savedCta, ctaBlock, infoBox, tableBlock, checklistBlock],
-};
+      orderings: [{ title: "Newest first", name: "publishedDesc", by: [{ field: "publishedAt", direction: "desc" }] }],
+      preview: {
+        select: { title: "title", subtitle: "category", media: "coverImage" },
+      },
+    });
+    
+    export const schema = {
+      types: [post, savedCta, ctaBlock, infoBox, tableBlock, checklistBlock],
+    };
