@@ -434,7 +434,7 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
 .bp-article .bp-body li ol > li::before{ left:0; top:6px; width:26px; height:26px; border-radius:8px; font-size:12px; background:var(--green-soft); color:#4f7a12; }
 /* ---------- Table: light listicle design, pehli row hamesha highlight ---------- */
 .bp-table-scroll{ border:1px solid #e3e8e1; border-top:2px solid var(--green-dark); border-radius:16px; box-shadow:0 10px 30px rgba(26,40,30,.04); }
-.bp-table thead th,.bp-table thead th:first-child{ background:#fff; color:#6f7a73; font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; padding:16px 18px; }
+.bp-table thead th,.bp-table thead th:first-child{ background:#fff; color:var(--heading); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; padding:16px 18px; }
 .bp-table th,.bp-table td{ padding:15px 18px; font-size:14px; line-height:1.6; }
 .bp-table tbody th{ background:transparent; color:var(--heading); font-weight:700; }
 .bp-table tbody td:last-child{ color:var(--heading); font-weight:500; }
