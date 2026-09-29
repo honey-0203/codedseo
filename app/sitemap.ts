@@ -26,6 +26,7 @@ const STATIC_PAGES: { path: string; priority: number }[] = [
   { path: "/tools", priority: 0.5 },
   { path: "/legal-disclaimer", priority: 0.3 },
     { path: "/cancellation-refund-policy", priority: 0.3 },
+      { path: "/privacy-policy", priority: 0.3 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
