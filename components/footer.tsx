@@ -1,250 +1,119 @@
-"use client"
-
-import { motion } from "framer-motion"
-import {
-  ArrowUpRight,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Youtube,
-} from "lucide-react"
-
 import Link from "next/link"
+import { ArrowUpRight, Mail, MapPin } from "lucide-react"
 import { PreferredSourceButton } from "@/components/preferred-source-button"
 
-const footerLinks = {
-  services: [
-    { name: "AI-Powered SEO", href: "#services" },
-    { name: "Technical SEO", href: "#services" },
-    { name: "Content Strategy", href: "#services" },
-    { name: "Local SEO", href: "#services" },
-    { name: "Link Building", href: "#services" },
-    { name: "Analytics", href: "#services" },
-  ],
+const CALENDLY = "https://calendly.com/codedseo-sales/30min"
 
-  company: [
-    { name: "About Us", href: "#" },
-    { name: "Case Studies", href: "#results" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Press", href: "#" },
-  ],
+const columns = [
+  {
+    title: "Services",
+    links: [
+      { name: "SEO Services", href: "/services" },
+      { name: "Organic SEO", href: "/services/organic-seo" },
+      { name: "Small Business SEO", href: "/seo" },
+      { name: "SEO Agency USA", href: "/seo-agency-usa" },
+      { name: "Digital Marketing", href: "/digital-marketing" },
+      { name: "Free SEO Audit", href: "/free-audit" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { name: "About Us", href: "/about" },
+      { name: "Why Choose Us", href: "/why-choose-us" },
+      { name: "Our Team", href: "/team" },
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Client Reviews", href: "/reviews" },
+      { name: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { name: "Blog", href: "/blog" },
+      { name: "Learn SEO", href: "/learn" },
+      { name: "Free SEO Tools", href: "/tools" },
+      { name: "Insights", href: "/insights" },
+      { name: "Resources", href: "/resources" },
+      { name: "Video Testimonials", href: "/video-testimonials" },
+    ],
+  },
+]
 
-  resources: [
-    { name: "SEO Guide", href: "#" },
-    { name: "Free Tools", href: "#" },
-    { name: "Webinars", href: "#" },
-    { name: "Newsletter", href: "#" },
-    { name: "Help Center", href: "#" },
-  ],
-
-  legal: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
-  ],
-}
-
-const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
+const legalLinks = [
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms & Conditions", href: "/terms-and-conditions" },
+  { name: "Legal Disclaimer", href: "/legal-disclaimer" },
+  { name: "Cancellation & Refund Policy", href: "/cancellation-refund-policy" },
 ]
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-green-500/10 bg-gradient-to-b from-[#020817] via-[#030b1d] to-black text-white">
-
-      {/* Glow BG */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-[-10%] top-0 h-[400px] w-[400px] rounded-full bg-green-500/10 blur-[140px]" />
-
-        <div className="absolute bottom-[-100px] right-[-10%] h-[350px] w-[350px] rounded-full bg-emerald-400/10 blur-[140px]" />
-      </div>
-
+    <footer className="border-t border-white/10 bg-[#050807] text-white">
       {/* CTA */}
-      <div className="relative border-b border-white/5">
-        <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center"
-          >
-
-            <div>
-              <h2 className="text-3xl font-black leading-tight md:text-5xl">
-                Ready to 10x Your
-                <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
-                  {" "}Organic Traffic?
-                </span>
-              </h2>
-
-              <p className="mt-4 text-lg text-zinc-400">
-                Get your free SEO audit and see what&apos;s holding you back.
-              </p>
-            </div>
-
-            <Link
-              href="https://calendly.com/codedseo-sales/30min"
-              className="group inline-flex items-center gap-3 rounded-full bg-green-500 px-8 py-5 text-sm font-bold text-black shadow-[0_0_50px_rgba(34,197,94,0.4)] transition-all duration-300 hover:scale-105 hover:bg-green-400"
-            >
-              Start Free Audit
-
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
+      <div className="border-b border-white/10">
+        <div className="container mx-auto flex flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+          <div className="max-w-xl">
+            <h2 className="text-2xl font-bold leading-tight md:text-3xl">Want more customers from Google?</h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-zinc-400">Book a free 30-minute call. We will look at your site and tell you honestly what is holding it back.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400">Book a free call <ArrowUpRight className="h-4 w-4" /></a>
+            <Link href="/free-audit" className="inline-flex items-center rounded-lg border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-green-500/60">Get a free SEO audit</Link>
+          </div>
         </div>
       </div>
 
-      {/* Main Footer */}
-      <div className="relative container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-
-        <div className="grid grid-cols-2 gap-12 lg:grid-cols-6">
-
-          {/* Logo */}
-          <div className="col-span-2">
-
-            <Link href="/" className="inline-block">
-
-              <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-2xl transition-all duration-500 hover:border-green-500/30 hover:bg-white/[0.05]">
-
-                {/* Soft Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-400/5 opacity-70" />
-
-                <div className="relative z-10 flex items-center justify-center">
-
-                  <img
-                    src="/codedseo.png"
-                    alt="CodedSEO"
-                    className="h-16 w-auto object-contain brightness-125 contrast-125"
-                  />
-                </div>
-              </div>
-
+      {/* Main */}
+      <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-12">
+          <div className="col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-block overflow-hidden rounded-xl bg-white px-1" aria-label="CodedSEO home">
+              <img src="/codedseo.png" alt="CodedSEO" className="-my-[20px] h-[92px] w-auto" />
             </Link>
-
-            <p className="mt-8 max-w-sm text-lg leading-[1.8] text-zinc-300">
-              Premium AI SEO, full-stack development and futuristic web experiences crafted for serious brands.
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-zinc-400">
+              CodedSEO is an SEO and AI search agency helping businesses in the USA and worldwide get found on Google and in AI answers.
             </p>
-
-            {/* Social */}
-            <div className="mt-8 flex items-center gap-4">
-
-              {socialLinks.map((social) => (
-                <Link key={social.name} href={social.href} aria-label={social.name} className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-zinc-300 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-green-500/30 hover:bg-green-500/10 hover:text-green-400">
-                  <social.icon className="h-5 w-5" />
-                </Link>
-              ))}
-            </div>
-
-            {/* Google Preferred Source */}
+            <ul className="mt-6 space-y-3 text-[15px] text-zinc-300">
+              <li className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <a href="mailto:sales@codedseo.com" className="transition hover:text-green-400">sales@codedseo.com</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <span>Mohali, Punjab, India<br /><span className="text-zinc-500">Serving clients across the USA</span></span>
+              </li>
+            </ul>
             <div className="mt-6">
               <PreferredSourceButton />
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="mb-6 text-xl font-bold text-white">
-              Services
-            </h4>
-
-            <ul className="space-y-4">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[17px] text-zinc-400 transition hover:text-green-400"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="mb-6 text-xl font-bold text-white">
-              Company
-            </h4>
-
-            <ul className="space-y-4">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[17px] text-zinc-400 transition hover:text-green-400"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="mb-6 text-xl font-bold text-white">
-              Resources
-            </h4>
-
-            <ul className="space-y-4">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[17px] text-zinc-400 transition hover:text-green-400"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="mb-6 text-xl font-bold text-white">
-              Legal
-            </h4>
-
-            <ul className="space-y-4">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[17px] text-zinc-400 transition hover:text-green-400"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {columns.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500">{col.title}</h3>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-[15px] text-zinc-300 transition hover:text-green-400">{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
+      </div>
 
-        {/* Bottom */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-white/5 pt-8 md:flex-row">
-
-          <p className="text-sm text-zinc-500">
-            © {new Date().getFullYear()} CodedSEO. All rights reserved.
-          </p>
-
-          <div className="flex items-center gap-6">
-
-            <span className="text-sm text-zinc-500">
-              Made with precision for futuristic brands
-            </span>
-
-            <div className="flex items-center gap-2 text-sm text-zinc-500">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-              All systems operational
-            </div>
-          </div>
+      {/* Bottom bar */}
+      <div className="border-t border-white/10">
+        <div className="container mx-auto flex flex-col gap-4 px-4 py-6 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <p className="text-zinc-500">© {new Date().getFullYear()} CodedSEO. All rights reserved.</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-zinc-400 transition hover:text-green-400">{link.name}</Link>
+            ))}
+            <a href="/sitemap.xml" className="text-zinc-400 transition hover:text-green-400">Sitemap</a>
+          </nav>
         </div>
       </div>
     </footer>
