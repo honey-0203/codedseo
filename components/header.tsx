@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { LOCATIONS } from "@/lib/locations"
+import { LocationsMenu } from "@/components/locations-menu"
 
 interface SubMenuItem {
   name: string
@@ -162,75 +163,6 @@ const menuItems: MenuItem[] = [
   }
 ]
 
-function LocationsMega() {
-  const [active, setActive] = useState(0)
-  const country = LOCATIONS[active] ?? LOCATIONS[0]
-  if (!country) return null
-
-  return (
-    <div className="grid grid-cols-[220px_1fr_230px]">
-      {/* Countries */}
-      <div className="border-r border-border bg-muted/40 p-4">
-        <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Countries</p>
-        <div className="space-y-1">
-          {LOCATIONS.map((loc, i) => (
-            <Link key={loc.href} href={loc.href} onMouseEnter={() => setActive(i)} className={`flex items-center justify-between gap-2 rounded-xl px-2 py-2.5 text-sm font-medium transition-colors ${i === active ? "bg-background text-primary shadow-sm" : "text-foreground hover:bg-background"}`}>
-              <span className="flex items-center gap-2.5">
-                <span className="flex h-6 w-7 items-center justify-center rounded-md bg-primary/10 text-[10px] font-bold text-primary">{loc.code}</span>
-                {loc.label}
-              </span>
-              <ChevronRight className="h-4 w-4 opacity-60" />
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Cities or overview */}
-      <div className="p-5">
-        {country.cities.length > 0 ? (
-          <>
-            <div className="mb-3 flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cities</p>
-              <Link href={country.href} className="text-xs font-semibold text-primary hover:underline">View country page →</Link>
-            </div>
-            <div className="grid max-h-[300px] grid-cols-2 gap-1 overflow-y-auto pr-1">
-              {country.cities.map((city) => (
-                <Link key={city.href} href={city.href} className="flex items-center gap-2.5 rounded-lg p-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><MapPin className="h-4 w-4" /></span>
-                  {city.name}
-                </Link>
-              ))}
-            </div>
-          </>
-        ) : (
-          <>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Overview</p>
-            <h4 className="text-lg font-bold text-foreground">{country.label}</h4>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{country.blurb}</p>
-            <ul className="mt-4 space-y-2">
-              {country.highlights.map((h) => (
-                <li key={h} className="flex items-center gap-2 text-sm text-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  {h}
-                </li>
-              ))}
-            </ul>
-            <Link href={country.href} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">View {country.label} →</Link>
-          </>
-        )}
-      </div>
-
-      {/* CTA */}
-      <div className="m-3 flex flex-col justify-end rounded-xl bg-[#0a0f1e] p-5 text-white">
-        <span className="mb-auto flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary"><Globe className="h-5 w-5" /></span>
-        <h4 className="mt-6 font-bold leading-snug">Need SEO in your market?</h4>
-        <p className="mt-1.5 text-sm leading-relaxed text-white/70">Get a free audit built around your city, competitors and customers.</p>
-        <Link href="/free-audit" className="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90">Free SEO audit</Link>
-      </div>
-    </div>
-  )
-}
-
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -338,15 +270,15 @@ export function Header() {
                   {activeMenu === item.name && item.locationMenu && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[760px] bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[1000px] max-w-[calc(100vw-32px)] rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden"
                     >
-                      <LocationsMega />
+                      <LocationsMenu />
                     </motion.div>
                   )}
-
+                  
                   {/* Mega Menu */}
                   {activeMenu === item.name && item.megaMenu && (
                     <motion.div
