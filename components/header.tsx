@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { LOCATIONS } from "@/lib/locations"
 import { LocationsMenu } from "@/components/locations-menu"
+import { SeoServicesMenu } from "@/components/seo-services-menu"
 
 interface SubMenuItem {
   name: string
@@ -25,6 +26,7 @@ interface MenuItem {
   href: string
   submenu?: SubMenuItem[]
   locationMenu?: boolean
+  servicesMenu?: boolean
   megaMenu?: {
     sections: {
       title: string
@@ -59,6 +61,7 @@ const menuItems: MenuItem[] = [
   {
     name: "SEO Services",
     href: "/services",
+    servicesMenu: true,
     megaMenu: {
       sections: [
         {
@@ -68,7 +71,6 @@ const menuItems: MenuItem[] = [
             { name: "E-commerce SEO", href: "/services/ecommerce-seo", description: "Boost product visibility", icon: <ShoppingCart className="w-4 h-4" /> },
             { name: "AI-Powered SEO", href: "/services/ai-seo", description: "Next-gen optimization", icon: <Bot className="w-4 h-4" /> },
             { name: "Local SEO", href: "/services/local-seo", description: "Dominate local search", icon: <MapPin className="w-4 h-4" /> },
-            { name: "Small Business SEO", href: "/seo", description: "SEO built for small businesses", icon: <TrendingUp className="w-4 h-4" /> },
           ]
         },
         {
@@ -85,6 +87,13 @@ const menuItems: MenuItem[] = [
             { name: "SEO Consultancy", href: "/services/consultancy", description: "Expert guidance", icon: <Lightbulb className="w-4 h-4" /> },
             { name: "SEO Audit", href: "/services/seo-audit", description: "Comprehensive analysis", icon: <BarChart3 className="w-4 h-4" /> },
             { name: "Industry Solutions", href: "/services/industries", description: "Vertical expertise", icon: <Building2 className="w-4 h-4" /> },
+          ]
+        },
+        {
+          title: "Who It's For",
+          items: [
+            { name: "Small Business SEO", href: "/seo", description: "SEO built for small businesses", icon: <TrendingUp className="w-4 h-4" /> },
+            { name: "SEO Outsourcing India", href: "/seo-outsourcing-india", description: "White label SEO for agencies", icon: <Tag className="w-4 h-4" /> },
           ]
         }
       ],
@@ -162,7 +171,6 @@ const menuItems: MenuItem[] = [
     ]
   }
 ]
-
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -278,9 +286,22 @@ export function Header() {
                       <LocationsMenu />
                     </motion.div>
                   )}
-                  
+
+                  {/* SEO Services Menu (custom) */}
+                  {activeMenu === item.name && item.servicesMenu && item.megaMenu && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[880px] max-w-[calc(100vw-32px)] rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden"
+                    >
+                      <SeoServicesMenu sections={item.megaMenu.sections} />
+                    </motion.div>
+                  )}
+
                   {/* Mega Menu */}
-                  {activeMenu === item.name && item.megaMenu && (
+                  {activeMenu === item.name && item.megaMenu && !item.servicesMenu && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -333,8 +354,7 @@ export function Header() {
               </div>
             ))}
           </nav>
-
-          {/* CTA Buttons */}
+                    {/* CTA Buttons */}
           {/* Premium CTA Buttons */}
           <div className="hidden xl:flex shrink-0 items-center gap-3 2xl:gap-4">
 
