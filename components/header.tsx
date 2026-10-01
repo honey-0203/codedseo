@@ -53,15 +53,6 @@ const menuItems: MenuItem[] = [
     name: "Who We Are",
     href: "/about",
     align: "left",
-    feature: {
-      eyebrow: "About CodedSEO",
-      title: "An SEO team from Mohali, built for global brands",
-      text: "Senior strategists, writers and link builders working for clients in the USA, UK, Canada and Australia.",
-      visual: "stat",
-      stat: { label: "Client retention", value: "98%" },
-      cta: { label: "Meet the team", href: "/team" },
-      sub: { label: "Read client reviews", href: "/reviews" },
-    },
     submenu: [
       { name: "About Us", href: "/about", description: "Our story and mission", icon: <Building2 className="w-4 h-4" /> },
       { name: "Why Choose CodedSEO", href: "/why-choose-us", description: "What sets us apart", icon: <Award className="w-4 h-4" /> },
@@ -128,14 +119,6 @@ const menuItems: MenuItem[] = [
     name: "Digital Marketing",
     href: "/digital-marketing",
     columns: 3,
-    feature: {
-      eyebrow: "Full funnel",
-      title: "Complete digital strategy",
-      text: "SEO, Google Ads and content working as one plan, so every channel feeds the next.",
-      visual: "bars",
-      cta: { label: "Plan my strategy", href: "/contact" },
-      sub: { label: "Or get a free SEO audit", href: "/free-audit" },
-    },
     megaMenu: {
       sections: [
         {
@@ -202,13 +185,6 @@ const menuItems: MenuItem[] = [
     name: "Resources",
     href: "/resources",
     align: "right",
-    feature: {
-      eyebrow: "Latest guide",
-      title: "7 Best AI SEO/GEO Agencies in 2026",
-      text: "Ranked and reviewed, with the questions to ask before you hire one.",
-      cta: { label: "Read the guide", href: "/blog/best-ai-seo-geo-agencies" },
-      sub: { label: "All articles", href: "/blog" },
-    },
     submenu: [
       { name: "Blog", href: "/blog", description: "Latest SEO insights", icon: <FileText className="w-4 h-4" /> },
       { name: "SEO Insights", href: "/insights", description: "Industry analysis", icon: <Lightbulb className="w-4 h-4" /> },
@@ -299,7 +275,7 @@ export function Header() {
                       transition={{ duration: 0.2 }}
                       className={`absolute top-full mt-2 max-w-[calc(100vw-32px)] overflow-hidden rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] ${
                         item.align === "left" ? "left-0" : item.align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
-                      } ${(item.columns ?? 1) >= 3 ? "w-[1040px]" : (item.columns ?? 1) === 2 ? "w-[880px]" : "w-[600px]"}`}
+                      } ${item.feature ? ((item.columns ?? 1) >= 3 ? "w-[1040px]" : (item.columns ?? 1) === 2 ? "w-[880px]" : "w-[600px]") : ((item.columns ?? 1) >= 3 ? "w-[780px]" : (item.columns ?? 1) === 2 ? "w-[560px]" : "w-[320px]")}`}
                     >
                       <NavPanel
                         sections={item.megaMenu ? item.megaMenu.sections : [{ title: item.name, items: item.submenu ?? [] }]}
