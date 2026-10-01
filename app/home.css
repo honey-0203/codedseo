@@ -123,3 +123,59 @@
   .hp-stats div:nth-child(2){border-right:1px solid var(--bd)}.hp-stats div{border-bottom:0 !important}
 }
 @media (prefers-reduced-motion: reduce){.hp *{animation:none !important;transition:none !important}}
+
+/* related links + faq help card */
+.hp-rel{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:13px}
+.hp-rel span{font-weight:700;color:var(--mut)}
+.hp .hp-rel a{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--bd);background:#fff;color:var(--gt);font-weight:600;text-decoration:none}
+.hp .hp-rel a:hover{border-color:var(--gt);color:var(--ink)}
+.hp-group.dk .hp-rel span{color:#b9c2bd}
+.hp .hp-group.dk .hp-rel a{background:transparent;border-color:#3a4840;color:var(--g)}
+.hp .hp-group.dk .hp-rel a:hover{border-color:var(--g);color:#fff}
+.hp-soi-lead a,.hp .soi-lead a{font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.hp-help{background:var(--ink);color:#fff;border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:14px;align-self:stretch;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:28px 28px}
+.hp-help h3{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px}
+.hp-help>p{font-size:15px;line-height:1.7;color:#b9c2bd}
+.hp-help-btns{display:flex;flex-wrap:wrap;gap:10px}
+.hp-help-btns .soi-btn{min-height:48px;font-size:14px}
+.hp-help-links{border-top:1px solid #33413a;padding-top:16px;margin-top:4px}
+.hp-help-links b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.hp-help-links ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}
+.hp .hp-help-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:40px;color:#e3e9e5;font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid #26332c}
+.hp .hp-help-links a:hover{color:var(--g)}
+@media(max-width:560px){.hp-help-links ul{grid-template-columns:minmax(0,1fr)}.hp-help{padding:24px}}
+
+/* ===== services list style (v3) ===== */
+.hp-svc{padding:80px 0;background:#fff;border-top:1px solid var(--bd);scroll-margin-top:80px}
+.hp-svc.dk{background:var(--ink);border-top-color:var(--ink)}
+.hp-svc-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.hp-svc-side{position:sticky;top:110px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.hp-svc-side h2{font-size:36px;line-height:1.18;font-weight:800;letter-spacing:-.8px;color:var(--ink);text-wrap:balance}
+.hp-svc-side>p{font-size:16px;line-height:1.75;color:var(--tx)}
+.hp-svc.dk .hp-svc-side h2{color:#fff}
+.hp-svc.dk .hp-svc-side>p{color:#b9c2bd}
+.hp-svc.dk .hp-rel span{color:#b9c2bd}
+.hp .hp-svc.dk .hp-rel a{background:transparent;border-color:#3a4840;color:var(--g)}
+.hp .hp-svc.dk .hp-rel a:hover{border-color:var(--g);color:#fff}
+.hp-svc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;list-style:none;margin:0;padding:0}
+.hp-svc-list li{display:flex;gap:14px;padding:22px 0;border-top:1px solid var(--bd);transition:padding-left .25s}
+.hp-svc.dk .hp-svc-list li{border-top-color:#2c3a33}
+.hp-svc-list li:hover{padding-left:6px}
+.hp-svc-num{flex-shrink:0;font-size:13px;font-weight:700;color:var(--gt);padding-top:3px;min-width:22px}
+.hp-svc.dk .hp-svc-num{color:var(--g)}
+.hp-svc-list h3{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px;transition:color .2s}
+.hp-svc-list li:hover h3{color:var(--gt)}
+.hp-svc.dk .hp-svc-list h3{color:#fff}
+.hp-svc.dk .hp-svc-list li:hover h3{color:var(--g)}
+.hp-svc-list h3 a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--g)}
+.hp-svc-list p{font-size:14px;line-height:1.65;color:var(--tx)}
+.hp-svc.dk .hp-svc-list p{color:#b9c2bd}
+.hp-svc-list .hp-svc-tags{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--gt)}
+.hp-svc.dk .hp-svc-list .hp-svc-tags{color:var(--g)}
+@media(max-width:1000px){
+  .hp-svc{padding:56px 0}
+  .hp-svc-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .hp-svc-side{position:static}
+  .hp-svc-side h2{font-size:28px}
+}
+@media(max-width:620px){.hp-svc-list{grid-template-columns:minmax(0,1fr)}}

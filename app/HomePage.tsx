@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
-import { GROUPS, INDUSTRIES, PLATFORMS, STEPS, FAQ_CATS, CASES, REVIEWS } from "./home-data";
+import { GROUPS, INDUSTRIES, PLATFORMS, STEPS, FAQ_CATS, CASES, REVIEWS, MAIN_PAGES } from "./home-data";
 
 /* ================= SETTINGS (yahan badlo) ================= */
 const CALENDLY = "https://calendly.com/codedseo-sales/30min";
@@ -149,7 +149,7 @@ export default function HomePage() {
             <div className="hp-fade" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               <span className="soi-eyebrow">SEO · Digital Marketing · Web Development · HubSpot CRM</span>
               <h1 className="soi-h1 hp-h1"><mark>SEO Agency</mark> &amp; Digital Marketing Company for Growing Businesses</h1>
-              <p className="soi-lead">CodedSEO is an SEO agency and web development company helping businesses in the USA, UK, Canada and Australia get found on Google, run Google Ads that pay back, build fast WordPress, Shopify and Next.js websites, and manage every lead in HubSpot CRM. One team, one plan, one report.</p>
+              <p className="soi-lead">CodedSEO is an SEO agency and web development company helping businesses in the <Link href="/seo-agency-usa">USA</Link>, UK, Canada and Australia get found on Google, run Google Ads that pay back, build fast WordPress, Shopify and Next.js websites, and manage every lead in HubSpot CRM. One team, one plan, one report.</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                 <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g hp-pulse">Book a free strategy call <Arrow /></a>
                 <Link href="/free-audit" className="soi-btn soi-btn-l">Get a free SEO audit</Link>
@@ -184,35 +184,42 @@ export default function HomePage() {
           <div className="soi-head" style={{ marginBottom: 0 }}>
             <span className="soi-eyebrow">Our services</span>
             <h2 className="soi-h2">Full-service digital marketing agency for SEO, websites and CRM</h2>
-            <p className="soi-lead">Most businesses juggle an SEO company, an ads freelancer, a web developer and a CRM consultant. At CodedSEO, one team handles all of it, so your rankings, ads, website and sales pipeline work as one system.</p>
+            <p className="soi-lead">Most businesses juggle an SEO company, an ads freelancer, a web developer and a CRM consultant. At CodedSEO, one team handles all of it, so your rankings, ads, website and sales pipeline work as one system. Running an agency? See our <Link href="/seo-outsourcing-india">SEO outsourcing India</Link> program.</p>
           </div>
         </section>
 
-        {/* ===== SERVICE GROUPS ===== */}
+        {/* ===== SERVICE GROUPS (list style, bina box) ===== */}
         {GROUPS.map((g) => (
-          <section key={g.id} id={g.id} className="soi-wrap hp-group-sec">
-            <div className={g.dark ? "hp-group dk" : "hp-group"}>
-              <div className="hp-group-head">
-                <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 720 }}>
-                  <span className="hp-tag">{g.label}</span>
-                  <h2>{g.h2}</h2>
-                  <p>{g.intro}</p>
-                </div>
+          <section key={g.id} id={g.id} className={g.dark ? "hp-svc dk" : "hp-svc"}>
+            <div className="soi-wrap hp-svc-grid">
+              <div className="hp-svc-side">
+                <span className="hp-tag">{g.label}</span>
+                <h2>{g.h2}</h2>
+                <p>{g.intro}</p>
+                {g.links && (
+                  <nav aria-label={`${g.label} pages`} className="hp-rel">
+                    <span>Related:</span>
+                    {g.links.map((l) => <Link key={l.href + l.label} href={l.href}>{l.label}</Link>)}
+                  </nav>
+                )}
                 {g.ctaHref.startsWith("/") ? (
                   <Link href={g.ctaHref} className={g.dark ? "soi-btn soi-btn-g" : "soi-btn soi-btn-d"}>{g.cta} <Arrow /></Link>
                 ) : (
                   <a href={g.ctaHref} className={g.dark ? "soi-btn soi-btn-g" : "soi-btn soi-btn-d"}>{g.cta} <Arrow /></a>
                 )}
               </div>
-              <div className="hp-cards">
-                {g.cards.map((c) => (
-                  <article key={c.t} className="hp-card">
-                    <h3>{c.href ? <Link href={c.href}>{c.t}</Link> : c.t}</h3>
-                    <p>{c.d}</p>
-                    <ul>{c.tags.map((t) => <li key={t}>{t}</li>)}</ul>
-                  </article>
+              <ol className="hp-svc-list">
+                {g.cards.map((c, n) => (
+                  <li key={c.t}>
+                    <span className="hp-svc-num" aria-hidden="true">{String(n + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3>{c.href ? <Link href={c.href}>{c.t}</Link> : c.t}</h3>
+                      <p>{c.d}</p>
+                      <p className="hp-svc-tags">{c.tags.join(" · ")}</p>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </section>
         ))}
@@ -289,7 +296,7 @@ export default function HomePage() {
             </div>
           </section>
         )}
-
+        
         {/* ===== PLATFORMS ===== */}
         <section className="soi-wrap" style={{ padding: "56px 32px" }}>
           <div className="soi-head c" style={{ marginBottom: 24 }}>
@@ -322,7 +329,7 @@ export default function HomePage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <span className="soi-eyebrow">Why CodedSEO</span>
               <h2 className="soi-h2">Why businesses choose CodedSEO as their SEO company</h2>
-              <p className="soi-lead">CodedSEO was built for business owners who are tired of vague reports and agencies that never talk to each other. We keep things simple: clear plans, honest timelines and results you can see in your CRM.</p>
+              <p className="soi-lead">CodedSEO was built for business owners who are tired of vague reports and agencies that never talk to each other. We keep things simple: clear plans, honest timelines and results you can see in your CRM. Learn more <Link href="/about">about CodedSEO</Link> or read practical guides on our <Link href="/blog">SEO blog</Link>.</p>
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g" style={{ alignSelf: "flex-start" }}>Talk to the CodedSEO team <Arrow /></a>
             </div>
             <div className="soi-g2">
@@ -393,11 +400,23 @@ export default function HomePage() {
                   })}
                 </div>
               ))}
-            </div>
-            <div className="hp-faq-cta">
-              <p>Still have a question?</p>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-d">Ask us on a free call</a>
-              <a href="mailto:sales@codedseo.com" className="soi-link">sales@codedseo.com</a>
+              <aside className="hp-help" aria-label="Still have a question">
+                <span className="soi-eyebrow dk">Need help?</span>
+                <h3>Still have a question?</h3>
+                <p>Talk to a real person on a free 30-minute call. No sales script, just honest answers about your SEO, website or CRM.</p>
+                <div className="hp-help-btns">
+                  <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g">Book a free call <Arrow /></a>
+                  <a href="mailto:sales@codedseo.com" className="soi-btn soi-btn-o">Email sales@codedseo.com</a>
+                </div>
+                <nav aria-label="Popular pages" className="hp-help-links">
+                  <b>Popular pages</b>
+                  <ul>
+                    {MAIN_PAGES.map((l) => (
+                      <li key={l.href}><Link href={l.href}>{l.label} <Arrow /></Link></li>
+                    ))}
+                  </ul>
+                </nav>
+              </aside>
             </div>
           </div>
         </section>

@@ -1,6 +1,7 @@
 // Homepage ka saara content yahan hai (text badalna ho to sirf ye file edit karo)
 
 export type Card = { t: string; d: string; tags: string[]; href?: string };
+export type PageLink = { label: string; href: string };
 export type Group = {
   id: string;
   label: string;
@@ -9,8 +10,21 @@ export type Group = {
   cta: string;
   ctaHref: string;
   dark?: boolean;
+  links?: PageLink[];
   cards: Card[];
 };
+
+// Website ke main pages (internal links ke liye). Naya page bane to yahan jodo.
+export const MAIN_PAGES: PageLink[] = [
+  { label: "Organic SEO Services", href: "/services/organic-seo" },
+  { label: "SEO Outsourcing India", href: "/seo-outsourcing-india" },
+  { label: "SEO Agency USA", href: "/seo-agency-usa" },
+  { label: "Small Business SEO", href: "/seo" },
+  { label: "Free SEO Audit", href: "/free-audit" },
+  { label: "All Services", href: "/services" },
+  { label: "SEO Blog", href: "/blog" },
+  { label: "About CodedSEO", href: "/about" },
+];
 
 export const GROUPS: Group[] = [
   {
@@ -20,6 +34,13 @@ export const GROUPS: Group[] = [
     intro: "CodedSEO combines local SEO services, technical SEO, ecommerce SEO, SEO audits and white-hat link building services to grow organic traffic from buyers in the USA, UK, Canada and Australia.",
     cta: "Explore organic SEO",
     ctaHref: "/services/organic-seo",
+    links: [
+      { label: "Organic SEO services", href: "/services/organic-seo" },
+      { label: "Small business SEO", href: "/seo" },
+      { label: "SEO agency in the USA", href: "/seo-agency-usa" },
+      { label: "White label SEO outsourcing", href: "/seo-outsourcing-india" },
+      { label: "Free SEO audit", href: "/free-audit" },
+    ],
     cards: [
       { t: "AI-Powered SEO", d: "Leverage machine learning to predict ranking opportunities and optimize your content strategy for Google, AI Overviews and ChatGPT.", tags: ["GPT Search Optimization", "Predictive Analytics", "Auto Content Scoring"] },
       { t: "Technical SEO", d: "Deep-dive audits that uncover every technical barrier preventing your site from reaching its full ranking potential.", tags: ["Core Web Vitals", "Site Architecture", "Schema Markup"] },
@@ -39,6 +60,11 @@ export const GROUPS: Group[] = [
     intro: "As a Google Ads agency and social media marketing agency, CodedSEO runs PPC management, Facebook and LinkedIn ads, CRO and email campaigns that bring enquiries while your SEO builds long-term traffic.",
     cta: "Plan my campaign",
     ctaHref: "#contact",
+    links: [
+      { label: "White label marketing for agencies", href: "/seo-outsourcing-india" },
+      { label: "Free marketing audit", href: "/free-audit" },
+      { label: "Contact our team", href: "/contact" },
+    ],
     cards: [
       { t: "Google Ads (PPC)", d: "Search, Shopping and Performance Max campaigns built around keywords that convert.", tags: ["Search Ads", "Shopping Ads", "Conversion Tracking"] },
       { t: "Facebook & Instagram Ads", d: "Targeted Meta ad campaigns for lead generation and e-commerce sales.", tags: ["Lead Ads", "Catalog Ads", "Audience Targeting"] },
@@ -59,6 +85,10 @@ export const GROUPS: Group[] = [
     intro: "From custom website development and WordPress development services to Shopify development, website redesign and maintenance services, CodedSEO builds sites that load fast, rank well and turn visitors into enquiries.",
     cta: "Get a website quote",
     ctaHref: "#contact",
+    links: [
+      { label: "Free website & SEO audit", href: "/free-audit" },
+      { label: "Request a website quote", href: "/contact" },
+    ],
     cards: [
       { t: "Custom Website Development", d: "Websites built from scratch around your brand, content and conversion goals.", tags: ["Custom Design", "Responsive", "SEO-Ready"] },
       { t: "WordPress Development", d: "Custom WordPress themes, plugins and fixes, with speed and security built in.", tags: ["Custom Themes", "Elementor", "WooCommerce"] },
@@ -78,6 +108,10 @@ export const GROUPS: Group[] = [
     intro: "From HubSpot onboarding services to CRM migration and HubSpot integration services, CodedSEO sets up your CRM so every lead from your website, ads and email is tracked, followed up and reported.",
     cta: "Talk to a CRM expert",
     ctaHref: "#contact",
+    links: [
+      { label: "Book a CRM consultation", href: "/contact" },
+      { label: "About CodedSEO", href: "/about" },
+    ],
     cards: [
       { t: "HubSpot Setup & Onboarding", d: "Your HubSpot account configured, connected to your website and ready for your team.", tags: ["Account Setup", "Form Integration", "Team Training"] },
       { t: "HubSpot CMS Website", d: "Websites built on HubSpot CMS that your marketing team can edit without a developer.", tags: ["HubSpot Themes", "Custom Modules", "Blog Setup"] },
