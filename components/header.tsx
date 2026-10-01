@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { LOCATIONS } from "@/lib/locations"
 import { LocationsMenu } from "@/components/locations-menu"
-import { SeoServicesMenu } from "@/components/seo-services-menu"
+import { NavPanel, type NavFeature } from "@/components/nav-panel"
 
 interface SubMenuItem {
   name: string
@@ -26,7 +26,9 @@ interface MenuItem {
   href: string
   submenu?: SubMenuItem[]
   locationMenu?: boolean
-  servicesMenu?: boolean
+  feature?: NavFeature
+  columns?: number
+  align?: "left" | "center" | "right"
   megaMenu?: {
     sections: {
       title: string
@@ -50,9 +52,19 @@ const menuItems: MenuItem[] = [
   {
     name: "Who We Are",
     href: "/about",
+    align: "left",
+    feature: {
+      eyebrow: "About CodedSEO",
+      title: "An SEO team from Mohali, built for global brands",
+      text: "Senior strategists, writers and link builders working for clients in the USA, UK, Canada and Australia.",
+      visual: "stat",
+      stat: { label: "Client retention", value: "98%" },
+      cta: { label: "Meet the team", href: "/team" },
+      sub: { label: "Read client reviews", href: "/reviews" },
+    },
     submenu: [
       { name: "About Us", href: "/about", description: "Our story and mission", icon: <Building2 className="w-4 h-4" /> },
-      { name: "Why Choose RankFlow", href: "/why-choose-us", description: "What sets us apart", icon: <Award className="w-4 h-4" /> },
+      { name: "Why Choose CodedSEO", href: "/why-choose-us", description: "What sets us apart", icon: <Award className="w-4 h-4" /> },
       { name: "Client Reviews", href: "/reviews", description: "What our clients say", icon: <Users className="w-4 h-4" /> },
       { name: "Video Testimonials", href: "/video-testimonials", description: "Success stories on video", icon: <Video className="w-4 h-4" /> },
       { name: "Our Team", href: "/team", description: "Meet our experts", icon: <UserCheck className="w-4 h-4" /> },
@@ -61,7 +73,15 @@ const menuItems: MenuItem[] = [
   {
     name: "SEO Services",
     href: "/services",
-    servicesMenu: true,
+    columns: 2,
+    feature: {
+      eyebrow: "For agencies",
+      title: "SEO Outsourcing India",
+      text: "White label SEO delivered under your brand. You keep the client, we do the work.",
+      visual: "bars",
+      cta: { label: "Become a partner", href: "/seo-outsourcing-india" },
+      sub: { label: "Or get a free SEO audit", href: "/free-audit" },
+    },
     megaMenu: {
       sections: [
         {
@@ -107,6 +127,15 @@ const menuItems: MenuItem[] = [
   {
     name: "Digital Marketing",
     href: "/digital-marketing",
+    columns: 3,
+    feature: {
+      eyebrow: "Full funnel",
+      title: "Complete digital strategy",
+      text: "SEO, Google Ads and content working as one plan, so every channel feeds the next.",
+      visual: "bars",
+      cta: { label: "Plan my strategy", href: "/contact" },
+      sub: { label: "Or get a free SEO audit", href: "/free-audit" },
+    },
     megaMenu: {
       sections: [
         {
@@ -152,6 +181,15 @@ const menuItems: MenuItem[] = [
   {
     name: "Case Studies",
     href: "/case-studies",
+    align: "right",
+    feature: {
+      eyebrow: "Results",
+      title: "1M+ keywords ranked for 100+ clients",
+      text: "See the strategies behind real traffic, lead and revenue growth.",
+      visual: "line",
+      cta: { label: "View case studies", href: "/case-studies" },
+      sub: { label: "Watch video testimonials", href: "/video-testimonials" },
+    },
     submenu: [
       { name: "Worldwide SEO", href: "/case-studies/worldwide", description: "Global success stories", icon: <Globe className="w-4 h-4" /> },
       { name: "Local SEO", href: "/case-studies/local", description: "Local market wins", icon: <MapPin className="w-4 h-4" /> },
@@ -163,6 +201,14 @@ const menuItems: MenuItem[] = [
   {
     name: "Resources",
     href: "/resources",
+    align: "right",
+    feature: {
+      eyebrow: "Latest guide",
+      title: "7 Best AI SEO/GEO Agencies in 2026",
+      text: "Ranked and reviewed, with the questions to ask before you hire one.",
+      cta: { label: "Read the guide", href: "/blog/best-ai-seo-geo-agencies" },
+      sub: { label: "All articles", href: "/blog" },
+    },
     submenu: [
       { name: "Blog", href: "/blog", description: "Latest SEO insights", icon: <FileText className="w-4 h-4" /> },
       { name: "SEO Insights", href: "/insights", description: "Industry analysis", icon: <Lightbulb className="w-4 h-4" /> },
@@ -171,6 +217,7 @@ const menuItems: MenuItem[] = [
     ]
   }
 ]
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -242,35 +289,23 @@ export function Header() {
                   )}
                 </Link>
 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu (sab menus ek design) */}
                 <AnimatePresence>
-                  {activeMenu === item.name && item.submenu && (
+                  {activeMenu === item.name && (item.submenu || item.megaMenu) && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-72 bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+                      className={`absolute top-full mt-2 max-w-[calc(100vw-32px)] overflow-hidden rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] ${
+                        item.align === "left" ? "left-0" : item.align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
+                      } ${(item.columns ?? 1) >= 3 ? "w-[1040px]" : (item.columns ?? 1) === 2 ? "w-[880px]" : "w-[600px]"}`}
                     >
-                      <div className="p-2">
-                        {item.submenu.map((subItem, index) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted transition-colors group"
-                          >
-                            <div className="mt-0.5 p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                              {subItem.icon}
-                            </div>
-                            <div>
-                              <div className="font-medium text-foreground">{subItem.name}</div>
-                              {subItem.description && (
-                                <div className="text-xs text-muted-foreground mt-0.5">{subItem.description}</div>
-                              )}
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
+                      <NavPanel
+                        sections={item.megaMenu ? item.megaMenu.sections : [{ title: item.name, items: item.submenu ?? [] }]}
+                        feature={item.feature}
+                        columns={item.columns ?? 1}
+                      />
                     </motion.div>
                   )}
 
@@ -284,70 +319,6 @@ export function Header() {
                       className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[1000px] max-w-[calc(100vw-32px)] rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden"
                     >
                       <LocationsMenu />
-                    </motion.div>
-                  )}
-
-                  {/* SEO Services Menu (custom) */}
-                  {activeMenu === item.name && item.servicesMenu && item.megaMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[880px] max-w-[calc(100vw-32px)] rounded-3xl border border-border bg-background shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden"
-                    >
-                      <SeoServicesMenu sections={item.megaMenu.sections} />
-                    </motion.div>
-                  )}
-
-                  {/* Mega Menu */}
-                  {activeMenu === item.name && item.megaMenu && !item.servicesMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
-                    >
-                      <div className="flex">
-                        <div className="flex-1 grid grid-cols-3 gap-6 p-6">
-                          {item.megaMenu.sections.map((section) => (
-                            <div key={section.title}>
-                              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                                {section.title}
-                              </h3>
-                              <div className="space-y-1">
-                                {section.items.map((subItem) => (
-                                  <Link
-                                    key={subItem.name}
-                                    href={subItem.href}
-                                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-muted transition-colors group"
-                                  >
-                                    <div className="p-1.5 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                      {subItem.icon}
-                                    </div>
-                                    <div>
-                                      <div className="text-sm font-medium text-foreground">{subItem.name}</div>
-                                    </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                        {item.megaMenu.featured && (
-                          <div className="w-64 bg-gradient-to-br from-primary/10 to-accent/10 p-6 flex flex-col justify-center">
-                            <div className="p-3 bg-primary/20 rounded-xl w-fit mb-4">
-                              <Rocket className="w-6 h-6 text-primary" />
-                            </div>
-                            <h4 className="font-bold text-foreground mb-2">{item.megaMenu.featured.title}</h4>
-                            <p className="text-sm text-muted-foreground mb-4">{item.megaMenu.featured.description}</p>
-                            <Button size="sm" asChild>
-                              <Link href={item.megaMenu.featured.href}>Learn More</Link>
-                            </Button>
-                          </div>
-                        )}
-                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
