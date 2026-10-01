@@ -82,7 +82,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: any[] }) {
               <article className="bl-featured-card">
                 <div className="bl-featured-content">
                   <span className="bl-featured-tag">{featured.category || "AI SEO"}</span>
-                  <h3>{featured.title}</h3>
+                  <h3><Link href={`/blog/${featured.slug}`} className="bl-stretch">{featured.title}</Link></h3>
                   <p>{featured.excerpt}</p>
                   <div className="bl-featured-meta">
                     <span>{featured.author}</span>
@@ -175,7 +175,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: any[] }) {
                     </Link>
                     <div className="bl-card-content">
                       <div className="bl-card-cat">{post.category || "AI SEO"}</div>
-                      <h3 className="bl-card-title">{post.title}</h3>
+                      <h3 className="bl-card-title"><Link href={`/blog/${post.slug}`} className="bl-stretch">{post.title}</Link></h3>
                       <p className="bl-card-excerpt">{post.excerpt}</p>
                       <div className="bl-card-bottom">
                         <span className="bl-card-meta">{post.readTime}</span>
