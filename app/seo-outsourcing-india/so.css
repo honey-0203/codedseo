@@ -193,3 +193,6 @@
   .soi-cta{padding:32px 24px}.soi-cta h2{font-size:28px}
   .soi-map iframe{height:320px}
 }
+
+/* ---------- Background: blog jaisa halka green ---------- */
+.soi{ --bg:#f3faec; background-color:#f3faec; }

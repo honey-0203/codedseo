@@ -441,3 +441,6 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
 .bp-table tbody tr:hover td,.bp-table tbody tr:hover th{ background:#f7faf5; }
 .bp-table tbody tr:first-child td,.bp-table tbody tr:first-child th,.bp-table tbody tr:first-child:hover td,.bp-table tbody tr:first-child:hover th{ background:var(--green-soft); }
 .bp-table tbody tr:first-child th{ color:#4f7a12; box-shadow:inset 3px 0 0 var(--green-dark); }
+/* ---------- Background: poore page par ek jaisa halka green (scroll mein bhi same) ---------- */
+.blog-post-page main{ background:linear-gradient(rgba(69,91,75,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(69,91,75,.055) 1px,transparent 1px),#f3faec; background-size:55px 55px,55px 55px,auto; }
+.bp-related{ background:transparent; border-top:1px solid var(--border); }
