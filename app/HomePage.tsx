@@ -13,6 +13,30 @@ const HUBSPOT_PORTAL = "149445287";
 const HUBSPOT_FORM = ""; // HubSpot form GUID (khali ho to form Calendly kholta hai)
 const SHOW_PROOF = false; // asli case studies + reviews aane par true karo
 
+/* Images (Unsplash, free license). Naya image lagana ho to section id ke saath yahan jodo:
+   seo, digital-marketing, web-development, hubspot-crm, it-services */
+const UNSPLASH = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const GROUP_IMG: Record<string, { id: string; alt: string }> = {
+  seo: { id: "photo-1526628953301-3e589a6a8b74", alt: "SEO analytics dashboard showing organic traffic growth for a CodedSEO client" },
+};
+const WHY_IMG = { id: "photo-1517245386807-bb43f82c33c4", alt: "CodedSEO team discussing an SEO and web development plan in a meeting" };
+
+function Photo({ id, alt, className }: { id: string; alt: string; className: string }) {
+  return (
+    <img
+      className={className}
+      src={UNSPLASH(id, 1200)}
+      srcSet={`${UNSPLASH(id, 600)} 600w, ${UNSPLASH(id, 900)} 900w, ${UNSPLASH(id, 1200)} 1200w`}
+      sizes="(max-width: 1000px) 100vw, 640px"
+      alt={alt}
+      width={1200}
+      height={700}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
 const LOOKING_FOR: { group: string; items: string[] }[] = [
   { group: "SEO & Marketing", items: ["SEO Services", "AI SEO / GEO", "Local SEO", "SEO Outsourcing / White Label", "Link Building", "Content Writing", "Google Ads (PPC)", "Social Media Marketing", "Complete Digital Marketing"] },
   { group: "Website Development", items: ["Custom Website Development", "WordPress Development", "Shopify / E-commerce Development", "Next.js / React Development", "Landing Page Design", "Website Redesign / Migration", "Web Design & Development"] },
@@ -147,10 +171,9 @@ export default function HomePage() {
         <section className="soi-hero">
           <div className="soi-wrap soi-hero-grid">
             <div className="hp-fade" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <span className="soi-eyebrow">SEO · Digital Marketing · Web Development · HubSpot CRM</span>
-              <h1 className="soi-h1 hp-h1"><mark>SEO Agency</mark> &amp; Digital Marketing Company for Growing Businesses</h1>
+              <h1 className="soi-h1 hp-h1">SEO Agency &amp; Digital Marketing Company for Growing Businesses</h1>
               <p className="soi-lead">CodedSEO is an SEO agency and web development company helping businesses in the <Link href="/seo-agency-usa">USA</Link>, UK, Canada and Australia get found on Google, run Google Ads that pay back, build fast WordPress, Shopify and Next.js websites, and manage every lead in HubSpot CRM. One team, one plan, one report.</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+              <div className="hp-hero-btns">
                 <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g hp-pulse">Book a free strategy call <Arrow /></a>
                 <Link href="/free-audit" className="soi-btn soi-btn-l">Get a free SEO audit</Link>
               </div>
@@ -208,6 +231,8 @@ export default function HomePage() {
                   <a href={g.ctaHref} className={g.dark ? "soi-btn soi-btn-g" : "soi-btn soi-btn-d"}>{g.cta} <Arrow /></a>
                 )}
               </div>
+              <div className="hp-svc-main">
+              {GROUP_IMG[g.id] && <Photo id={GROUP_IMG[g.id].id} alt={GROUP_IMG[g.id].alt} className="hp-svc-img" />}
               <ol className="hp-svc-list">
                 {g.cards.map((c, n) => (
                   <li key={c.t}>
@@ -220,12 +245,13 @@ export default function HomePage() {
                   </li>
                 ))}
               </ol>
+              </div>
             </div>
           </section>
         ))}
 
         {/* ===== AUDIT BANNER (CRO) ===== */}
-        <section className="soi-wrap" style={{ padding: "32px 32px" }}>
+        <section className="soi-wrap hp-audit-sec">
           <div className="hp-audit">
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <span className="hp-tag dk">Free · 48-hour turnaround</span>
@@ -331,8 +357,9 @@ export default function HomePage() {
               <h2 className="soi-h2">Why businesses choose CodedSEO as their SEO company</h2>
               <p className="soi-lead">CodedSEO was built for business owners who are tired of vague reports and agencies that never talk to each other. We keep things simple: clear plans, honest timelines and results you can see in your CRM. Learn more <Link href="/about">about CodedSEO</Link> or read practical guides on our <Link href="/blog">SEO blog</Link>.</p>
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g" style={{ alignSelf: "flex-start" }}>Talk to the CodedSEO team <Arrow /></a>
+              <Photo id={WHY_IMG.id} alt={WHY_IMG.alt} className="hp-why-img" />
             </div>
-            <div className="soi-g2">
+            <div className="soi-g2 hp-why-grid">
               <div className="soi-card hp-why"><b>1M+</b><h3>Keywords ranked</h3><p>Proven SEO experience across industries and markets.</p></div>
               <div className="soi-card hp-why"><b>98%</b><h3>Client retention</h3><p>Clients stay because the results and reporting are real.</p></div>
               <div className="soi-card hp-why dk"><b>1 team</b><h3>SEO, ads, web &amp; CRM</h3><p>No hand-offs between agencies, one point of contact.</p></div>
@@ -421,21 +448,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ===== FINAL CTA ===== */}
-        <section className="soi-sec">
-          <div className="soi-wrap">
-            <div className="soi-cta">
-              <div>
-                <h2>Ready to grow with one team for SEO, marketing, web and CRM?</h2>
-                <p>Book a free 30-minute call. We will look at your business and tell you honestly where to start.</p>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-                <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="soi-btn soi-btn-g">Book a free call <Arrow /></a>
-                <Link href="/free-audit" className="soi-btn soi-btn-o">Free SEO audit</Link>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </>
