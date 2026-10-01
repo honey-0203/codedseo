@@ -444,3 +444,5 @@ html:has(.blog-post-page){ scroll-behavior:smooth; }
 /* ---------- Background: poore page par ek jaisa halka green (scroll mein bhi same) ---------- */
 .blog-post-page main{ background:linear-gradient(rgba(69,91,75,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(69,91,75,.055) 1px,transparent 1px),#f3faec; background-size:55px 55px,55px 55px,auto; }
 .bp-related{ background:transparent; border-top:1px solid var(--border); }
+/* ---------- Blog text: paragraphs aur list points black ---------- */
+.bp-article p,.bp-article li,.bp-article .bp-body ol > li,.bp-article .bp-check-grid li{ color:#111111; }
