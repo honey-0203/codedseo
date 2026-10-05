@@ -210,3 +210,101 @@
   .hp-who{padding:24px}
   .hp-faq button{min-height:52px;padding:14px 16px;font-size:14px}
 }
+
+/* ===== v5: button colors (header jaisa green) ===== */
+.hp .soi-btn-g,.hp .soi-btn-d{background:#16a34a;color:#fff;border:0}
+.hp .soi-btn-g:hover,.hp .soi-btn-d:hover{background:#15803d;color:#fff;box-shadow:0 10px 24px rgba(22,163,74,.28)}
+.hp .soi-btn-l{background:#fff;color:var(--ink);border:1px solid #d9e1d6}
+@keyframes hpPulseG{0%{box-shadow:0 0 0 0 rgba(22,163,74,.45)}70%{box-shadow:0 0 0 12px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.hp .hp-pulse{animation:hpPulseG 2.4s infinite}
+
+/* audit banner: white card, lime sirf accent */
+.hp .hp-audit{background:#fff;border:1px solid var(--bd);box-shadow:0 20px 50px -30px rgba(23,33,28,.35);position:relative;overflow:hidden}
+.hp .hp-audit::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--g)}
+.hp .hp-audit-form{background:var(--bg);border:1px solid var(--bd)}
+
+/* ===== services bento ===== */
+.hp-bento-sec{padding-top:72px}
+.hp-bento-head{max-width:820px}
+.hp-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;grid-template-areas:"seo seo dm" "web crm it"}
+.hp-b{border-radius:24px;padding:32px;display:flex;gap:28px;background:#fff;border:1px solid var(--bd);scroll-margin-top:90px;transition:transform .25s,box-shadow .25s}
+.hp-b:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(23,33,28,.4)}
+.hp-b-body{display:flex;flex-direction:column;gap:14px;min-width:0;flex:1}
+.hp-b-tag{align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--gs);color:var(--gt)}
+.hp-b h2{font-size:24px;line-height:1.25;font-weight:800;letter-spacing:-.4px;color:var(--ink);text-wrap:balance}
+.hp-b-body>p{font-size:14.5px;line-height:1.7;color:var(--tx)}
+.hp-b-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.hp-b-chips li{font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--bd);color:var(--tx2)}
+.hp-b-chips a{color:inherit;text-decoration:underline;text-decoration-color:var(--g);text-underline-offset:3px}
+.hp-b-foot{margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:10px}
+.hp .hp-b-cta{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:#15803d;text-decoration:none}
+.hp .hp-b-cta:hover{gap:12px;color:var(--ink)}
+.hp-b-rel{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}
+.hp .hp-b-rel a{color:var(--mut);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gl)}
+.hp .hp-b-rel a:hover{color:var(--ink)}
+.hp-b-img{width:44%;flex-shrink:0;align-self:stretch;object-fit:cover;border-radius:18px;background:#e6efe0;min-height:260px}
+
+/* har card alag area + color */
+.hp-b-seo{grid-area:seo}
+.hp-b-digital-marketing{grid-area:dm;background:var(--ink);border-color:var(--ink)}
+.hp-b-web-development{grid-area:web}
+.hp-b-hubspot-crm{grid-area:crm;background:var(--gs);border-color:var(--gl)}
+.hp-b-it-services{grid-area:it;background:var(--ink);border-color:var(--ink)}
+.hp-b-digital-marketing h2,.hp-b-it-services h2{color:#fff}
+.hp-b-digital-marketing .hp-b-body>p,.hp-b-it-services .hp-b-body>p{color:#b9c2bd}
+.hp-b-digital-marketing .hp-b-tag,.hp-b-it-services .hp-b-tag{background:rgba(169,232,63,.15);color:var(--g)}
+.hp-b-digital-marketing .hp-b-chips li,.hp-b-it-services .hp-b-chips li{background:transparent;border-color:#3a4840;color:#e3e9e5}
+.hp .hp-b-digital-marketing .hp-b-cta,.hp .hp-b-it-services .hp-b-cta{color:var(--g)}
+.hp .hp-b-digital-marketing .hp-b-cta:hover,.hp .hp-b-it-services .hp-b-cta:hover{color:#fff}
+.hp .hp-b-digital-marketing .hp-b-rel a,.hp .hp-b-it-services .hp-b-rel a{color:#b9c2bd;text-decoration-color:#3a4840}
+.hp-b-hubspot-crm .hp-b-tag{background:#fff}
+.hp-b-hubspot-crm .hp-b-chips li{background:#fff}
+
+@media(max-width:1000px){
+  .hp-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"seo seo" "dm web" "crm it"}
+}
+@media(max-width:700px){
+  .hp-bento-sec{padding-top:48px}
+  .hp-bento{grid-template-columns:minmax(0,1fr);grid-template-areas:"seo" "dm" "web" "crm" "it";gap:14px}
+  .hp-b{padding:22px;flex-direction:column;border-radius:20px}
+  .hp-b-img{width:100%;min-height:0;aspect-ratio:16/9;order:-1}
+  .hp-b h2{font-size:21px}
+  .hp-b-body>p{font-size:14px}
+  .hp-b-chips li{font-size:12px;padding:6px 10px}
+}
+
+/* ===== v6: header wala green background mein halka sa ===== */
+.hp{--gx:#16a34a;--gx2:#15803d;--gsoft:#ecfdf3;--gline:#bbf7d0;--deep1:#0b2a1a;--deep2:#14532d;
+  background-color:#f5fbf7;
+  background-image:linear-gradient(rgba(22,163,74,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(22,163,74,.06) 1px,transparent 1px);background-size:48px 48px}
+/* hero: halka green glow */
+.hp .soi-hero{background:radial-gradient(620px 420px at 88% 8%,rgba(34,197,94,.20),transparent 70%),radial-gradient(520px 380px at 0% 85%,rgba(16,185,129,.14),transparent 70%)}
+.hp .hp-h1{color:#0f2418}
+/* dark hisse: kaale ki jagah gehra green */
+.hp .soi-form,.hp .soi-dark,.hp .hp-help,.hp .hp-b-digital-marketing,.hp .hp-b-it-services,.hp .hp-who.dk,.hp .hp-why.dk{background:linear-gradient(145deg,var(--deep1),var(--deep2));border-color:transparent}
+.hp .soi-step{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.hp .soi-step.on{background:var(--g);border-color:var(--g)}
+.hp .soi-field input,.hp .soi-field select,.hp .soi-field textarea{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+.hp .soi-field select option,.hp .soi-field optgroup{background:#fff;color:#17211c}
+.hp .hp-b-digital-marketing .hp-b-chips li,.hp .hp-b-it-services .hp-b-chips li{border-color:rgba(255,255,255,.18)}
+/* light green tint wale sections */
+.hp .hp-b-hubspot-crm{background:var(--gsoft);border-color:var(--gline)}
+.hp .soi-white{background:linear-gradient(180deg,#fff,var(--gsoft))}
+.hp #faq.soi-white{background:#fff}
+.hp .hp-strip{background:linear-gradient(90deg,rgba(22,163,74,.06),rgba(22,163,74,.12),rgba(22,163,74,.06))}
+/* pills / tags header green ke saath */
+.hp .soi-eyebrow,.hp .hp-b-tag{background:#dcfce7;color:var(--gx2)}
+.hp .soi-eyebrow::before{background:var(--gx)}
+.hp .hp-b-digital-marketing .hp-b-tag,.hp .hp-b-it-services .hp-b-tag,.hp .soi-eyebrow.dk{background:rgba(134,239,172,.16);color:#86efac}
+.hp .hp-b:not(.hp-b-digital-marketing):not(.hp-b-it-services){border-color:#d1f2dc}
+.hp .hp-b-chips li{border-color:#d1f2dc}
+/* audit banner: green bar */
+.hp .hp-audit::before{background:linear-gradient(180deg,#22c55e,#059669)}
+.hp .hp-audit{background:linear-gradient(90deg,#fff 55%,var(--gsoft))}
+/* faq open state green */
+.hp .hp-faq.open{border-color:var(--gx);box-shadow:0 10px 30px -18px rgba(22,163,74,.55)}
+.hp .hp-faq.open button{color:var(--gx2)}
+.hp .hp-faq.open .hp-pm{background:var(--gx);color:#fff}
+.hp .hp-faq-cat>h3{color:var(--gx2)}.hp .hp-faq-cat>h3::before{background:var(--gx)}
+/* links */
+.hp .soi-lead a,.hp .hp-b-cta{color:var(--gx2)}

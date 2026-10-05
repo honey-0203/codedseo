@@ -197,58 +197,48 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ===== QUICK JUMP ===== */}
-        <nav aria-label="Services" className="soi-wrap hp-jump">
-          {GROUPS.map((g) => <a key={g.id} href={`#${g.id}`}>{g.label}</a>)}
-        </nav>
-
-        {/* ===== SERVICES INTRO ===== */}
-        <section className="soi-wrap" style={{ paddingTop: 48 }}>
-          <div className="soi-head" style={{ marginBottom: 0 }}>
-            <span className="soi-eyebrow">Our services</span>
-            <h2 className="soi-h2">Full-service digital marketing agency for SEO, websites and CRM</h2>
-            <p className="soi-lead">Most businesses juggle an SEO company, an ads freelancer, a web developer and a CRM consultant. At CodedSEO, one team handles all of it, so your rankings, ads, website and sales pipeline work as one system. Running an agency? See our <Link href="/seo-outsourcing-india">SEO outsourcing India</Link> program.</p>
+        {/* ===== SERVICES (digital agency bento grid) ===== */}
+        <section id="services" className="soi-sec hp-bento-sec">
+          <div className="soi-wrap">
+            <div className="soi-head hp-bento-head">
+              <span className="soi-eyebrow">Our services</span>
+              <h2 className="soi-h2">Full-service digital marketing agency for SEO, websites and CRM</h2>
+              <p className="soi-lead">Most businesses juggle an SEO company, an ads freelancer, a web developer and a CRM consultant. At CodedSEO, one team handles all of it, so your rankings, ads, website and sales pipeline work as one system. Running an agency? See our <Link href="/seo-outsourcing-india">SEO outsourcing India</Link> program.</p>
+            </div>
+            <div className="hp-bento">
+              {GROUPS.map((g) => {
+                const img = GROUP_IMG[g.id];
+                return (
+                  <article key={g.id} id={g.id} className={`hp-b hp-b-${g.id}`}>
+                    <div className="hp-b-body">
+                      <span className="hp-b-tag">{g.label}</span>
+                      <h2>{g.h2}</h2>
+                      <p>{g.intro}</p>
+                      <ul className="hp-b-chips">
+                        {g.cards.map((c) => (
+                          <li key={c.t}>{c.href ? <Link href={c.href}>{c.t}</Link> : c.t}</li>
+                        ))}
+                      </ul>
+                      <div className="hp-b-foot">
+                        {g.ctaHref.startsWith("/") ? (
+                          <Link href={g.ctaHref} className="hp-b-cta">{g.cta} <Arrow /></Link>
+                        ) : (
+                          <a href={g.ctaHref} className="hp-b-cta">{g.cta} <Arrow /></a>
+                        )}
+                        {g.links && (
+                          <nav aria-label={`${g.label} pages`} className="hp-b-rel">
+                            {g.links.map((l) => <Link key={l.href + l.label} href={l.href}>{l.label}</Link>)}
+                          </nav>
+                        )}
+                      </div>
+                    </div>
+                    {img && <Photo id={img.id} alt={img.alt} className="hp-b-img" />}
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
-
-        {/* ===== SERVICE GROUPS (list style, bina box) ===== */}
-        {GROUPS.map((g) => (
-          <section key={g.id} id={g.id} className={g.dark ? "hp-svc dk" : "hp-svc"}>
-            <div className="soi-wrap hp-svc-grid">
-              <div className="hp-svc-side">
-                <span className="hp-tag">{g.label}</span>
-                <h2>{g.h2}</h2>
-                <p>{g.intro}</p>
-                {g.links && (
-                  <nav aria-label={`${g.label} pages`} className="hp-rel">
-                    <span>Related:</span>
-                    {g.links.map((l) => <Link key={l.href + l.label} href={l.href}>{l.label}</Link>)}
-                  </nav>
-                )}
-                {g.ctaHref.startsWith("/") ? (
-                  <Link href={g.ctaHref} className={g.dark ? "soi-btn soi-btn-g" : "soi-btn soi-btn-d"}>{g.cta} <Arrow /></Link>
-                ) : (
-                  <a href={g.ctaHref} className={g.dark ? "soi-btn soi-btn-g" : "soi-btn soi-btn-d"}>{g.cta} <Arrow /></a>
-                )}
-              </div>
-              <div className="hp-svc-main">
-              {GROUP_IMG[g.id] && <Photo id={GROUP_IMG[g.id].id} alt={GROUP_IMG[g.id].alt} className="hp-svc-img" />}
-              <ol className="hp-svc-list">
-                {g.cards.map((c, n) => (
-                  <li key={c.t}>
-                    <span className="hp-svc-num" aria-hidden="true">{String(n + 1).padStart(2, "0")}</span>
-                    <div>
-                      <h3>{c.href ? <Link href={c.href}>{c.t}</Link> : c.t}</h3>
-                      <p>{c.d}</p>
-                      <p className="hp-svc-tags">{c.tags.join(" · ")}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              </div>
-            </div>
-          </section>
-        ))}
 
         {/* ===== AUDIT BANNER (CRO) ===== */}
         <section className="soi-wrap hp-audit-sec">
@@ -322,7 +312,7 @@ export default function HomePage() {
             </div>
           </section>
         )}
-        
+
         {/* ===== PLATFORMS ===== */}
         <section className="soi-wrap" style={{ padding: "56px 32px" }}>
           <div className="soi-head c" style={{ marginBottom: 24 }}>
