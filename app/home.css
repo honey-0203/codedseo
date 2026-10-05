@@ -188,7 +188,7 @@
 .hp-audit-sec{padding-top:32px;padding-bottom:32px}
 .hp-audit-form{min-width:0}
 @media(max-width:760px){
-  .soi-hero{padding-top:32px}
+  .soi-hero{padding-top:96px}
   .hp-h1{font-size:34px;line-height:1.12}
   .hp-hero-btns .soi-btn{flex:1 1 100%}
   .hp-audit-sec{padding:20px 16px}
