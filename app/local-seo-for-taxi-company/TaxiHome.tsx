@@ -12,6 +12,7 @@ import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
 import type { RelatedPost } from "@/lib/related-posts";
 import { FAQS } from "./faqs";
+import { InlineCta } from "@/components/inline-cta";
 import "../seo-agency-frisco/frisco.css";
 
 /* ================= LINKS ================= */
@@ -481,6 +482,7 @@ function Mistakes() {
             </div>
           ))}
         </div>
+        <InlineCta title="Not sure if you’re making any of these mistakes?" text="Our free audit checks your Google profile and website and tells you in 48 hours." wa="Hi CodedSEO, can you check my taxi company for these SEO mistakes?" cta="Check my taxi website" />
       </div>
     </section>
   );
@@ -525,6 +527,7 @@ function Guide() {
             </li>
           ))}
         </ol>
+        <InlineCta title="Want us to do these 7 steps for you?" text="We handle the profile, pages, reviews and tracking. You keep driving." wa="Hi CodedSEO, I want help with local SEO for my taxi company." />
       </div>
     </section>
   );
@@ -688,6 +691,7 @@ function Compare() {
             </tbody>
           </table>
         </div>
+        <InlineCta title="Ready to get more rides from Google?" text="Talk to a strategist today. No contract, no pressure." wa="Hi CodedSEO, I want to get more rides from Google for my taxi company." />
       </div>
     </section>
   );

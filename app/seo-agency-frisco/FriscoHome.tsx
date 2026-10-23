@@ -11,6 +11,7 @@ import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import "./frisco.css";
 import { FAQS } from "./faqs";
+import { InlineCta } from "@/components/inline-cta";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
 
 /* ================= LINKS ================= */
@@ -206,7 +207,7 @@ function Hero() {
               <span className="fr-ov-pin"><MapPin size={22} strokeWidth={2.4} /></span>
               <span>
                 <b><em>#1</em> Your Business</b>
-                <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(128)</small></span>
+                <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(sample)</small></span>
                 <small>SEO agency · Frisco, TX</small>
                 <small className="g">Open now · Call · Directions</small>
               </span>
@@ -284,6 +285,7 @@ function Challenges() {
             </div>
           ))}
         </div>
+        <InlineCta title="Seeing one of these problems in your business?" text="Get a free Frisco SEO audit and the three fixes that matter most, in 48 hours." wa={"Hi CodedSEO, I'd like a free SEO audit for my Frisco business."} />
       </div>
     </section>
   );
@@ -308,6 +310,7 @@ function Services() {
             </Link>
           ))}
         </div>
+        <InlineCta title="Not sure which service you need?" text="Tell us about your business and we’ll recommend the right plan, honestly." wa="Hi CodedSEO, which SEO service is right for my Frisco business?" cta="Get a free recommendation" />
       </div>
     </section>
   );
@@ -446,6 +449,7 @@ function Compare() {
             </tbody>
           </table>
         </div>
+        <InlineCta title="Ready to be the business Frisco finds first?" text="Talk to a strategist today. No contract, no pressure." wa="Hi CodedSEO, I want more customers from Google in Frisco." />
       </div>
     </section>
   );
