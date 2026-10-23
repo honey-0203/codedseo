@@ -79,3 +79,15 @@
 .isu .fr-help-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 .isu .fr-help .fr-chip { padding: 9px 16px; font-size: 15px; }
 @media (max-width: 520px) { .isu .fr-help-btns { flex-wrap: nowrap; width: 100%; } .isu .fr-help .fr-chip { flex: 1; justify-content: center; padding: 9px 8px; font-size: 14px; } }
+/* ===== Inline (mid-content) CTA ===== */
+.isu .icta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 40px; padding: 22px 26px; border-radius: 20px; background: var(--navy); color: #cbd5e1; }
+.isu .icta-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 320px; }
+.isu .icta-copy strong { color: #fff; font-size: 19px; line-height: 1.3; }
+.isu .icta-copy span { font-size: 15px; }
+.isu .icta-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.isu .icta-btn { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 15px; color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+.isu .icta-btn:hover { border-color: #fff; }
+.isu .icta-btn.main { background: var(--green); border-color: var(--green); }
+.isu .icta-btn.wa { background: #25d366; border-color: #25d366; color: #fff; }
+.isu.tx-page .icta { background: color-mix(in oklch, var(--green) 16%, #0c1110); border: 1px solid var(--green-line); }
+@media (max-width: 560px) { .isu .icta-btns { width: 100%; } .isu .icta-btn { flex: 1 1 auto; } }
