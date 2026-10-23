@@ -4,7 +4,7 @@ import path from "node:path";
 // app folder ke saare pages khud dhoondta hai, taaki sitemap aur llms.txt me
 // naya page apne aap add ho jaye. Kuch bhi haath se likhne ki zaroorat nahi.
 
-export type SitePage = { path: string; title: string; priority: number };
+export type SitePage = { path: string; title: string; description: string; priority: number };
 
 const APP_DIR = path.join(process.cwd(), "app");
 const SKIP_DIRS = new Set(["studio", "api"]);
@@ -40,17 +40,34 @@ function titleFor(dir: string, p: string): string {
     const meta = src.indexOf("metadata");
     if (meta === -1) continue;
     const block = src.slice(meta, meta + 600);
-    let t = block.match(/title:\s*"([^"]+)"/)?.[1];
-    if (!t && /title:\s*TITLE/.test(block)) t = src.match(/const TITLE\s*=\s*"([^"]+)"/)?.[1];
+    // Pehle `title: TITLE` dekho (TITLE const), warna metadata ka seedha "title"
+    let t = /title:\s*TITLE\b/.test(block) ? src.match(/const TITLE\s*=\s*"([^"]+)"/)?.[1] : undefined;
+    if (!t) t = block.match(/title:\s*"([^"]+)"/)?.[1];
     if (t) return t.replace(/\s*\|\s*CodedSEO\s*$/i, "").trim();
   }
   return humanize(p);
 }
 
+function descFor(dir: string): string {
+  // Page ke meta description se (export const metadata) – sitemap page aur llms.txt ke liye
+  for (const f of [...PAGE_FILES, "layout.tsx"]) {
+    const file = path.join(dir, f);
+    if (!fs.existsSync(file)) continue;
+    const src = fs.readFileSync(file, "utf8");
+    const meta = src.indexOf("metadata");
+    if (meta === -1) continue;
+    const block = src.slice(meta, meta + 800);
+    let d = /description:\s*DESC\b/.test(block) ? src.match(/const DESC\s*=\s*"([^"]+)"/)?.[1] : undefined;
+    if (!d) d = block.match(/description:\s*\n?\s*"([^"]+)"/)?.[1];
+    if (d) return d.trim();
+  }
+  return "";
+}
+
 function walk(dir: string, route: string, out: SitePage[]) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   if (entries.some((e) => e.isFile() && PAGE_FILES.includes(e.name))) {
-    out.push({ path: route, title: titleFor(dir, route), priority: priorityFor(route) });
+    out.push({ path: route, title: titleFor(dir, route), description: descFor(dir), priority: priorityFor(route) });
   }
   for (const e of entries) {
     if (!e.isDirectory()) continue;
@@ -70,5 +87,5 @@ export function getSitePages(): SitePage[] {
   } catch {
     // niche fallback
   }
-  return FALLBACK.map((p) => ({ path: p, title: humanize(p), priority: priorityFor(p) }));
+  return FALLBACK.map((p) => ({ path: p, title: humanize(p), description: "", priority: priorityFor(p) }));
 }

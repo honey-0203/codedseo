@@ -67,7 +67,7 @@ export function FAQSection() {
             <span className="gradient-text"> We&apos;ve Got Answers</span>
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
-            Everything you need to know about working with RankFlow. Can&apos;t find what you&apos;re looking for? Reach out to our team.
+            Everything you need to know about working with CodedSEO. Can&apos;t find what you&apos;re looking for? Reach out to our team.
           </p>
         </motion.div>
 

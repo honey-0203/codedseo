@@ -34,7 +34,7 @@ export async function GET() {
   const PAGES =
     "## Pages\n" +
     getSitePages()
-      .map((p) => `- ${p.title}: ${SITE_URL}${p.path}`)
+      .map((p) => `- [${p.title}](${SITE_URL}${p.path})${p.description ? `: ${p.description}` : ""}`)
       .join("\n");
   const INTRO = intro(PAGES);
 

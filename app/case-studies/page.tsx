@@ -159,7 +159,7 @@ export default function CaseStudiesPage() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto"
           >
             {[
-              { number: "500+", label: "Clients Served" },
+              { number: "100+", label: "Clients Served" },
               { number: "10M+", label: "Keywords Ranked" },
               { number: "$50M+", label: "Revenue Generated" },
               { number: "97%", label: "Success Rate" },
@@ -263,7 +263,7 @@ export default function CaseStudiesPage() {
               Ready to Be Our Next Success Story?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join hundreds of businesses that have transformed their online presence with RankFlow.
+              Join hundreds of businesses that have transformed their online presence with CodedSEO.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>

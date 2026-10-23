@@ -92,7 +92,7 @@ export default async function SiteMapPage() {
                   <ul>
                     {g.title === "Company" && <li><Link href="/">Home</Link></li>}
                     {g.items.map((p) => (
-                      <li key={p.path}><Link href={p.path}>{p.title.split(" | ")[0]}</Link></li>
+                      <li key={p.path}><Link href={p.path}>{p.title.split(" | ")[0]}</Link>{p.description && <p className="sm-desc">{p.description}</p>}</li>
                     ))}
                   </ul>
                 </div>
