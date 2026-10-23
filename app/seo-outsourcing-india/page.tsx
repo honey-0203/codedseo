@@ -34,6 +34,7 @@ const schema = {
       name: "CodedSEO",
       url: "https://codedseo.com",
       logo: "https://codedseo.com/codedseo.png",
+      telephone: "+917340905942",
       founder: { "@type": "Person", name: "Balbir Singh" },
       address: { "@type": "PostalAddress", streetAddress: "Sector 74, Phase 8B", addressLocality: "Mohali", addressRegion: "Punjab", postalCode: "160055", addressCountry: "IN" },
     },

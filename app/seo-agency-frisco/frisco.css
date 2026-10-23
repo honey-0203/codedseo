@@ -18,3 +18,14 @@
 @media (max-width: 1024px) { .isu .fr-steps { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .isu .fr-steps { grid-template-columns: 1fr; } }
 .isu .fr-facts dt { font-weight: 800; color: var(--ink); font-size: 20px; }
+.isu .fr-contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-weight: 600; margin: 14px 0 6px; }
+.isu .fr-contact a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.isu .fr-sticky { display: none; }
+@media (max-width: 768px) {
+  .isu .fr-sticky { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(0,0,0,.08); }
+  .isu .fr-sticky a { display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 12px; font-weight: 700; font-size: 15px; }
+  .isu .fr-sticky-call { border: 2px solid var(--ink); color: var(--ink); }
+  .isu .fr-sticky-wa { background: #25d366; color: #fff; }
+  .isu .fr-sticky-audit { background: var(--green); color: #fff; }
+  body:has(.fr-sticky) { padding-bottom: 72px; }
+}

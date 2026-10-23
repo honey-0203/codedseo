@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import FriscoHome from "./FriscoHome";
 import { FAQS } from "./faqs";
 import "../seo-agency-usa/usa.css";
+import { CONTACT } from "@/lib/contact";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,7 +36,8 @@ const schema = {
       name: "CodedSEO",
       url: "https://codedseo.com",
       logo: "https://codedseo.com/codedseo.png",
-      email: "hello@codedseo.com",
+      email: CONTACT.email,
+      telephone: CONTACT.phoneTel,
       founder: { "@type": "Person", name: "Balbir Singh" },
     },
     {

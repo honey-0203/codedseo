@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ArrowUpRight, Mail, MapPin } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Phone, MessageCircle } from "lucide-react"
+import { CONTACT, telHref, whatsappHref } from "@/lib/contact"
 import { PreferredSourceButton } from "@/components/preferred-source-button"
 
 const CALENDLY = "https://calendly.com/codedseo-sales/30min"
@@ -78,6 +79,14 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
                 <a href="mailto:sales@codedseo.com" className="transition hover:text-green-400">sales@codedseo.com</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <a href={telHref} className="transition hover:text-green-400">{CONTACT.phoneDisplay}</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="transition hover:text-green-400">WhatsApp us</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />

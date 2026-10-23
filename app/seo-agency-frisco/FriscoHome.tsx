@@ -6,11 +6,13 @@ import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import "./frisco.css";
 import { FAQS } from "./faqs";
+import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
 
 /* ================= LINKS ================= */
 
-const CALENDLY = "https://calendly.com/codedseo-sales/30min";
-const EMAIL = "hello@codedseo.com";
+const CALENDLY = CONTACT.calendly;
+const EMAIL = CONTACT.email;
+const WA = whatsappHref("Hi CodedSEO, I'd like a free SEO audit for my Frisco business.");
 
 /* ================= CONTENT =================
    Keywords (Semrush US, 15 Oct 2026 – "Frisco SEO Keywords" sheet):
@@ -140,6 +142,11 @@ function Hero() {
             <Link className="btn" href="/free-audit">Get my free Frisco SEO audit <Chevron /></Link>
             <a className="btn ghost" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a 30-min call</a>
           </div>
+          <p className="fr-contact">
+            <a href={telHref}>Call {CONTACT.phoneDisplay}</a>
+            <span aria-hidden="true">·</span>
+            <a href={WA} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+          </p>
           <p className="byline">Reviewed by <Link href="/team">Balbir Singh, founder of CodedSEO</Link> · Updated October 2026</p>
         </div>
 
@@ -318,7 +325,7 @@ function CtaBand() {
           <p>Our free audit checks your Map Pack position across Frisco, your technical setup and your top three competitors, then gives you the three changes that will make the biggest difference.</p>
           <div className="cta-btns">
             <Link className="btn" href="/free-audit">Get my free audit <Chevron /></Link>
-            <a className="btn outline" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a call</a>
+            <a className="btn outline" href={WA} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
           </div>
           <ul className="cta-trust"><li>No contracts</li><li>Delivered in 48 hours</li><li>Written by a real strategist</li></ul>
         </div>
@@ -461,7 +468,7 @@ function Faq() {
             </div>
           ))}
         </div>
-        <p className="center grey faq-more">Still have questions? <Link href="/contact">Contact our team</Link> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+        <p className="center grey faq-more">Still have questions? <Link href="/contact">Contact our team</Link> call or WhatsApp <a href={telHref}>{CONTACT.phoneDisplay}</a>, or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
       </div>
     </section>
   );
@@ -477,7 +484,7 @@ function FinalCta() {
         </div>
         <div className="cta-btns">
           <Link className="btn light" href="/free-audit">Get my free audit <Chevron /></Link>
-          <a className="btn outline" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a call</a>
+          <a className="btn outline" href={telHref}>Call {CONTACT.phoneDisplay}</a>
         </div>
       </div>
     </section>
@@ -508,6 +515,13 @@ export default function FriscoHome() {
           <Faq />
           <FinalCta />
         </main>
+      </div>
+      <div className="isu">
+        <div className="fr-sticky" role="region" aria-label="Quick contact">
+          <a href={telHref} className="fr-sticky-call">Call now</a>
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="fr-sticky-wa">WhatsApp</a>
+          <Link href="/free-audit" className="fr-sticky-audit">Free audit</Link>
+        </div>
       </div>
       <SiteFooter />
     </>
