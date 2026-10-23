@@ -292,8 +292,8 @@ function Hero() {
             </span>
           </div>
           <div className="tx-fcard tx-f2">
-            <span className="tx-fbig">+3x</span>
-            <small>Example goal: calls from Google Maps</small>
+            <span className="tx-fbig">20</span>
+            <small>Service areas you can list on Google</small>
           </div>
           <div className="tx-fcard tx-f3">
             <Plane size={18} strokeWidth={2.4} /> <span>taxi to the airport · page 1</span>
