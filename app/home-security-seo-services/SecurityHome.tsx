@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
 import "./security.css";
@@ -228,7 +229,6 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
               {c.why.paras.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
               <h3 className="hs-facts-t">{c.factsTitle}</h3>
               <ul className="hs-facts">{c.facts.map((f) => <li key={f.k}><span><Tick /></span><div><b>{f.k}</b><p>{f.d}</p></div></li>)}</ul>
-              <p className="hs-src">Sources: {c.sources.map((s, i) => <span key={s.url}>{i > 0 && " · "}<a href={s.url} target="_blank" rel="noopener noreferrer nofollow">{s.label}</a></span>)} · Semrush Keyword Magic Tool (US)</p>
             </div>
           </div></section>
 
@@ -360,13 +360,14 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
               <Head eyebrow="From the CodedSEO blog" title="Local SEO Guides" intro={<>Practical guides from our team. See every article on the <Link href="/blog">CodedSEO blog</Link>.</>} />
               <div className="hs-posts">{posts.map((p) => (
                 <Link key={p.slug} className="hs-post hs-rv" href={`/blog/${p.slug}`}>
-                  <div className="hs-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}<em>{p.date || p.category}</em></div>
+                  <div className="hs-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}<em>{p.date || p.category}</em></div>
                   <div className="hs-post-body"><h3>{p.title}</h3>{p.excerpt && <p>{p.excerpt}</p>}<span className="hs-more">Read more <Chevron /></span></div>
                 </Link>))}
               </div>
             </div></section>
           )}
 
+          <RelatedIndustries current="/home-security-seo-services" />
           {/* FAQ */}
           <section className="hs-sec soft"><div className="hs-wrap narrow">
             <Head eyebrow="FAQ" title={c.faqTitle} />

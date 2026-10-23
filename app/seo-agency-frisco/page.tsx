@@ -33,7 +33,7 @@ async function getPosts(): Promise<FriscoPost[]> {
       category: r.category || "Blog",
       excerpt: (r.excerpt || "").replace(/\s+/g, " ").trim(),
       date: r.publishedAt ? new Date(r.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "",
-      image: r.coverImage ? urlFor(r.coverImage).width(720).height(450).fit("crop").auto("format").url() : "",
+      image: r.coverImage ? urlFor(r.coverImage).width(800).auto("format").url() : "",
       imageAlt: r.coverImage?.alt || r.title || "",
     }));
   } catch {

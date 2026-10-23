@@ -10,6 +10,7 @@ import {
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { FAQS } from "./faqs";
 import { InlineCta } from "@/components/inline-cta";
@@ -385,9 +386,6 @@ function Why() {
               <div key={f.k}><dt>{f.k}</dt><dd>{f.d}</dd></div>
             ))}
           </dl>
-          <p className="fr-src">
-            Sources: <a href="https://support.google.com/business/answer/10514137?hl=en" target="_blank" rel="noopener noreferrer nofollow">Google Business Profile Help: service-area businesses</a> · Semrush Keyword Magic Tool (US)
-          </p>
         </div>
       </div>
     </section>
@@ -711,7 +709,7 @@ function Reading({ posts }: { posts: RelatedPost[] }) {
           {posts.map((p) => (
             <Link key={p.slug} className="fr-post" href={`/blog/${p.slug}`}>
               <div className="fr-post-img">
-                {p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}
+                {p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}
               </div>
               <div className="fr-post-body">
                 <span className="fr-post-cat">{p.category}</span>
@@ -839,6 +837,7 @@ export default function TaxiHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <Kpis />
           <Compare />
           <Reading posts={posts} />
+          <RelatedIndustries current="/local-seo-for-taxi-company" />
           <Faq />
           <FinalCta />
         </main>

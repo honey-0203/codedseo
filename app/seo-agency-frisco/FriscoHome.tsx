@@ -257,9 +257,6 @@ function Market() {
               <div key={f.k}><dt>{f.k}</dt><dd>{f.d}</dd></div>
             ))}
           </dl>
-          <p className="fr-src">
-            Sources: <a href="https://www.friscotexas.gov/1454/Demographics" target="_blank" rel="noopener noreferrer nofollow">City of Frisco Demographics</a> · <a href="https://www.friscotexas.gov/DocumentCenter/View/36069/2040-Comp-Plan-Chapter-6-PDF" target="_blank" rel="noopener noreferrer nofollow">Frisco 2040 Comprehensive Plan</a> · Semrush Keyword Magic Tool (US, 15 Oct 2026)
-          </p>
         </div>
         </div>
       </div>
@@ -492,7 +489,7 @@ function Reading({ posts }: { posts: FriscoPost[] }) {
             <Link key={p.slug} className="fr-post" href={`/blog/${p.slug}`}>
               <div className="fr-post-img">
                 {p.image ? (
-                  <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" />
+                  <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" />
                 ) : (
                   <span aria-hidden="true">{p.category}</span>
                 )}
