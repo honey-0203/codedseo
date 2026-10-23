@@ -20,6 +20,7 @@ export const LOCATIONS: LocationCountry[] = [
     href: "/seo-agency-usa",
     listTitle: "Explore the USA",
     cities: [
+      { name: "SEO Company Frisco, TX", href: "/seo-agency-frisco", description: "Local SEO and Google Maps for Frisco businesses." },
       { name: "SEO Packages USA", href: "/seo-agency-usa#seo-packages", description: "Starter $199, Growth $499 and custom plans." },
       { name: "90-Day SEO Roadmap", href: "/seo-agency-usa#roadmap", description: "What happens in your first three months." },
       { name: "Local SEO for the USA", href: "/seo-agency-usa#svc-local", description: "Google Maps, GMB and near-me searches." },
