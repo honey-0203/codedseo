@@ -124,3 +124,9 @@
 .isu.tx-page .btn.light { background: #ffffff; color: #050807; border-color: #ffffff; }
 .isu.tx-page .btn.light:hover { background: #e9f9ee; color: #050807; }
 .isu.tx-page .final h2, .isu.tx-page .final p { color: #ffffff; }
+/* Dark hero starts BELOW the fixed site header, so the header keeps the site's normal light look
+   and nothing (breadcrumb/heading) hides behind it. --tx-hdr is measured in JS; fallbacks below. */
+:root { --tx-hdr: 104px; }
+@media (max-width: 1023px) { :root { --tx-hdr: 72px; } }
+.isu.tx-page { padding-top: var(--tx-hdr); background: linear-gradient(to bottom, var(--background, #f8f9fb) 0, var(--background, #f8f9fb) var(--tx-hdr), #050807 var(--tx-hdr)); }
+.isu .tx-hero { padding-top: 48px; }
