@@ -105,10 +105,6 @@ const menuItems: MenuItem[] = [
     }
   },
   {
-    name: "Digital Marketing",
-    href: "/digital-marketing",
-  },
-  {
     name: "Locations",
     href: LOCATIONS[0]?.href ?? "/seo-agency-usa",
     locationMenu: true,
