@@ -26,10 +26,10 @@ const WA = whatsappHref("Hi CodedSEO, I'd like a free SEO audit for my Frisco bu
 */
 
 const HERO_POINTS = [
-  "Built for Frisco, Plano and Collin County searches",
-  "No long-term contracts or hidden fees",
-  "Calls and reports on Central Time",
-  "Google Maps, organic and AI answers in one plan",
+  "Built for Frisco & Collin County",
+  "No contracts, no hidden fees",
+  "Calls on Central Time",
+  "Maps, organic & AI in one plan",
 ];
 
 const STATS = [
@@ -114,6 +114,7 @@ export type FriscoPost = { title: string; slug: string; category: string; excerp
 /* ================= IMAGES (Unsplash, free license) ================= */
 
 const UNSPLASH = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const IMG_HERO = { id: "photo-1596309559272-627cc03fcf3b", alt: "Local business storefront in North Texas, the kind of Frisco business our SEO company helps rank #1 on Google Maps" };
 const IMG_CITY = { id: "photo-1691635187988-d03b9ac5e045", alt: "Aerial view of a fast-growing North Texas city with new buildings and roads" };
 const IMG_DATA = { id: "photo-1526628953301-3e589a6a8b74", alt: "SEO analytics dashboard showing organic traffic and lead growth" };
 
@@ -161,7 +162,7 @@ function Hero() {
           <p className="pill">Frisco, Texas · Local SEO + AI search</p>
           <h1>SEO Company Frisco Businesses Hire to Win <span className="hl">Google Maps and AI Search</span></h1>
           <p className="lead">Frisco is one of the fastest-growing cities in the country, and every new household is searching for a dentist, plumber, realtor or lawyer it hasn&apos;t picked yet. CodedSEO helps local businesses show up first when those customers search, on Google, in the Map Pack and inside AI tools like ChatGPT.</p>
-          <ul className="ticks two">
+          <ul className="ticks two fr-ticks">
             {HERO_POINTS.map((p) => <li key={p}>{p}</li>)}
           </ul>
           <div className="hero-cta">
@@ -169,8 +170,7 @@ function Hero() {
             <a className="btn ghost" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a 30-min call</a>
           </div>
           <div className="fr-contact">
-            <span className="fr-contact-label">Prefer to talk?</span>
-            <a className="fr-chip" href={telHref} aria-label={`Call ${CONTACT.phoneDisplay}`}>
+                        <a className="fr-chip" href={telHref} aria-label={`Call ${CONTACT.phoneDisplay}`}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
               {CONTACT.phoneDisplay}
             </a>
@@ -184,14 +184,27 @@ function Hero() {
 
         <figure className="fr-hero-img">
           <img
-            src="/images/seo-company-frisco-tx.svg"
-            alt="SEO company Frisco TX: local business ranking #1 in Google Maps for seo company frisco"
-            width={720}
-            height={560}
+            src={UNSPLASH(IMG_HERO.id, 1100)}
+            srcSet={`${UNSPLASH(IMG_HERO.id, 600)} 600w, ${UNSPLASH(IMG_HERO.id, 900)} 900w, ${UNSPLASH(IMG_HERO.id, 1100)} 1100w`}
+            sizes="(max-width: 1000px) 100vw, 560px"
+            alt={IMG_HERO.alt}
+            width={1100}
+            height={1000}
             fetchPriority="high"
             decoding="async"
           />
-          <figcaption>Illustration: what a #1 Google Maps result for &quot;seo company frisco&quot; looks like.</figcaption>
+          <div className="fr-ov-search" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+            seo company frisco
+          </div>
+          <div className="fr-ov-card" aria-hidden="true">
+            <span className="fr-ov-pin"><MapPin size={20} strokeWidth={2.4} /></span>
+            <span>
+              <b><em>#1</em> Your Business</b>
+              <small>Google Maps · Frisco, TX</small>
+              <small className="g">Open now · Call · Directions</small>
+            </span>
+          </div>
         </figure>
       </div>
     </section>
