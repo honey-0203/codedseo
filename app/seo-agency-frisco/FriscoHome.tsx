@@ -178,7 +178,7 @@ function Hero() {
               WhatsApp
             </a>
           </div>
-          <p className="byline">Reviewed by <Link href="/team">Balbir Singh, founder of CodedSEO</Link> · Updated October 2026</p>
+          <p className="byline">Written by the <Link href="/team">CodedSEO strategy team</Link> · Updated October 2026</p>
         </div>
 
         <figure className="fr-hero-img">
@@ -224,10 +224,7 @@ function Market() {
           <h2>A Fast-Growing City Means New Customers Searching Every Month</h2>
           <p className="grey">Growth brings opportunity and competition at the same time. National franchises, Dallas agencies and new local businesses all chase the same Frisco searches, and the results change a lot between Stonebriar in the south and the newer neighborhoods north of US-380.</p>
           <p className="grey">Frisco also spans Collin and Denton County and several ZIP codes, so &quot;near me&quot; results for the same service can look different a few miles apart. Our Frisco SEO services start from how your customers actually search here, not a generic Texas template.</p>
-          <div className="goal">
-            <strong>Founder&apos;s note</strong>
-            <span>&quot;In suburbs like Frisco, the businesses that win usually have three things: a page for every service, a Google Business Profile that&apos;s actively managed, and a steady flow of reviews. That beats publishing more blog posts.&quot; — Balbir Singh, <Link href="/about">CodedSEO</Link></span>
-          </div>
+
         </div>
         <div>
         <Photo id={IMG_CITY.id} alt={IMG_CITY.alt} />
