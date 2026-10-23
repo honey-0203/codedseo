@@ -782,6 +782,19 @@ function FinalCta() {
 
 const REVEAL = ".tx-page .head, .tx-page .icard, .tx-page .tx-steps li, .tx-page .fr-table-wrap, .tx-page .pack, .tx-page .tx-mistake, .tx-page .tx-kpi, .tx-page .tx-list, .tx-page .ind, .tx-page .facts, .tx-page .fr-photo, .tx-page .fr-post";
 
+// Fixed site header ki height naapo, taaki dark hero uske neeche se shuru ho (header apne normal rang mein rahe)
+function useHeaderOffset() {
+  useEffect(() => {
+    const set = () => {
+      const h = document.querySelector("header")?.getBoundingClientRect().height;
+      if (h) document.documentElement.style.setProperty("--tx-hdr", `${Math.round(h)}px`);
+    };
+    set();
+    window.addEventListener("resize", set);
+    return () => window.removeEventListener("resize", set);
+  }, []);
+}
+
 function useReveal() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -798,6 +811,7 @@ function useReveal() {
 
 export default function TaxiHome({ posts = [] }: { posts?: RelatedPost[] }) {
   useReveal();
+  useHeaderOffset();
   return (
     <>
       <SiteHeader />
