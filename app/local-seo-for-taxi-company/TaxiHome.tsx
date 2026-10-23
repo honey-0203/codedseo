@@ -385,9 +385,6 @@ function Why() {
               <div key={f.k}><dt>{f.k}</dt><dd>{f.d}</dd></div>
             ))}
           </dl>
-          <p className="fr-src">
-            Sources: <a href="https://support.google.com/business/answer/10514137?hl=en" target="_blank" rel="noopener noreferrer nofollow">Google Business Profile Help: service-area businesses</a> · Semrush Keyword Magic Tool (US)
-          </p>
         </div>
       </div>
     </section>

@@ -241,7 +241,6 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
                 <p className="fd-script">{c.factsTitle}</p>
                 <h2>Four Numbers Worth Knowing</h2>
                 <dl>{c.facts.map((f) => <div key={f.k}><dt>{f.k}</dt><dd>{f.d}</dd></div>)}</dl>
-                <p className="fd-src">Sources: {c.sources.map((s, i) => <span key={s.url}>{i > 0 && " · "}<a href={s.url} target="_blank" rel="noopener noreferrer nofollow">{s.label}</a></span>)} · Semrush (US)</p>
               </div>
             </div>
             <Img img={IMG.bandR} w={700} className="fd-band3-side" sizes="20vw" />
