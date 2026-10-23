@@ -9,7 +9,7 @@ import type { IndustryConfig } from "@/lib/industry-config";
    home security seo (20) · seo for home security companies (10) */
 
 export const STEPS = [
-  { t: "Set up your Google Business Profile as a service-area business", d: "Most installers visit the customer, so hide your address if customers don't come to you and list the towns and ZIP codes you actually cover. Use the category that matches your work, such as security system supplier or installer." },
+  { t: "Set up your Google Business Profile as a service-area business", d: "Like [taxi companies](/local-seo-for-taxi-company), most installers visit the customer, so hide your address if customers don't come to you and list the towns and ZIP codes you actually cover. Use the category that matches your work, such as security system supplier or installer." },
   { t: "List every service separately", d: "Alarm installation, CCTV and camera installation, video doorbells, smart locks, 24/7 monitoring, commercial access control. Each is its own search and its own reason to call you." },
   { t: "Build a page for each service and each main town", d: "\"Security camera installation in Plano\" and \"alarm monitoring company near me\" are different searches. A specific page for each, with real job photos, beats one generic services page." },
   { t: "Show proof of trust on every page", d: "Licence numbers where your state requires them, insurance, brands you're certified for, warranty terms and real reviews. Security buyers check these before they call." },
@@ -24,7 +24,7 @@ export const FAQS = [
   { q: "Should a home security company use Local Services Ads too?", a: "Often yes. Home security is an eligible Local Services Ads category in the US, and passing Google's screening gives you the Google Verified badge. SEO builds the profile, reviews and pages that make those ads and your organic listing more convincing." },
   { q: "Can we rank in towns where we don't have an office?", a: "Yes, if you really serve them. Add them as service areas on your Google Business Profile and build a useful page for each one with real job photos. Don't use virtual offices or fake addresses, which can get your profile suspended." },
   { q: "How long does home security SEO take to work?", a: "Profile fixes, service listings and review requests often show movement within 4 to 8 weeks. Ranking service and town pages for competitive searches usually takes 3 to 6 months." },
-  { q: "How much do your home security SEO services cost?", a: "Our SEO packages start at $199 per month for Starter and $499 per month for Growth. A single-office installer usually starts on Starter; companies covering several towns or selling monitoring plans usually need Growth." },
+  { q: "How much do your home security SEO services cost?", a: "Our SEO packages start at $199 per month for Starter and $499 per month for Growth. A single-office installer usually starts on Starter; companies covering several towns or selling monitoring plans usually need Growth. US companies can also see our wider [SEO services in the USA](/seo-agency-usa)." },
   { q: "What should a home security website have for SEO?", a: "A page for each service and main town, real installation photos, licence and insurance details, brands you install, warranty and monitoring terms, reviews, a quote form with a few fields, a visible phone number, and LocalBusiness schema matching your Google profile." },
   { q: "Do you guarantee home security SEO results?", a: "No one controls Google, so we never promise a specific ranking. We do offer a 90-day results guarantee: if you don't see measurable ranking improvements, we keep working for free until you do." },
 ];
@@ -59,7 +59,7 @@ export const CFG: IndustryConfig = {
     title: "Homeowners Check Trust Before They Let Anyone Install a Camera",
     paras: [
       "A home security purchase is personal. People are inviting a stranger to wire their home, see their floor plan and hold their alarm codes. They compare reviews, look for licences and certifications, and check how long a company has been around before they book a site survey.",
-      "Clicks are also expensive in this industry, so a business that ranks organically and in the Map Pack has a real cost advantage. SEO for home security companies is about winning those searches and showing proof of trust the moment someone lands on your page.",
+      "Clicks are also expensive in this industry, so a business that ranks organically and in the Map Pack has a real cost advantage. SEO for home security companies is about winning those searches with [organic SEO](/services/organic-seo) and showing proof of trust the moment someone lands on your page.",
     ],
   },
   factsTitle: "Security SEO at a glance",
@@ -120,7 +120,7 @@ export const CFG: IndustryConfig = {
     { icon: MapPinOff, t: "Not showing in the Map Pack", d: "National brands and competitors with more reviews take the top three spots, even if you install faster and better." },
     { icon: ShieldCheck, t: "Weak trust signals", d: "No licence, insurance, brands or real install photos on the site, so homeowners hesitate and keep looking." },
     { icon: Layers, t: "One page for every service", d: "A single \"services\" page can't rank for cameras, alarms, smart locks and monitoring in every town you cover." },
-    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews for a reliable alarm installer nearby, AI tools name the companies they can verify." },
+    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews for a reliable alarm installer nearby, AI tools name the companies they can verify. Read how [AI SEO](/blog/what-is-ai-seo) changes that." },
     { icon: PhoneOff, t: "Calls nobody tracks", d: "Without call tracking you can't tell which page or search produced a booked survey, so marketing money goes to the wrong place." },
   ],
   mistakesTitle: "5 Home Security SEO Mistakes That Cost Installs",

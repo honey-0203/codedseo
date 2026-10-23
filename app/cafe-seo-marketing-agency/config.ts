@@ -15,7 +15,7 @@ export const STEPS = [
   { t: "Fill in the attributes people filter by", d: "Wi-Fi, outdoor seating, dog-friendly, vegan options, wheelchair access. People searching \"cafe with wifi near me\" are matched on these details." },
   { t: "Post real photos every month", d: "The counter, the latte art, the window seat, the cat on the sofa. Fresh, real photos get more views than stock images and show Google the profile is active." },
   { t: "Ask regulars for reviews that mention what they order", d: "A small table card or receipt QR code works. Reviews that say \"best flat white\" or \"quiet place to work\" help you rank for those searches." },
-  { t: "Give your website one page per thing people search for", d: "Menu, brunch, coffee beans, events, private hire, and a page for each location. Each one can rank for its own search." },
+  { t: "Give your website one page per thing people search for", d: "Menu, brunch, coffee beans, events, private hire, and a page for each location. Each one can rank for its own search, which is the core of [organic SEO](/services/organic-seo)." },
   { t: "Add CafeOrCoffeeShop schema and keep details identical everywhere", d: "Structured data tells Google your hours, menu and location. Keep the same name, address and phone on Google, Apple Maps, Yelp and Instagram." },
 ];
 
@@ -25,7 +25,7 @@ export const FAQS = [
   { q: "Do cat cafes and board game cafes need different SEO?", a: "They need the same foundations plus pages for what makes them special: booking slots, visit rules, game library or resident cats, pricing and events. People search for these specifically, often from further away, so those pages can bring visitors from across the city." },
   { q: "How long does cafe SEO take to show results?", a: "Profile, menu and photo updates often show movement in 4 to 8 weeks. Menu changes on Google can take 24 to 48 hours to appear. Organic rankings for your website usually take 3 to 6 months." },
   { q: "How much does SEO for cafes cost?", a: "Our SEO packages start at $199 per month for Starter and $499 per month for Growth. A single cafe usually starts on Starter; groups with several locations or a roastery and online shop usually need Growth." },
-  { q: "Can you help with local SEO for cafes and restaurants together?", a: "Yes. Cafes that also serve brunch or dinner need the right categories, menus for each service and pages for each meal people search for. We plan it so the pages support each other instead of competing." },
+  { q: "Can you help with local SEO for cafes and restaurants together?", a: "Yes. Cafes that also serve brunch or dinner need the right categories, menus for each service and pages for each meal people search for. We plan it so the pages support each other instead of competing. If you deliver too, see our [food delivery SEO](/food-delivery-service-seo-company) service." },
   { q: "What should a cafe website have for SEO?", a: "A text menu with prices, opening hours, a map and parking info, pages for brunch, events and private hire, real photos, reviews, a page per location, and CafeOrCoffeeShop schema with the same details as your Google profile." },
   { q: "Do you guarantee cafe SEO results?", a: "No one controls Google, so we never promise a specific ranking. We do offer a 90-day results guarantee: if you don't see measurable ranking improvements, we keep working for free until you do." },
 ];
@@ -60,7 +60,7 @@ export const CFG: IndustryConfig = {
     title: "Cafe Customers Decide in Seconds, Usually Within Walking Distance",
     paras: [
       "Nobody plans a coffee a week ahead. People search \"coffee near me\" or \"cafe open now\", look at the top three results, check the photos and walk to the one that looks right. Distance matters, but so do your photos, rating, opening hours and whether Google knows you have Wi-Fi or vegan milk.",
-      "That's why SEO for cafes is mostly about a complete, active Google profile and a website that backs it up. A few well-chosen pages (menu, brunch, events, each location) beat dozens of blog posts.",
+      "That's why SEO for cafes is mostly about a complete, active Google profile and a website that backs it up. A few well-chosen pages (menu, brunch, events, each location) beat dozens of blog posts. A [free SEO audit](/free-audit) shows which of them you are missing.",
     ],
   },
   factsTitle: "Cafe SEO at a glance",
@@ -120,7 +120,7 @@ export const CFG: IndustryConfig = {
     { icon: Clock, t: "Wrong or missing hours", d: "If Google says you're closed, or doesn't know you open at 7 am, early customers go elsewhere and leave annoyed reviews." },
     { icon: Camera, t: "Old or stock photos", d: "People choose a cafe by how it looks. Dark, outdated or stock photos lose clicks to places that show their real space." },
     { icon: PhoneOff, t: "Menu nobody can read", d: "A blurry menu photo or a PDF that won't open on a phone sends people to the next result." },
-    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews for a quiet cafe with Wi-Fi nearby, AI tools name the places they can verify from attributes and reviews." },
+    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews for a quiet cafe with Wi-Fi nearby, AI tools name the places they can verify from attributes and reviews. Our guide to [AI SEO](/blog/what-is-ai-seo) explains how that works." },
     { icon: BarChart3, t: "No idea what's working", d: "Without tracking calls, direction requests and menu views, you can't tell whether Instagram, Google or word of mouth fills your tables." },
   ],
   mistakesTitle: "5 Cafe SEO Mistakes That Cost Customers",

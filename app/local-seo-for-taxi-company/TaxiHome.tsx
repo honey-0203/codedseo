@@ -375,8 +375,8 @@ function Why() {
         <div>
           <p className="eyebrow">Why taxi SEO is different</p>
           <h2>Taxi Searches Are Urgent, Local and Almost Always on a Phone</h2>
-          <p className="grey">A dentist can wait a week for an appointment. A rider standing outside an airport terminal or a restaurant at midnight decides in under a minute. That is why SEO for taxi companies is less about long blog posts and more about being in the Map Pack, loading fast on mobile and making the call button the first thing people see.</p>
-          <p className="grey">Most taxi companies also don&apos;t have a storefront. Google treats you as a <strong>service-area business</strong>: your address stays hidden and you rank by the areas you cover, your categories, your reviews and how well your website backs all of that up.</p>
+          <p className="grey">A dentist can wait a week for an appointment. A rider standing outside an airport terminal or a restaurant at midnight decides in under a minute. That is why SEO for taxi companies is less about long blog posts and more about being in the Map Pack, loading fast on mobile and making the call button the first thing people see. Food businesses face the same rush at mealtime, which is why our <Link href="/food-delivery-service-seo-company">food delivery SEO</Link> follows a similar playbook.</p>
+          <p className="grey">Most taxi companies also don&apos;t have a storefront. Google treats you as a <strong>service-area business</strong>: your address stays hidden and you rank by the areas you cover, your categories, your reviews and how well your website backs all of that up. Alarm and CCTV installers work the same way, so our <Link href="/home-security-seo-services">home security SEO services</Link> use the same service-area setup.</p>
           <Photo id={IMG_SIDE.id} alt={IMG_SIDE.alt} />
         </div>
         <div className="facts fr-facts">
@@ -423,7 +423,7 @@ function SearchTypes() {
         <div className="head">
           <p className="eyebrow">Keywords</p>
           <h2>The Searches Your Riders Actually Use</h2>
-          <p className="grey">Every type of search needs a different page. Replace [town] and [airport] with the places you serve and you have the start of your keyword plan.</p>
+          <p className="grey">Every type of search needs a different page. Replace [town] and [airport] with the places you serve and you have the start of your keyword plan. It&apos;s the same town-by-town approach we use for local businesses in <Link href="/seo-agency-frisco">Frisco, Texas</Link>.</p>
         </div>
         <div className="fr-table-wrap">
           <table className="fr-table tx-table">

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { Rich } from "@/lib/rich";
 import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
@@ -214,8 +215,8 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
               <p className="fd-script">The basics</p>
               <h2>{c.whatIs.title}</h2>
               <Divider />
-              <p>{c.whatIs.intro}</p>
-              <ol className="fd-pillars">{c.whatIs.pillars.map((p, i) => <li key={p.t}><span>{String(i + 1).padStart(2, "0")}</span><div><h3>{p.t}</h3><p>{p.d}</p></div></li>)}</ol>
+              <p><Rich text={c.whatIs.intro} /></p>
+              <ol className="fd-pillars">{c.whatIs.pillars.map((p, i) => <li key={p.t}><span>{String(i + 1).padStart(2, "0")}</span><div><h3>{p.t}</h3><p><Rich text={p.d} /></p></div></li>)}</ol>
               <Link className="fd-btn sm" href="/services">Our SEO services <Chevron /></Link>
             </div>
             <figure className="fd-frame fd-rv"><Img img={IMG.rider} w={1100} /></figure>
@@ -228,7 +229,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
               <p className="fd-script">{c.why.eyebrow}</p>
               <h2>{c.why.title}</h2>
               <Divider />
-              {c.why.paras.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              {c.why.paras.map((p) => <p key={p.slice(0, 24)}><Rich text={p} /></p>)}
               <Link className="fd-btn sm" href="/free-audit">Get my free audit <Chevron /></Link>
             </div>
           </div></section>
@@ -251,7 +252,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="fd-sec"><div className="fd-wrap">
             <Head script="Sound familiar?" title={c.challengesTitle} />
             <div className="fd-cards">{c.challenges.map((x) => { const I = x.icon; return (
-              <div key={x.t} className="fd-card fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+              <div key={x.t} className="fd-card fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{x.t}</h3><p><Rich text={x.d} /></p></div>
             ); })}</div>
           </div></section>
 
@@ -272,7 +273,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           {/* 7 STEPS */}
           <section className="fd-sec"><div className="fd-wrap">
             <Head script="Step-by-step guide" title={c.guide.title} intro={c.guide.intro} />
-            <ol className="fd-steps">{c.guide.steps.map((s, i) => <li key={s.t} className="fd-rv"><span className="fd-num">{i + 1}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></li>)}</ol>
+            <ol className="fd-steps">{c.guide.steps.map((s, i) => <li key={s.t} className="fd-rv"><span className="fd-num">{i + 1}</span><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div></li>)}</ol>
             <CtaStrip {...c.ctas[0]} />
           </div></section>
 
@@ -280,7 +281,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="fd-sec cream"><div className="fd-wrap">
             <Head script="Our services" title={c.services.title} intro={<>{c.services.intro} See all <Link href="/services">SEO services</Link>.</>} />
             <div className="fd-cards">{c.services.items.map((s) => { const I = s.icon; return (
-              <Link key={s.t} href={s.href} className="fd-card link fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{s.t}</h3><p>{s.d}</p><span className="fd-more">Learn more <Chevron /></span></Link>
+              <Link key={s.t} href={s.href} className="fd-card link fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{s.t}</h3><p><Rich text={s.d} /></p><span className="fd-more">Learn more <Chevron /></span></Link>
             ); })}</div>
           </div></section>
 
@@ -303,9 +304,9 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="fd-sec cream"><div className="fd-wrap">
             <Head script="Who we help" title={c.segments.title} />
             <div className="fd-chef">
-              <ul className="fd-chef-col left">{segL.map((s) => { const I = s.icon; return <li key={s.t} className="fd-rv"><div><h3>{s.t}</h3><p>{s.d}</p></div><span className="fd-ic sm"><I size={24} strokeWidth={1.5} /></span></li>; })}</ul>
+              <ul className="fd-chef-col left">{segL.map((s) => { const I = s.icon; return <li key={s.t} className="fd-rv"><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div><span className="fd-ic sm"><I size={24} strokeWidth={1.5} /></span></li>; })}</ul>
               <figure className="fd-chef-img fd-rv"><Img img={IMG.chef} w={800} sizes="(max-width: 900px) 80vw, 340px" /></figure>
-              <ul className="fd-chef-col">{segR.map((s) => { const I = s.icon; return <li key={s.t} className="fd-rv"><span className="fd-ic sm"><I size={24} strokeWidth={1.5} /></span><div><h3>{s.t}</h3><p>{s.d}</p></div></li>; })}</ul>
+              <ul className="fd-chef-col">{segR.map((s) => { const I = s.icon; return <li key={s.t} className="fd-rv"><span className="fd-ic sm"><I size={24} strokeWidth={1.5} /></span><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div></li>; })}</ul>
             </div>
           </div></section>
 
@@ -331,14 +332,14 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="fd-sec"><div className="fd-wrap">
             <Head script="Checklists" title={c.checklists.title} intro={c.checklists.intro} />
             <div className="fd-two">{[c.checklists.left, c.checklists.right].map((l) => (
-              <div key={l.t} className="fd-list fd-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}>{x}</li>)}</ul></div>
+              <div key={l.t} className="fd-list fd-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}><Rich text={x} /></li>)}</ul></div>
             ))}</div>
           </div></section>
 
           {/* MISTAKES */}
           <section className="fd-sec cream"><div className="fd-wrap">
             <Head script="Avoid these" title={c.mistakesTitle} />
-            <div className="fd-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="fd-mistake fd-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p>{m.d}</p></div>)}</div>
+            <div className="fd-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="fd-mistake fd-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p><Rich text={m.d} /></p></div>)}</div>
             <CtaStrip {...c.ctas[1]} />
           </div></section>
 
@@ -355,7 +356,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
           {/* PROCESS + KPIs */}
           <section className="fd-sec"><div className="fd-wrap">
             <Head script="Your first 90 days" title="What Happens After You Hire Us" />
-            <div className="fd-process">{c.process.map((p, i) => <div key={p.t} className="fd-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p>{p.d}</p></div>)}</div>
+            <div className="fd-process">{c.process.map((p, i) => <div key={p.t} className="fd-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p><Rich text={p.d} /></p></div>)}</div>
           </div></section>
           <section className="fd-sec pt0"><div className="fd-wrap">
             <Head script="Measuring results" title={c.kpisTitle} intro="Rankings are only part of it. These are the numbers we report every month." />
@@ -390,7 +391,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
             <div className="fd-faq">{c.faqs.map((f, i) => (
               <div key={f.q} className={`fd-faq-item ${open === i ? "open" : ""}`}>
                 <h3><button type="button" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>{f.q}<span>{open === i ? "−" : "+"}</span></button></h3>
-                <div className="fd-faq-body" hidden={open !== i}>{f.a}</div>
+                <div className="fd-faq-body" hidden={open !== i}><Rich text={f.a} /></div>
               </div>))}
             </div>
             <div className="fd-help">

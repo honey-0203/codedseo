@@ -304,3 +304,5 @@
   .fd-strip { padding: 22px 20px; }
   .fd-mistakes .fd-mistake { flex-basis: 100%; }
 }
+.fd .in-link { color: var(--gold-d); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.fd .in-link:hover { text-decoration-thickness: 2px; }

@@ -325,3 +325,5 @@
   .cf-hero { padding-bottom: 90px; }
   .cf-why-img::after { inset: 10px -8px -10px 10px; }
 }
+.cf .in-link { color: var(--g-d); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.cf .in-link:hover { text-decoration-thickness: 2px; }

@@ -331,3 +331,5 @@
   .hs-stack { padding: 20px 30px 50px 20px; }
   .hs-tabs { display: none; }
 }
+.hs .in-link { color: var(--g-d); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.hs .in-link:hover { text-decoration-thickness: 2px; }

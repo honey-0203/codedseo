@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { Rich } from "@/lib/rich";
 import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
@@ -210,9 +211,9 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
 
           {/* BASICS – numbered dark cards */}
           <section className="hs-sec"><div className="hs-wrap">
-            <Head eyebrow="The basics" title={c.whatIs.title} intro={c.whatIs.intro} />
+            <Head eyebrow="The basics" title={c.whatIs.title} intro={<Rich text={c.whatIs.intro} />} />
             <div className="hs-num-cards">{c.whatIs.pillars.map((p, i) => { const I = [c.services.items[0].icon, c.services.items[1].icon, c.services.items[2].icon][i]; return (
-              <div key={p.t} className="hs-num-card hs-rv"><span className="hs-big">{String(i + 1).padStart(2, "0")}</span><span className="hs-ic"><I size={26} strokeWidth={1.8} /></span><h3>{p.t}</h3><p>{p.d}</p></div>
+              <div key={p.t} className="hs-num-card hs-rv"><span className="hs-big">{String(i + 1).padStart(2, "0")}</span><span className="hs-ic"><I size={26} strokeWidth={1.8} /></span><h3>{p.t}</h3><p><Rich text={p.d} /></p></div>
             ); })}</div>
           </div></section>
 
@@ -226,7 +227,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
             <div className="hs-rv">
               <p className="hs-eyebrow">{c.why.eyebrow}</p>
               <h2>{c.why.title}</h2>
-              {c.why.paras.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              {c.why.paras.map((p) => <p key={p.slice(0, 24)}><Rich text={p} /></p>)}
               <h3 className="hs-facts-t">{c.factsTitle}</h3>
               <ul className="hs-facts">{c.facts.map((f) => <li key={f.k}><span><Tick /></span><div><b>{f.k}</b><p>{f.d}</p></div></li>)}</ul>
             </div>
@@ -248,7 +249,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
                 <p>{c.services.intro} See all <Link href="/services">SEO services</Link>.</p>
               </div>
               {c.services.items.map((s) => { const I = s.icon; return (
-                <Link key={s.t} href={s.href} className="hs-offer-card hs-rv"><span className="hs-ic"><I size={30} strokeWidth={1.6} /></span><h3>{s.t}</h3><p>{s.d}</p><span className="hs-arrow" aria-hidden="true"><Arrow /></span></Link>
+                <Link key={s.t} href={s.href} className="hs-offer-card hs-rv"><span className="hs-ic"><I size={30} strokeWidth={1.6} /></span><h3>{s.t}</h3><p><Rich text={s.d} /></p><span className="hs-arrow" aria-hidden="true"><Arrow /></span></Link>
               ); })}
             </div>
           </div></section>
@@ -291,7 +292,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
           </section>
           <section className="hs-wrap"><div className="hs-guide hs-rv">
             <p className="hs-guide-intro">{c.guide.intro}</p>
-            <ol className="hs-steps">{c.guide.steps.map((s, i) => <li key={s.t}><span className="hs-step-n">{i + 1}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></li>)}</ol>
+            <ol className="hs-steps">{c.guide.steps.map((s, i) => <li key={s.t}><span className="hs-step-n">{i + 1}</span><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div></li>)}</ol>
           </div>
           <CtaStrip {...c.ctas[0]} />
           </section>
@@ -300,7 +301,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
           <section className="hs-sec"><div className="hs-wrap">
             <Head eyebrow="Checklists" title={c.checklists.title} intro={c.checklists.intro} />
             <div className="hs-two">{[c.checklists.left, c.checklists.right].map((l) => (
-              <div key={l.t} className="hs-list hs-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}><span><Tick /></span>{x}</li>)}</ul></div>
+              <div key={l.t} className="hs-list hs-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}><span><Tick /></span><Rich text={x} /></li>)}</ul></div>
             ))}</div>
           </div></section>
 
@@ -308,7 +309,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
           <section className="hs-sec dark"><div className="hs-wrap">
             <Head eyebrow="Who we help" title={c.segments.title} light intro="Every security business sells trust. The searches and the proof customers need are different for each, so your pages should be too." />
             <div className="hs-tiles">{c.segments.items.map((s) => { const I = s.icon; return (
-              <div key={s.t} className="hs-tile hs-rv"><span className="hs-tile-ic"><I size={30} strokeWidth={1.6} /></span><h3>{s.t}</h3><p>{s.d}</p></div>
+              <div key={s.t} className="hs-tile hs-rv"><span className="hs-tile-ic"><I size={30} strokeWidth={1.6} /></span><h3>{s.t}</h3><p><Rich text={s.d} /></p></div>
             ); })}</div>
           </div></section>
 
@@ -316,14 +317,14 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
           <section className="hs-sec"><div className="hs-wrap">
             <Head eyebrow="Sound familiar?" title={c.challengesTitle} />
             <div className="hs-probs">{c.challenges.map((x) => { const I = x.icon; return (
-              <div key={x.t} className="hs-prob hs-rv"><span className="hs-ic round"><I size={24} strokeWidth={1.8} /></span><div><h3>{x.t}</h3><p>{x.d}</p></div></div>
+              <div key={x.t} className="hs-prob hs-rv"><span className="hs-ic round"><I size={24} strokeWidth={1.8} /></span><div><h3>{x.t}</h3><p><Rich text={x.d} /></p></div></div>
             ); })}</div>
           </div></section>
 
           {/* MISTAKES */}
           <section className="hs-sec soft"><div className="hs-wrap">
             <Head eyebrow="Avoid these" title={c.mistakesTitle} />
-            <div className="hs-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="hs-mistake hs-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p>{m.d}</p></div>)}</div>
+            <div className="hs-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="hs-mistake hs-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p><Rich text={m.d} /></p></div>)}</div>
             <CtaStrip {...c.ctas[1]} />
           </div></section>
 
@@ -339,7 +340,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
           {/* PROCESS + KPIs */}
           <section className="hs-sec"><div className="hs-wrap">
             <Head eyebrow="Your first 90 days" title="What Happens After You Hire Us" />
-            <div className="hs-process">{c.process.map((p, i) => <div key={p.t} className="hs-rv"><span className="hs-big dark">{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p>{p.d}</p></div>)}</div>
+            <div className="hs-process">{c.process.map((p, i) => <div key={p.t} className="hs-rv"><span className="hs-big dark">{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p><Rich text={p.d} /></p></div>)}</div>
           </div></section>
           <section className="hs-sec pt0"><div className="hs-wrap">
             <Head eyebrow="Measuring results" title={c.kpisTitle} intro="Rankings are only part of it. These are the numbers we report every month." />
@@ -374,7 +375,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
             <div className="hs-faq">{c.faqs.map((f, i) => (
               <div key={f.q} className={`hs-faq-item ${open === i ? "open" : ""}`}>
                 <h3><button type="button" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>{f.q}<span>{open === i ? "−" : "+"}</span></button></h3>
-                <div className="hs-faq-body" hidden={open !== i}>{f.a}</div>
+                <div className="hs-faq-body" hidden={open !== i}><Rich text={f.a} /></div>
               </div>))}
             </div>
             <div className="hs-help">
