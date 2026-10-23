@@ -1,0 +1,15 @@
+.isu .sm-hero { padding-bottom: 24px; }
+.isu .sm-crumb { font-size: 14px; color: var(--grey); margin-bottom: 14px; }
+.isu .sm-crumb a { color: var(--green); }
+.isu .sm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.isu .sm-group { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.isu .sm-group h2 { font-size: 20px; margin: 0 0 14px; }
+.isu .sm-group li { padding: 7px 0; border-bottom: 1px solid var(--line); }
+.isu .sm-group li:last-child { border-bottom: 0; }
+.isu .sm-group a { color: var(--ink); font-weight: 500; font-size: 15px; }
+.isu .sm-group a:hover { color: var(--green); }
+.isu .sm-wide { grid-column: 1 / -1; }
+.isu .sm-cols { columns: 3; column-gap: 28px; }
+.isu .sm-cols li { break-inside: avoid; }
+@media (max-width: 1000px) { .isu .sm-grid { grid-template-columns: 1fr 1fr; } .isu .sm-cols { columns: 2; } }
+@media (max-width: 640px) { .isu .sm-grid { grid-template-columns: 1fr; } .isu .sm-cols { columns: 1; } }
