@@ -79,25 +79,14 @@ const menuItems: MenuItem[] = [
           title: "Core SEO",
           items: [
             { name: "Organic SEO", href: "/services/organic-seo", description: "Rank higher organically", icon: <Search className="w-4 h-4" /> },
-            { name: "E-commerce SEO", href: "/services/ecommerce-seo", description: "Boost product visibility", icon: <ShoppingCart className="w-4 h-4" /> },
-            { name: "AI-Powered SEO", href: "/services/ai-seo", description: "Next-gen optimization", icon: <Bot className="w-4 h-4" /> },
-            { name: "Local SEO", href: "/services/local-seo", description: "Dominate local search", icon: <MapPin className="w-4 h-4" /> },
+            { name: "All SEO Services", href: "/services", description: "Everything we offer", icon: <BarChart3 className="w-4 h-4" /> },
+            { name: "Free SEO Audit", href: "/free-audit", description: "Find what's holding you back", icon: <Lightbulb className="w-4 h-4" /> },
           ]
         },
         {
-          title: "Link Building",
+          title: "Industries",
           items: [
-            { name: "Backlink Services", href: "/services/backlinks", description: "Quality link building", icon: <Link2 className="w-4 h-4" /> },
-            { name: "Guest Posting", href: "/services/guest-posting", description: "Authority content placement", icon: <FileText className="w-4 h-4" /> },
-            { name: "Digital PR", href: "/services/digital-pr", description: "Earned media coverage", icon: <Megaphone className="w-4 h-4" /> },
-          ]
-        },
-        {
-          title: "Consulting",
-          items: [
-            { name: "SEO Consultancy", href: "/services/consultancy", description: "Expert guidance", icon: <Lightbulb className="w-4 h-4" /> },
-            { name: "SEO Audit", href: "/services/seo-audit", description: "Comprehensive analysis", icon: <BarChart3 className="w-4 h-4" /> },
-            { name: "Industry Solutions", href: "/services/industries", description: "Vertical expertise", icon: <Building2 className="w-4 h-4" /> },
+            { name: "SEO for Taxi Companies", href: "/local-seo-for-taxi-company", description: "Rank for taxi near me", icon: <MapPin className="w-4 h-4" /> },
           ]
         },
         {
@@ -118,43 +107,6 @@ const menuItems: MenuItem[] = [
   {
     name: "Digital Marketing",
     href: "/digital-marketing",
-    columns: 3,
-    megaMenu: {
-      sections: [
-        {
-          title: "Paid Advertising",
-          items: [
-            { name: "Google Ads (PPC)", href: "/digital-marketing/google-ads", description: "Pay-per-click campaigns", icon: <Target className="w-4 h-4" /> },
-            { name: "Facebook Ads", href: "/digital-marketing/facebook-ads", description: "Social media advertising", icon: <Share2 className="w-4 h-4" /> },
-            { name: "LinkedIn Ads", href: "/digital-marketing/linkedin-ads", description: "B2B advertising", icon: <Users className="w-4 h-4" /> },
-            { name: "Retargeting", href: "/digital-marketing/retargeting", description: "Convert lost visitors", icon: <Rocket className="w-4 h-4" /> },
-          ]
-        },
-        {
-          title: "Content & Social",
-          items: [
-            { name: "Content Marketing", href: "/digital-marketing/content-marketing", description: "Engaging content strategy", icon: <PenTool className="w-4 h-4" /> },
-            { name: "Social Media Marketing", href: "/digital-marketing/social-media", description: "Build your presence", icon: <Share2 className="w-4 h-4" /> },
-            { name: "Email Marketing", href: "/digital-marketing/email-marketing", description: "Nurture and convert", icon: <Megaphone className="w-4 h-4" /> },
-            { name: "Video Marketing", href: "/digital-marketing/video-marketing", description: "Visual storytelling", icon: <Play className="w-4 h-4" /> },
-          ]
-        },
-        {
-          title: "Development & More",
-          items: [
-            { name: "Web Design", href: "/digital-marketing/web-design", description: "Beautiful websites", icon: <Code className="w-4 h-4" /> },
-            { name: "Web Development", href: "/digital-marketing/web-development", description: "Custom solutions", icon: <Code className="w-4 h-4" /> },
-            { name: "CRO Services", href: "/digital-marketing/cro", description: "Conversion optimization", icon: <TrendingUp className="w-4 h-4" /> },
-            { name: "White Label", href: "/digital-marketing/white-label", description: "Agency partnerships", icon: <Tag className="w-4 h-4" /> },
-          ]
-        }
-      ],
-      featured: {
-        title: "Complete Digital Strategy",
-        description: "Get a tailored digital marketing plan that combines SEO, PPC, and content for maximum ROI.",
-        href: "/contact"
-      }
-    }
   },
   {
     name: "Locations",
@@ -174,9 +126,6 @@ const menuItems: MenuItem[] = [
       sub: { label: "Watch video testimonials", href: "/video-testimonials" },
     },
     submenu: [
-      { name: "Worldwide SEO", href: "/case-studies/worldwide", description: "Global success stories", icon: <Globe className="w-4 h-4" /> },
-      { name: "Local SEO", href: "/case-studies/local", description: "Local market wins", icon: <MapPin className="w-4 h-4" /> },
-      { name: "E-commerce SEO", href: "/case-studies/ecommerce", description: "Online store growth", icon: <ShoppingCart className="w-4 h-4" /> },
       { name: "All Case Studies", href: "/case-studies", description: "Browse all results", icon: <BarChart3 className="w-4 h-4" /> },
       { name: "Video Testimonials", href: "/video-testimonials", description: "Client success stories", icon: <Video className="w-4 h-4" /> },
     ]

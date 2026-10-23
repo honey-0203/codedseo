@@ -121,7 +121,8 @@ export function Footer() {
             {legalLinks.map((link) => (
               <Link key={link.href} href={link.href} className="text-zinc-400 transition hover:text-green-400">{link.name}</Link>
             ))}
-            <a href="/sitemap.xml" className="text-zinc-400 transition hover:text-green-400">Sitemap</a>
+            <Link href="/site-map" className="text-zinc-400 transition hover:text-green-400">Sitemap</Link>
+            <a href="/sitemap.xml" className="text-zinc-400 transition hover:text-green-400">XML Sitemap</a>
           </nav>
         </div>
       </div>
