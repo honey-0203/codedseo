@@ -107,12 +107,7 @@ const COMPARE = [
   ["Ownership", "Your content, profile and data stay yours", "Locked in agency accounts"],
 ];
 
-const READING = [
-  { t: "What is AI SEO?", d: "A plain-English guide to getting your business found by AI search tools.", href: "/blog/what-is-ai-seo", tag: "Blog" },
-  { t: "How AI Search Is Changing SEO in 2026", d: "What AI Overviews and chat assistants mean for local rankings and clicks.", href: "/blog/how-ai-search-is-changing-seo-in-2026", tag: "Blog" },
-  { t: "SEO Agency USA", d: "Our nationwide SEO services, packages and 90-day roadmap.", href: "/seo-agency-usa", tag: "Services" },
-  { t: "Free SEO tools", d: "The keyword, title and technical tools we use ourselves.", href: "/tools", tag: "Tools" },
-];
+export type FriscoPost = { title: string; slug: string; category: string; excerpt: string; date: string; image: string; imageAlt: string };
 
 
 
@@ -187,24 +182,17 @@ function Hero() {
           <p className="byline">Reviewed by <Link href="/team">Balbir Singh, founder of CodedSEO</Link> · Updated October 2026</p>
         </div>
 
-        <div className="rank-card" aria-label="Frisco keyword opportunities">
-          <div className="rank-head">
-            <span>Frisco keyword demand</span>
-            <span className="rank-tag">Semrush · Oct 2026</span>
-          </div>
-          <ul className="rank-list">
-            <li><span>seo company frisco</span><b>590/mo</b></li>
-            <li><span>frisco seo</span><b>480/mo</b></li>
-            <li><span>seo frisco tx</span><b>260/mo</b></li>
-            <li><span>frisco seo services</span><b>210/mo</b></li>
-            <li><span>local seo services frisco tx</span><b>110/mo</b></li>
-          </ul>
-          <div className="rank-foot">
-            <div><strong>KD 4–19</strong><small>Low to medium difficulty</small></div>
-            <div><strong>2,000+</strong><small>Monthly searches combined</small></div>
-          </div>
-          <p className="rank-note">US search volume for SEO-related searches in Frisco. Your industry has its own version of this list.</p>
-        </div>
+        <figure className="fr-hero-img">
+          <img
+            src="/images/seo-company-frisco-tx.svg"
+            alt="SEO company Frisco TX: local business ranking #1 in Google Maps for seo company frisco"
+            width={720}
+            height={560}
+            fetchPriority="high"
+            decoding="async"
+          />
+          <figcaption>Illustration: what a #1 Google Maps result for &quot;seo company frisco&quot; looks like.</figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -467,25 +455,37 @@ function Areas() {
   );
 }
 
-function Reading() {
+function Reading({ posts }: { posts: FriscoPost[] }) {
+  // Sirf asli published blogs. Koi blog na mile to section hi nahi dikhega.
+  if (!posts.length) return null;
   return (
-    <section className="sec">
+    <section className="sec soft">
       <div className="wrap">
-        <div className="head left">
-          <p className="eyebrow">Keep reading</p>
+        <div className="head">
+          <p className="eyebrow">From the CodedSEO blog</p>
           <h2>Guides for Frisco Business Owners</h2>
-          <p className="grey">More on the <Link href="/blog">CodedSEO blog</Link> and in our <Link href="/learn">SEO learning hub</Link>. See finished projects in our <Link href="/case-studies">case studies</Link>.</p>
+          <p className="grey">Practical guides from our team. See every article on the <Link href="/blog">CodedSEO blog</Link>.</p>
         </div>
-        <div className="read-grid">
-          {READING.map((r) => (
-            <Link key={r.t} className="read" href={r.href}>
-              <span className="read-tag">{r.tag}</span>
-              <h3>{r.t}</h3>
-              <p>{r.d}</p>
-              <span className="card-link">Read <Chevron /></span>
+        <div className="fr-posts">
+          {posts.map((p) => (
+            <Link key={p.slug} className="fr-post" href={`/blog/${p.slug}`}>
+              <div className="fr-post-img">
+                {p.image ? (
+                  <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" />
+                ) : (
+                  <span aria-hidden="true">{p.category}</span>
+                )}
+              </div>
+              <div className="fr-post-body">
+                <span className="fr-post-cat">{p.category}</span>
+                <h3>{p.title}</h3>
+                {p.excerpt && <p>{p.excerpt}</p>}
+                <span className="fr-post-foot">{p.date && <time>{p.date}</time>}<span className="card-link">Read article <Chevron /></span></span>
+              </div>
             </Link>
           ))}
         </div>
+        <div className="center fr-posts-more"><Link className="btn line" href="/blog">View all articles <Chevron /></Link></div>
       </div>
     </section>
   );
@@ -537,7 +537,7 @@ function FinalCta() {
 
 /* ================= PAGE ================= */
 
-export default function FriscoHome() {
+export default function FriscoHome({ posts = [] }: { posts?: FriscoPost[] }) {
   return (
     <>
       <SiteHeader />
@@ -555,7 +555,7 @@ export default function FriscoHome() {
           <Industries />
           <Compare />
           <Areas />
-          <Reading />
+          <Reading posts={posts} />
           <Faq />
           <FinalCta />
         </main>
