@@ -40,8 +40,9 @@ function titleFor(dir: string, p: string): string {
     const meta = src.indexOf("metadata");
     if (meta === -1) continue;
     const block = src.slice(meta, meta + 600);
-    let t = block.match(/title:\s*"([^"]+)"/)?.[1];
-    if (!t && /title:\s*TITLE/.test(block)) t = src.match(/const TITLE\s*=\s*"([^"]+)"/)?.[1];
+    // Pehle `title: TITLE` dekho (TITLE const), warna metadata ka seedha "title"
+    let t = /title:\s*TITLE\b/.test(block) ? src.match(/const TITLE\s*=\s*"([^"]+)"/)?.[1] : undefined;
+    if (!t) t = block.match(/title:\s*"([^"]+)"/)?.[1];
     if (t) return t.replace(/\s*\|\s*CodedSEO\s*$/i, "").trim();
   }
   return humanize(p);
