@@ -51,7 +51,7 @@ const poppins = Poppins({
 const URL = "https://codedseo.com/seo-agency-frisco";
 const TITLE = "SEO Company Frisco TX | Frisco SEO Services | CodedSEO";
 const DESC =
-  "Looking for an SEO company in Frisco, TX? CodedSEO helps Frisco businesses rank in Google Maps, organic search and AI answers. Plans from $199/mo. Free audit.";
+  "Need an SEO company in Frisco, TX? CodedSEO helps Frisco businesses rank in Google Maps, search and AI answers. Plans from $199/mo.";
 
 export const metadata: Metadata = {
   title: TITLE,
