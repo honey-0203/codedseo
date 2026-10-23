@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import Client from "./Client";
+import { Great_Vibes, Poppins } from "next/font/google";
+import FoodHome from "./FoodHome";
 import { FAQS, STEPS } from "./config";
 import { CONTACT } from "@/lib/contact";
 import { getRelatedPosts } from "@/lib/related-posts";
-import "../seo-agency-usa/usa.css";
 
 // Blogs Sanity se live aate hain (har 10 min refresh). Koi fake card nahi.
 export const revalidate = 600;
@@ -15,6 +14,7 @@ const poppins = Poppins({
   display: "swap",
   variable: "--font-poppins",
 });
+const script = Great_Vibes({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-script" });
 
 const URL = "https://codedseo.com/food-delivery-service-seo-company";
 const TITLE = "Food Delivery Service SEO Company | More Direct Orders | CodedSEO";
@@ -89,9 +89,9 @@ const schema = {
 export default async function FoodDeliveryPage() {
   const posts = await getRelatedPosts(/local|google|map|gmb|business profile|review|restaurant|food|order|near me/i);
   return (
-    <div className={poppins.variable}>
+    <div className={`${poppins.variable} ${script.variable}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <Client posts={posts} />
+      <FoodHome posts={posts} />
     </div>
   );
 }
