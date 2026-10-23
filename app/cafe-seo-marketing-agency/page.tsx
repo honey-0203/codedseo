@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import CafeHome from "./CafeHome";
 import { FAQS, STEPS } from "./config";
 import { CONTACT } from "@/lib/contact";
+import { plain } from "@/lib/rich";
 import { getRelatedPosts } from "@/lib/related-posts";
 
 // Blogs Sanity se live aate hain (har 10 min refresh). Koi fake card nahi.
@@ -68,7 +69,7 @@ const schema = {
     {
       "@type": "HowTo",
       name: "How to do SEO for a cafe",
-      step: STEPS.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.t, text: s.d })),
+      step: STEPS.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.t, text: plain(s.d) })),
     },
     {
       "@type": "BreadcrumbList",
@@ -80,7 +81,7 @@ const schema = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: plain(f.a) } })),
     },
   ],
 };

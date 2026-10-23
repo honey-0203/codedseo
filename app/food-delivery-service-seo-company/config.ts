@@ -47,7 +47,7 @@ export const CFG: IndustryConfig = {
   auditCta: "Get my free delivery SEO audit",
   whatIs: {
     title: "What Does a Food Delivery Service SEO Company Do?",
-    intro: "Food delivery SEO is about being found at mealtime and getting the order on your own terms. It rests on three parts working together.",
+    intro: "Food delivery SEO is [local SEO](/services) built for mealtime: being found when people are hungry and getting the order on your own terms. It rests on three parts working together.",
     pillars: [
       { t: "Google Business Profile & ordering", d: "Your listing on Search and Maps, with categories, delivery areas, hours, photos, reviews and the ordering options Google shows under your name, including your own link." },
       { t: "Menu & area pages", d: "A crawlable menu and a page for each area you deliver to, so Google can match you to searches for a dish, a cuisine or a neighbourhood." },
@@ -59,7 +59,7 @@ export const CFG: IndustryConfig = {
     title: "Delivery Searches Happen at Mealtime, on a Phone, in a Hurry",
     paras: [
       "Someone searching \"food delivery near me\" at 8 pm is going to order in the next few minutes. They pick from the Map Pack, glance at photos and ratings, and tap whichever ordering button loads fastest. Long articles don't win that moment; a complete profile, a fast menu and a one-tap order button do.",
-      "Delivery apps are part of the picture, and many customers will keep using them. The goal of SEO for food delivery services is to win the customers who search Google first and send them to your own ordering page, where you keep the margin and the customer data.",
+      "Delivery apps are part of the picture, and many customers will keep using them. The goal of SEO for food delivery services is to win the customers who search Google first and send them to your own ordering page, where you keep the margin and the customer data. If you also run a sit-down space, our guide to [SEO for cafes](/cafe-seo-marketing-agency) covers the walk-in side.",
     ],
   },
   factsTitle: "Delivery SEO at a glance",
@@ -120,7 +120,7 @@ export const CFG: IndustryConfig = {
     { icon: MapPinOff, t: "Missing from the Map Pack", d: "Competitors with more photos, fresher reviews and complete menus take the top three spots at mealtime." },
     { icon: PhoneOff, t: "Slow or broken ordering", d: "A menu that loads as a PDF, a checkout that asks for an account, or a page that times out on mobile sends people straight back to the app." },
     { icon: Layers, t: "One page for every area", d: "A single homepage can't rank for every neighbourhood you deliver to. Google needs a clear page for each one." },
-    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews where to order a dish nearby, AI tools name the places they can verify from menus, reviews and listings." },
+    { icon: Sparkles, t: "Invisible in AI answers", d: "When someone asks ChatGPT or Google AI Overviews where to order a dish nearby, AI tools name the places they can verify from menus, reviews and listings. That is what [AI SEO](/blog/what-is-ai-seo) fixes." },
     { icon: BarChart3, t: "No idea where orders come from", d: "Without tracking you can't tell which orders came from Google, the app or a flyer, so marketing money goes to the wrong place." },
   ],
   mistakesTitle: "5 Food Delivery SEO Mistakes That Cost Orders",
@@ -128,7 +128,7 @@ export const CFG: IndustryConfig = {
     { t: "Menu only as an image or PDF", d: "Google and AI tools read text. A photo of your menu is better than nothing, but a text menu page ranks for dish searches." },
     { t: "Letting apps be the only ordering link", d: "If your own link isn't on your Google profile, customers who searched for you go to an app by default." },
     { t: "Keyword-stuffed business names", d: "Adding \"Best Cheap Food Delivery\" to your Google name breaks Google's guidelines. Use your real business name." },
-    { t: "Copy-paste area pages", d: "Pages that only swap the area name are thin content. Each needs real details: delivery times, landmarks, popular orders." },
+    { t: "Copy-paste area pages", d: "Pages that only swap the area name are thin content. Each needs real details: delivery times, landmarks, popular orders. The same rule applies to [taxi companies](/local-seo-for-taxi-company) covering many towns." },
     { t: "Ignoring bad reviews about delivery", d: "Cold food and late orders get mentioned. Reply to every review, fix the cause, and future customers will see that you care." },
   ],
   services: {

@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Mail, MapPin, Phone, MessageCircle } from "lucide-react"
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact"
 import { PreferredSourceButton } from "@/components/preferred-source-button"
+import { INDUSTRY_PAGES } from "@/lib/industries"
 
 const CALENDLY = "https://calendly.com/codedseo-sales/30min"
 
@@ -16,6 +17,10 @@ const columns = [
       { name: "Digital Marketing", href: "/digital-marketing" },
       { name: "Free SEO Audit", href: "/free-audit" },
     ],
+  },
+  {
+    title: "Industries",
+    links: INDUSTRY_PAGES.map((p) => ({ name: p.short, href: p.href })),
   },
   {
     title: "Company",
@@ -67,8 +72,8 @@ export function Footer() {
 
       {/* Main */}
       <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-12">
-          <div className="col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 xl:grid-cols-[1.3fr_1fr_1fr_1fr_1fr] xl:gap-10">
+          <div className="col-span-2 md:col-span-4 xl:col-span-1">
             <Link href="/" className="inline-block overflow-hidden rounded-xl bg-white px-1" aria-label="CodedSEO home">
               <img src="/codedseo.png" alt="CodedSEO" className="-my-[20px] h-[92px] w-auto" />
             </Link>

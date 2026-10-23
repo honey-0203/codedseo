@@ -422,6 +422,7 @@ function Industries() {
             </div>
           ))}
         </div>
+        <p className="grey center fr-ind-more">Running a taxi, food delivery, cafe or home security business in Frisco? Read our industry guides to <Link href="/local-seo-for-taxi-company">local SEO for taxi companies</Link>, <Link href="/food-delivery-service-seo-company">food delivery SEO</Link>, <Link href="/cafe-seo-marketing-agency">cafe SEO</Link> and <Link href="/home-security-seo-services">home security SEO</Link>.</p>
       </div>
     </section>
   );

@@ -1,14 +1,8 @@
 import Link from "next/link";
 import "./related-industries.css";
 
-// Internal links between the industry landing pages. Add new industry pages here
-// and they are linked from every other industry page automatically.
-export const INDUSTRY_PAGES = [
-  { href: "/local-seo-for-taxi-company", title: "Local SEO for Taxi Companies", d: "Rank for taxi near me, airport and town searches." },
-  { href: "/food-delivery-service-seo-company", title: "Food Delivery Service SEO", d: "More direct orders from Google, fewer app fees." },
-  { href: "/cafe-seo-marketing-agency", title: "Cafe SEO Marketing", d: "Rank for cafe near me and fill more tables." },
-  { href: "/home-security-seo-services", title: "Home Security SEO Services", d: "Book more alarm, CCTV and smart-lock installs." },
-] as const;
+import { INDUSTRY_PAGES } from "@/lib/industries";
+export { INDUSTRY_PAGES };
 
 export function RelatedIndustries({ current }: { current: string }) {
   const items = INDUSTRY_PAGES.filter((p) => p.href !== current);

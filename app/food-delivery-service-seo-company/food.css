@@ -1,3 +1,6 @@
+/* Header is h-16 (64px) below 1024px and h-20 (80px) above; JS refines this after load. */
+:root { --fd-hdr: 64px; }
+@media (min-width: 1024px) { :root { --fd-hdr: 80px; } }
 /* Food Delivery page – restaurant-style layout in CodedSEO colours (green, teal, #050807). Scoped to .fd */
 .fd {
   /* CodedSEO colours: green + teal, dark #050807, soft green-white */
@@ -11,7 +14,7 @@
   font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
   color: var(--text);
   background: #fff;
-  padding-top: var(--fd-hdr, 96px);
+  padding-top: var(--fd-hdr);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -52,7 +55,7 @@
 .fd .fd-chip:hover { border-color: var(--gold); color: var(--gold-d); }
 
 /* HERO */
-.fd-hero { position: relative; min-height: calc(100vh - var(--fd-hdr, 96px)); display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--dark); color: #fff; padding: 70px 0 90px; }
+.fd-hero { position: relative; min-height: calc(100vh - var(--fd-hdr)); display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--dark); color: #fff; padding: 70px 0 90px; }
 .fd-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: fdZoom 22s ease-in-out infinite alternate; }
 .fd-hero-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(5,8,7,.62) 0%, rgba(5,8,7,.82) 70%), linear-gradient(180deg, rgba(5,8,7,.4), rgba(5,8,7,.85)); }
 .fd-hero-in { position: relative; max-width: 900px; }
@@ -301,3 +304,5 @@
   .fd-strip { padding: 22px 20px; }
   .fd-mistakes .fd-mistake { flex-basis: 100%; }
 }
+.fd .in-link { color: var(--gold-d); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.fd .in-link:hover { text-decoration-thickness: 2px; }

@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { Rich } from "@/lib/rich";
 import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
@@ -224,11 +225,11 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
 
           {/* PILLARS – photo cards */}
           <section className="cf-sec"><div className="cf-wrap">
-            <Head eyebrow="The basics" title={c.whatIs.title} intro={c.whatIs.intro} />
+            <Head eyebrow="The basics" title={c.whatIs.title} intro={<Rich text={c.whatIs.intro} />} />
             <div className="cf-pcards">{c.whatIs.pillars.map((p, i) => (
               <article key={p.t} className="cf-pcard cf-rv">
                 <div className="cf-pcard-img"><Img img={IMG.pillars[i]} w={800} sizes="(max-width: 900px) 100vw, 33vw" /><span>{String(i + 1).padStart(2, "0")}</span></div>
-                <h3>{p.t}</h3><p>{p.d}</p>
+                <h3>{p.t}</h3><p><Rich text={p.d} /></p>
               </article>
             ))}</div>
           </div></section>
@@ -246,7 +247,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="cf-sec"><div className="cf-wrap">
             <Head eyebrow="Our services" title={c.services.title} intro={<>{c.services.intro} See all <Link href="/services">SEO services</Link>.</>} />
             <div className="cf-icons">{c.services.items.map((s) => { const I = s.icon; return (
-              <Link key={s.t} href={s.href} className="cf-icon cf-rv"><span className="cf-round"><I size={26} strokeWidth={1.8} /></span><h3>{s.t}</h3><p>{s.d}</p><span className="cf-more">Learn more <Chevron /></span></Link>
+              <Link key={s.t} href={s.href} className="cf-icon cf-rv"><span className="cf-round"><I size={26} strokeWidth={1.8} /></span><h3>{s.t}</h3><p><Rich text={s.d} /></p><span className="cf-more">Learn more <Chevron /></span></Link>
             ); })}</div>
           </div></section>
 
@@ -293,7 +294,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
             <div className="cf-rv">
               <p className="cf-eyebrow left"><span aria-hidden="true" />{c.why.eyebrow}</p>
               <h2>{c.why.title}</h2>
-              {c.why.paras.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              {c.why.paras.map((p) => <p key={p.slice(0, 24)}><Rich text={p} /></p>)}
               <Link className="cf-btn" href="/free-audit">Get my free audit <Chevron /></Link>
             </div>
             <figure className="cf-why-img cf-rv"><Img img={IMG.side} w={1100} /></figure>
@@ -307,7 +308,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           {/* 7 STEPS */}
           <section className="cf-sec"><div className="cf-wrap">
             <Head eyebrow="Step-by-step guide" title={c.guide.title} intro={c.guide.intro} />
-            <ol className="cf-steps">{c.guide.steps.map((s, i) => <li key={s.t} className="cf-rv"><span>{i + 1}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></li>)}</ol>
+            <ol className="cf-steps">{c.guide.steps.map((s, i) => <li key={s.t} className="cf-rv"><span>{i + 1}</span><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div></li>)}</ol>
             <CtaStrip {...c.ctas[0]} />
           </div></section>
 
@@ -315,7 +316,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="cf-sec soft"><div className="cf-wrap">
             <Head eyebrow="Who we help" title={c.segments.title} />
             <div className="cf-segs">{c.segments.items.map((s) => { const I = s.icon; return (
-              <div key={s.t} className="cf-seg cf-rv"><span className="cf-round sm"><I size={22} strokeWidth={1.8} /></span><div><h3>{s.t}</h3><p>{s.d}</p></div></div>
+              <div key={s.t} className="cf-seg cf-rv"><span className="cf-round sm"><I size={22} strokeWidth={1.8} /></span><div><h3>{s.t}</h3><p><Rich text={s.d} /></p></div></div>
             ); })}</div>
           </div></section>
 
@@ -323,7 +324,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="cf-sec"><div className="cf-wrap">
             <Head eyebrow="Checklists" title={c.checklists.title} intro={c.checklists.intro} />
             <div className="cf-two">{[c.checklists.left, c.checklists.right].map((l) => (
-              <div key={l.t} className="cf-list cf-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}><span><Tick /></span>{x}</li>)}</ul></div>
+              <div key={l.t} className="cf-list cf-rv"><h3>{l.t}</h3><ul>{l.items.map((x) => <li key={x}><span><Tick /></span><Rich text={x} /></li>)}</ul></div>
             ))}</div>
           </div></section>
 
@@ -331,14 +332,14 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <section className="cf-sec soft"><div className="cf-wrap">
             <Head eyebrow="Sound familiar?" title={c.challengesTitle} />
             <div className="cf-icons">{c.challenges.map((x) => { const I = x.icon; return (
-              <div key={x.t} className="cf-icon plain cf-rv"><span className="cf-round warn"><I size={24} strokeWidth={1.8} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+              <div key={x.t} className="cf-icon plain cf-rv"><span className="cf-round warn"><I size={24} strokeWidth={1.8} /></span><h3>{x.t}</h3><p><Rich text={x.d} /></p></div>
             ); })}</div>
           </div></section>
 
           {/* MISTAKES */}
           <section className="cf-sec"><div className="cf-wrap">
             <Head eyebrow="Avoid these" title={c.mistakesTitle} />
-            <div className="cf-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="cf-mistake cf-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p>{m.d}</p></div>)}</div>
+            <div className="cf-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="cf-mistake cf-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p><Rich text={m.d} /></p></div>)}</div>
             <CtaStrip {...c.ctas[1]} />
           </div></section>
 
@@ -355,7 +356,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
           {/* PROCESS + KPIs */}
           <section className="cf-sec"><div className="cf-wrap">
             <Head eyebrow="Your first 90 days" title="What Happens After You Hire Us" />
-            <div className="cf-process">{c.process.map((p, i) => <div key={p.t} className="cf-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p>{p.d}</p></div>)}</div>
+            <div className="cf-process">{c.process.map((p, i) => <div key={p.t} className="cf-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{p.t}</h3><p><Rich text={p.d} /></p></div>)}</div>
           </div></section>
           <section className="cf-sec pt0"><div className="cf-wrap">
             <Head eyebrow="Measuring results" title={c.kpisTitle} intro="Rankings are only part of it. These are the numbers we report every month." />
@@ -396,7 +397,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
             <div className="cf-faq">{c.faqs.map((f, i) => (
               <div key={f.q} className={`cf-faq-item ${open === i ? "open" : ""}`}>
                 <h3><button type="button" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>{f.q}<span>{open === i ? "−" : "+"}</span></button></h3>
-                <div className="cf-faq-body" hidden={open !== i}>{f.a}</div>
+                <div className="cf-faq-body" hidden={open !== i}><Rich text={f.a} /></div>
               </div>))}
             </div>
             <div className="cf-help">
