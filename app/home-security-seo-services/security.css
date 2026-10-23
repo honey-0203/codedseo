@@ -248,8 +248,8 @@
 .hs-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .hs-post { display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px -26px rgba(0,0,0,.35); transition: transform .3s; }
 .hs-post:hover { transform: translateY(-6px); }
-.hs-post-img { position: relative; aspect-ratio: 16/10; background: var(--g-soft); display: flex; align-items: center; justify-content: center; color: var(--g-d); font-weight: 700; }
-.hs-post-img img { width: 100%; height: 100%; object-fit: cover; }
+.hs-post-img { position: relative; aspect-ratio: 1200 / 630; background: var(--g-soft); display: flex; align-items: center; justify-content: center; color: var(--g-d); font-weight: 700; }
+.hs-post-img img { width: 100%; height: 100%; object-fit: contain; }
 .hs-post-img em { position: absolute; left: 16px; bottom: -12px; background: var(--g); color: #fff; font-style: normal; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 4px; }
 .hs-post-body { padding: 26px 22px 24px; }
 .hs-post h3 { margin-bottom: 8px; }

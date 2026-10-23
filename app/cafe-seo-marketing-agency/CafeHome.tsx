@@ -381,7 +381,7 @@ export default function CafeHome({ posts = [] }: { posts?: RelatedPost[] }) {
               <Head eyebrow="From the CodedSEO blog" title="Local SEO Guides" intro={<>Practical guides from our team. See every article on the <Link href="/blog">CodedSEO blog</Link>.</>} />
               <div className="cf-posts">{posts.map((p) => (
                 <Link key={p.slug} className="cf-post cf-rv" href={`/blog/${p.slug}`}>
-                  <div className="cf-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}</div>
+                  <div className="cf-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}</div>
                   <div className="cf-post-body"><span className="cf-tag">{p.category}</span><h3>{p.title}</h3>{p.excerpt && <p>{p.excerpt}</p>}<span className="cf-more">Read article <Chevron /></span></div>
                 </Link>))}
               </div>

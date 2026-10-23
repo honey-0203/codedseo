@@ -708,7 +708,7 @@ function Reading({ posts }: { posts: RelatedPost[] }) {
           {posts.map((p) => (
             <Link key={p.slug} className="fr-post" href={`/blog/${p.slug}`}>
               <div className="fr-post-img">
-                {p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}
+                {p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}
               </div>
               <div className="fr-post-body">
                 <span className="fr-post-cat">{p.category}</span>

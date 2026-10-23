@@ -375,7 +375,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
               <Head script="Latest from our blog" title="Local SEO Guides" intro={<>Practical guides from our team. See every article on the <Link href="/blog">CodedSEO blog</Link>.</>} />
               <div className="fd-posts">{posts.map((p) => (
                 <Link key={p.slug} className="fd-post fd-rv" href={`/blog/${p.slug}`}>
-                  <div className="fd-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}</div>
+                  <div className="fd-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}</div>
                   <div className="fd-post-body"><span className="fd-tag">{p.category}</span><h3>{p.title}</h3>{p.excerpt && <p>{p.excerpt}</p>}<span className="fd-more">Read article <Chevron /></span></div>
                 </Link>))}
               </div>

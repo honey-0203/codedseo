@@ -359,7 +359,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
               <Head eyebrow="From the CodedSEO blog" title="Local SEO Guides" intro={<>Practical guides from our team. See every article on the <Link href="/blog">CodedSEO blog</Link>.</>} />
               <div className="hs-posts">{posts.map((p) => (
                 <Link key={p.slug} className="hs-post hs-rv" href={`/blog/${p.slug}`}>
-                  <div className="hs-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={720} height={450} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}<em>{p.date || p.category}</em></div>
+                  <div className="hs-post-img">{p.image ? <img src={p.image} alt={p.imageAlt} width={1200} height={630} loading="lazy" decoding="async" /> : <span aria-hidden="true">{p.category}</span>}<em>{p.date || p.category}</em></div>
                   <div className="hs-post-body"><h3>{p.title}</h3>{p.excerpt && <p>{p.excerpt}</p>}<span className="hs-more">Read more <Chevron /></span></div>
                 </Link>))}
               </div>
