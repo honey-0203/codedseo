@@ -87,6 +87,8 @@ const menuItems: MenuItem[] = [
           title: "Industries",
           items: [
             { name: "SEO for Taxi Companies", href: "/local-seo-for-taxi-company", description: "Rank for taxi near me", icon: <MapPin className="w-4 h-4" /> },
+            { name: "SEO for Food Delivery", href: "/food-delivery-service-seo-company", description: "More direct orders, fewer app fees", icon: <MapPin className="w-4 h-4" /> },
+            { name: "SEO for Home Security", href: "/home-security-seo-services", description: "Book more installs from Google", icon: <MapPin className="w-4 h-4" /> },
           ]
         },
         {
