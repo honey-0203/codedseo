@@ -220,7 +220,7 @@ export function TestimonialsSection() {
           className="border-t border-border pt-12"
         >
           <p className="text-center text-sm text-muted-foreground mb-8">
-            Join these industry leaders who trust RankFlow
+            Join these industry leaders who trust CodedSEO
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
             {logos.map((logo, index) => (

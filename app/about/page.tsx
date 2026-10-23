@@ -113,7 +113,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  RankFlow was founded in 2014 with a simple belief: SEO should be transparent, 
+                  CodedSEO was founded by Balbir Singh with a simple belief: SEO should be transparent, 
                   measurable, and focused on real business results—not just rankings.
                 </p>
                 <p>

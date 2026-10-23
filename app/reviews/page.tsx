@@ -101,12 +101,12 @@ export default function ReviewsPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Trusted by{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                500+ Businesses
+                100+ Businesses
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Don&apos;t just take our word for it. See what our clients have to say about 
-              their experience working with RankFlow.
+              their experience working with CodedSEO.
             </p>
           </motion.div>
 
@@ -214,7 +214,7 @@ export default function ReviewsPage() {
               Ready to Become Our Next Success Story?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join 500+ businesses that trust RankFlow to drive their organic growth.
+              Join 100+ businesses that trust CodedSEO to drive their organic growth.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>

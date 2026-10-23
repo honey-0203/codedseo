@@ -100,7 +100,7 @@ export default function VideoTestimonialsPage() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Watch real clients share their experience working with RankFlow and 
+              Watch real clients share their experience working with CodedSEO and 
               the results they&apos;ve achieved.
             </p>
           </motion.div>
@@ -218,7 +218,7 @@ export default function VideoTestimonialsPage() {
               Ready to Create Your Success Story?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join these businesses and achieve remarkable organic growth with RankFlow.
+              Join these businesses and achieve remarkable organic growth with CodedSEO.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>
