@@ -114,6 +114,7 @@ export type FriscoPost = { title: string; slug: string; category: string; excerp
 /* ================= IMAGES (Unsplash, free license) ================= */
 
 const UNSPLASH = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const IMG_HERO = { id: "photo-1596309559272-627cc03fcf3b", alt: "Local business storefront in North Texas, the kind of Frisco business our SEO company helps rank #1 on Google Maps" };
 const IMG_CITY = { id: "photo-1691635187988-d03b9ac5e045", alt: "Aerial view of a fast-growing North Texas city with new buildings and roads" };
 const IMG_DATA = { id: "photo-1526628953301-3e589a6a8b74", alt: "SEO analytics dashboard showing organic traffic and lead growth" };
 
@@ -183,14 +184,34 @@ function Hero() {
 
         <figure className="fr-hero-img">
           <img
-            src="/images/seo-company-frisco-tx.svg"
-            alt="SEO company Frisco TX: local business ranking #1 in Google Maps for seo company frisco"
-            width={720}
-            height={560}
+            src={UNSPLASH(IMG_HERO.id, 1100)}
+            srcSet={`${UNSPLASH(IMG_HERO.id, 600)} 600w, ${UNSPLASH(IMG_HERO.id, 900)} 900w, ${UNSPLASH(IMG_HERO.id, 1100)} 1100w`}
+            sizes="(max-width: 1000px) 100vw, 560px"
+            alt={IMG_HERO.alt}
+            width={1100}
+            height={1000}
             fetchPriority="high"
             decoding="async"
           />
-          <figcaption>Illustration: what a #1 Google Maps result for &quot;seo company frisco&quot; looks like.</figcaption>
+          <span className="fr-ov-pinbig" aria-hidden="true">
+            <svg width="64" height="78" viewBox="0 0 64 78"><path d="M32 2C15.4 2 2 15 2 31.5 2 54 32 76 32 76s30-22 30-44.5C62 15 48.6 2 32 2z" fill="#16a34a" /><circle cx="32" cy="31" r="13" fill="#fff" /><path d="M26 31l4.5 4.5L39 27" fill="none" stroke="#16a34a" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </span>
+          <div className="fr-ov" aria-hidden="true">
+            <div className="fr-ov-search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+              <span>seo company frisco</span>
+              <i className="fr-ov-caret" />
+            </div>
+            <div className="fr-ov-card">
+              <span className="fr-ov-pin"><MapPin size={22} strokeWidth={2.4} /></span>
+              <span>
+                <b><em>#1</em> Your Business</b>
+                <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(128)</small></span>
+                <small>SEO agency · Frisco, TX</small>
+                <small className="g">Open now · Call · Directions</small>
+              </span>
+            </div>
+          </div>
         </figure>
       </div>
     </section>
