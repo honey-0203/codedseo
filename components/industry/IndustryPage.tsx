@@ -225,12 +225,6 @@ export default function IndustryPage({ cfg, posts = [] }: { cfg: IndustryConfig;
             </div>
           </section>
 
-          {/* MARQUEE */}
-          <div className="tx-mq-wrap" aria-hidden="true">
-            <div className="tx-marquee tx-mq-b"><div className="tx-mq-track tx-rev">{[...cfg.marquee, ...cfg.marquee].map((m, i) => <span key={i}>{m}<i>✦</i></span>)}</div></div>
-            <div className="tx-marquee"><div className="tx-mq-track">{[...cfg.marquee, ...cfg.marquee].map((m, i) => <span key={i}>{m}<i>✦</i></span>)}</div></div>
-          </div>
-
           {/* STATS */}
           <section className="stats"><div className="wrap"><div className="stats-card">
             {STATS.map((s) => <div key={s.label} className="stat"><CountUp value={s.value} /><p className="stat-label">{s.label}</p><p className="stat-sub">{s.sub}</p></div>)}
