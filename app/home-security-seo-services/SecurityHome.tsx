@@ -253,6 +253,21 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
             </div>
           </div></section>
 
+          {/* PACKAGES */}
+          <section className="hs-sec" id="seo-packages"><div className="hs-wrap">
+            <Head eyebrow="Pricing" title={c.packagesTitle} intro="No setup fees, no long-term contracts. Every package includes the free audit and our 90-day results guarantee." />
+            <div className="hs-packs">{PACKAGES.map((p) => (
+              <div key={p.name} className={`hs-pack hs-rv ${p.pop ? "pop" : ""}`}>
+                {p.pop && <span className="hs-pack-tag">Most popular</span>}
+                <h3>{p.name}</h3><p className="hs-pack-for">{p.for}</p>
+                <p className="hs-pack-price">{p.price}{p.price !== "Custom" && <small> / month</small>}</p>
+                <p className="hs-pack-inr">{p.inr}</p>
+                <ul>{p.items.map((it) => <li key={it}><span><Tick /></span>{it}</li>)}</ul>
+                <Link className={`hs-btn ${p.pop ? "" : "line"}`} href={p.href}>{p.cta} <Chevron /></Link>
+              </div>))}
+            </div>
+          </div></section>
+
           {/* PHOTO STRIP + STATS BAND */}
           <section className="hs-strip4" aria-hidden="true">{IMG.strip.map((g) => <Img key={g.id} img={g} w={700} sizes="(max-width: 900px) 50vw, 25vw" />)}</section>
           <section className="hs-stats"><div className="hs-wrap hs-stats-in">
@@ -310,21 +325,6 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
             <Head eyebrow="Avoid these" title={c.mistakesTitle} />
             <div className="hs-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="hs-mistake hs-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p>{m.d}</p></div>)}</div>
             <CtaStrip {...c.ctas[1]} />
-          </div></section>
-
-          {/* PACKAGES */}
-          <section className="hs-sec" id="seo-packages"><div className="hs-wrap">
-            <Head eyebrow="Pricing" title={c.packagesTitle} intro="No setup fees, no long-term contracts. Every package includes the free audit and our 90-day results guarantee." />
-            <div className="hs-packs">{PACKAGES.map((p) => (
-              <div key={p.name} className={`hs-pack hs-rv ${p.pop ? "pop" : ""}`}>
-                {p.pop && <span className="hs-pack-tag">Most popular</span>}
-                <h3>{p.name}</h3><p className="hs-pack-for">{p.for}</p>
-                <p className="hs-pack-price">{p.price}{p.price !== "Custom" && <small> / month</small>}</p>
-                <p className="hs-pack-inr">{p.inr}</p>
-                <ul>{p.items.map((it) => <li key={it}><span><Tick /></span>{it}</li>)}</ul>
-                <Link className={`hs-btn ${p.pop ? "" : "line"}`} href={p.href}>{p.cta} <Chevron /></Link>
-              </div>))}
-            </div>
           </div></section>
 
           {/* PURPOSE BAND */}

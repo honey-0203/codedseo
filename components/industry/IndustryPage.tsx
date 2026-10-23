@@ -265,27 +265,6 @@ export default function IndustryPage({ cfg, posts = [] }: { cfg: IndustryConfig;
             <InlineCta {...cfg.ctas[0]} />
           </div></section>
 
-          {/* CHECKLISTS */}
-          <section className="sec soft"><div className="wrap">
-            <div className="head"><p className="eyebrow">Checklists</p><h2>{cfg.checklists.title}</h2><p className="grey">{cfg.checklists.intro}</p></div>
-            <div className="tx-two">
-              {[cfg.checklists.left, cfg.checklists.right].map((l) => <div key={l.t} className="tx-list"><h3>{l.t}</h3><ul className="ticks">{l.items.map((x) => <li key={x}>{x}</li>)}</ul></div>)}
-            </div>
-          </div></section>
-
-          {/* CHALLENGES */}
-          <section className="sec"><div className="wrap">
-            <div className="head"><p className="eyebrow">Sound familiar?</p><h2>{cfg.challengesTitle}</h2></div>
-            <div className="grid3">{cfg.challenges.map((c) => <div key={c.t} className="icard"><Ic icon={c.icon} /><h3>{c.t}</h3><p>{c.d}</p></div>)}</div>
-          </div></section>
-
-          {/* MISTAKES */}
-          <section className="sec"><div className="wrap">
-            <div className="head"><p className="eyebrow">Avoid these</p><h2>{cfg.mistakesTitle}</h2></div>
-            <div className="tx-mistakes">{cfg.mistakes.map((m, i) => <div key={m.t} className="tx-mistake"><span className="tx-x">{i + 1}</span><div><h3>{m.t}</h3><p>{m.d}</p></div></div>)}</div>
-            <InlineCta {...cfg.ctas[1]} />
-          </div></section>
-
           {/* SERVICES */}
           <section className="sec soft"><div className="wrap">
             <div className="head"><p className="eyebrow">Our services</p><h2>{cfg.services.title}</h2><p className="grey">{cfg.services.intro} See all <Link href="/services">SEO services</Link>.</p></div>
@@ -311,6 +290,27 @@ export default function IndustryPage({ cfg, posts = [] }: { cfg: IndustryConfig;
                 <Link className={`btn ${pk.popular ? "" : "line"}`} href={pk.cta}>{pk.ctaText} <Chevron /></Link>
               </div>))}
             </div>
+          </div></section>
+
+          {/* CHECKLISTS */}
+          <section className="sec soft"><div className="wrap">
+            <div className="head"><p className="eyebrow">Checklists</p><h2>{cfg.checklists.title}</h2><p className="grey">{cfg.checklists.intro}</p></div>
+            <div className="tx-two">
+              {[cfg.checklists.left, cfg.checklists.right].map((l) => <div key={l.t} className="tx-list"><h3>{l.t}</h3><ul className="ticks">{l.items.map((x) => <li key={x}>{x}</li>)}</ul></div>)}
+            </div>
+          </div></section>
+
+          {/* CHALLENGES */}
+          <section className="sec"><div className="wrap">
+            <div className="head"><p className="eyebrow">Sound familiar?</p><h2>{cfg.challengesTitle}</h2></div>
+            <div className="grid3">{cfg.challenges.map((c) => <div key={c.t} className="icard"><Ic icon={c.icon} /><h3>{c.t}</h3><p>{c.d}</p></div>)}</div>
+          </div></section>
+
+          {/* MISTAKES */}
+          <section className="sec"><div className="wrap">
+            <div className="head"><p className="eyebrow">Avoid these</p><h2>{cfg.mistakesTitle}</h2></div>
+            <div className="tx-mistakes">{cfg.mistakes.map((m, i) => <div key={m.t} className="tx-mistake"><span className="tx-x">{i + 1}</span><div><h3>{m.t}</h3><p>{m.d}</p></div></div>)}</div>
+            <InlineCta {...cfg.ctas[1]} />
           </div></section>
 
           {/* CTA BAND (image) */}

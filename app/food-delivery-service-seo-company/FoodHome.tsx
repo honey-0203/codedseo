@@ -276,6 +276,29 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
             <CtaStrip {...c.ctas[0]} />
           </div></section>
 
+          {/* SERVICES */}
+          <section className="fd-sec cream"><div className="fd-wrap">
+            <Head script="Our services" title={c.services.title} intro={<>{c.services.intro} See all <Link href="/services">SEO services</Link>.</>} />
+            <div className="fd-cards">{c.services.items.map((s) => { const I = s.icon; return (
+              <Link key={s.t} href={s.href} className="fd-card link fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{s.t}</h3><p>{s.d}</p><span className="fd-more">Learn more <Chevron /></span></Link>
+            ); })}</div>
+          </div></section>
+
+          {/* PACKAGES */}
+          <section className="fd-sec" id="seo-packages"><div className="fd-wrap">
+            <Head script="Pricing" title={c.packagesTitle} intro="No setup fees, no long-term contracts. Every package includes the free audit and our 90-day results guarantee." />
+            <div className="fd-packs">{PACKAGES.map((p) => (
+              <div key={p.name} className={`fd-pack fd-rv ${p.pop ? "pop" : ""}`}>
+                {p.pop && <span className="fd-pack-tag">Most popular</span>}
+                <h3>{p.name}</h3><p className="fd-pack-for">{p.for}</p>
+                <p className="fd-pack-price">{p.price}{p.price !== "Custom" && <small> / month</small>}</p>
+                <p className="fd-pack-inr">{p.inr}</p>
+                <ul>{p.items.map((it) => <li key={it}>{it}</li>)}</ul>
+                <Link className={`fd-btn ${p.pop ? "" : "line"}`} href={p.href}>{p.cta} <Chevron /></Link>
+              </div>))}
+            </div>
+          </div></section>
+
           {/* SEGMENTS – chef in the middle */}
           <section className="fd-sec cream"><div className="fd-wrap">
             <Head script="Who we help" title={c.segments.title} />
@@ -317,29 +340,6 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
             <Head script="Avoid these" title={c.mistakesTitle} />
             <div className="fd-mistakes">{c.mistakes.map((m, i) => <div key={m.t} className="fd-mistake fd-rv"><span>{String(i + 1).padStart(2, "0")}</span><h3>{m.t}</h3><p>{m.d}</p></div>)}</div>
             <CtaStrip {...c.ctas[1]} />
-          </div></section>
-
-          {/* SERVICES */}
-          <section className="fd-sec"><div className="fd-wrap">
-            <Head script="Our services" title={c.services.title} intro={<>{c.services.intro} See all <Link href="/services">SEO services</Link>.</>} />
-            <div className="fd-cards">{c.services.items.map((s) => { const I = s.icon; return (
-              <Link key={s.t} href={s.href} className="fd-card link fd-rv"><span className="fd-ic"><I size={30} strokeWidth={1.4} /></span><h3>{s.t}</h3><p>{s.d}</p><span className="fd-more">Learn more <Chevron /></span></Link>
-            ); })}</div>
-          </div></section>
-
-          {/* PACKAGES */}
-          <section className="fd-sec cream" id="seo-packages"><div className="fd-wrap">
-            <Head script="Pricing" title={c.packagesTitle} intro="No setup fees, no long-term contracts. Every package includes the free audit and our 90-day results guarantee." />
-            <div className="fd-packs">{PACKAGES.map((p) => (
-              <div key={p.name} className={`fd-pack fd-rv ${p.pop ? "pop" : ""}`}>
-                {p.pop && <span className="fd-pack-tag">Most popular</span>}
-                <h3>{p.name}</h3><p className="fd-pack-for">{p.for}</p>
-                <p className="fd-pack-price">{p.price}{p.price !== "Custom" && <small> / month</small>}</p>
-                <p className="fd-pack-inr">{p.inr}</p>
-                <ul>{p.items.map((it) => <li key={it}>{it}</li>)}</ul>
-                <Link className={`fd-btn ${p.pop ? "" : "line"}`} href={p.href}>{p.cta} <Chevron /></Link>
-              </div>))}
-            </div>
           </div></section>
 
           {/* DARK BAND */}
