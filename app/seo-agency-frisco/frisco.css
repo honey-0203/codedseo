@@ -1,0 +1,20 @@
+/* Frisco page extras – baaki styling ../seo-agency-usa/usa.css se aati hai (.isu scope) */
+.isu .fr-crumb { font-size: 14px; color: var(--grey); margin-bottom: 14px; }
+.isu .fr-crumb a { color: var(--green); }
+.isu .fr-crumb span { color: var(--ink); }
+.isu .fr-src { font-size: 13px; color: var(--grey); margin: 16px 0 0; line-height: 1.6; }
+.isu .fr-inr { font-size: 14px; color: var(--grey); margin: -6px 0 14px; }
+.isu .fr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.isu .fr-step { display: inline-block; font-size: 26px; font-weight: 800; color: var(--green); margin-bottom: 8px; }
+.isu .fr-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; }
+.isu .fr-table { width: 100%; border-collapse: collapse; min-width: 560px; background: #fff; }
+.isu .fr-table th, .isu .fr-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--line); font-size: 16px; }
+.isu .fr-table th { background: var(--navy); color: #fff; font-weight: 600; }
+.isu .fr-table tr:last-child td { border-bottom: 0; }
+.isu .fr-table td:first-child { font-weight: 600; color: var(--ink); }
+.isu .fr-table td:nth-child(2) { color: var(--green); font-weight: 600; }
+.isu .fr-areas { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
+.isu .fr-areas li { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 600; color: var(--ink); }
+@media (max-width: 1024px) { .isu .fr-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .isu .fr-steps { grid-template-columns: 1fr; } }
+.isu .fr-facts dt { font-weight: 800; color: var(--ink); font-size: 20px; }
