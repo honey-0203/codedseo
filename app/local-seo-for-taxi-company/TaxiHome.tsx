@@ -254,7 +254,6 @@ function Hero() {
           <nav className="tx-crumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link> › <Link href="/services">SEO Services</Link> › <span>Taxi Companies</span>
           </nav>
-          <p className="tx-pill"><span className="tx-dot" />Local SEO for taxi & cab companies</p>
           <h1 className="tx-h1">
             <span className="tx-line" style={{ animationDelay: "0.05s" }}>Local SEO for</span>{" "}
             <span className="tx-line tx-box" style={{ animationDelay: "0.2s" }}>Taxi</span>{" "}

@@ -120,3 +120,7 @@
 .isu .tx-mq-wrap { height: 130px; margin-top: -46px; margin-bottom: 10px; }
 .isu.tx-page .tx-mq-wrap + .stats { padding-top: 40px; }
 .isu.tx-page .tx-mq-wrap + .stats .stats-card { margin-top: 0; }
+/* light buttons on dark page: text must stay dark */
+.isu.tx-page .btn.light { background: #ffffff; color: #050807; border-color: #ffffff; }
+.isu.tx-page .btn.light:hover { background: #e9f9ee; color: #050807; }
+.isu.tx-page .final h2, .isu.tx-page .final p { color: #ffffff; }
