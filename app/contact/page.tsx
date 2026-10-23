@@ -5,24 +5,31 @@ import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { 
-  Mail, Phone, MapPin, Clock, Send, CheckCircle2, Building2, 
+  Mail, Phone, MapPin, MessageCircle, Clock, Send, CheckCircle2, Building2, 
   Globe, Calendar, Zap, ArrowRight
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { CONTACT, telHref, whatsappHref } from "@/lib/contact"
 
 const contactInfo = [
   {
     icon: <Mail className="w-5 h-5" />,
     title: "Email Us",
-    value: "hello@rankflow.com",
-    href: "mailto:hello@rankflow.com"
+    value: CONTACT.email,
+    href: `mailto:${CONTACT.email}`
   },
   {
     icon: <Phone className="w-5 h-5" />,
     title: "Call Us",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567"
+    value: CONTACT.phoneDisplay,
+    href: telHref
+  },
+  {
+    icon: <MessageCircle className="w-5 h-5" />,
+    title: "WhatsApp Us",
+    value: CONTACT.phoneDisplay,
+    href: whatsappHref()
   },
   {
     icon: <MapPin className="w-5 h-5" />,

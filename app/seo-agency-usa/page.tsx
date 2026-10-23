@@ -33,7 +33,7 @@ const schema = {
       name: "CodedSEO",
       url: "https://codedseo.com",
       logo: "https://codedseo.com/codedseo.png",
-      email: "hello@codedseo.com",
+      email: "hello@codedseo.com", telephone: "+917340905942",
       areaServed: { "@type": "Country", name: "United States" },
       serviceType: ["SEO services", "Local SEO services", "Technical SEO services", "AI SEO services", "Link building services", "SEO content writing"],
     },

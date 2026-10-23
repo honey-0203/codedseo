@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebPage", "@id": `${URL}#webpage`, url: URL, name: TITLE, description: DESC, inLanguage: "en-US", dateModified: "2026-09-29", publisher: { "@type": "Organization", name: "CodedSEO", url: "https://codedseo.com", email: "sales@codedseo.com", founder: { "@type": "Person", name: "Balbir Singh" }, address: { "@type": "PostalAddress", addressLocality: "Mohali", addressRegion: "Punjab", addressCountry: "IN" } } },
+    { "@type": "WebPage", "@id": `${URL}#webpage`, url: URL, name: TITLE, description: DESC, inLanguage: "en-US", dateModified: "2026-09-29", publisher: { "@type": "Organization", name: "CodedSEO", url: "https://codedseo.com", email: "sales@codedseo.com", telephone: "+917340905942", founder: { "@type": "Person", name: "Balbir Singh" }, address: { "@type": "PostalAddress", addressLocality: "Mohali", addressRegion: "Punjab", addressCountry: "IN" } } },
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://codedseo.com" },
       { "@type": "ListItem", position: 2, name: "Privacy Policy", item: URL },
