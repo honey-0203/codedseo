@@ -18,8 +18,13 @@
 @media (max-width: 1024px) { .isu .fr-steps { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .isu .fr-steps { grid-template-columns: 1fr; } }
 .isu .fr-facts dt { font-weight: 800; color: var(--ink); font-size: 20px; }
-.isu .fr-contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-weight: 600; margin: 14px 0 6px; }
-.isu .fr-contact a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.isu .fr-contact { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0 4px; }
+.isu .fr-contact-label { font-size: 14px; color: var(--grey); margin-right: 4px; }
+.isu .fr-chip { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 14px; font-weight: 600; color: var(--ink); transition: border-color .2s, background .2s; }
+.isu .fr-chip:hover { border-color: var(--green); }
+.isu .fr-chip svg { color: var(--green); flex: 0 0 auto; }
+.isu .fr-chip.wa svg { color: #25d366; }
+.isu .fr-chip.wa:hover { border-color: #25d366; background: #f0fdf4; }
 .isu .fr-sticky { display: none; }
 @media (max-width: 768px) {
   .isu .fr-sticky { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(0,0,0,.08); }
