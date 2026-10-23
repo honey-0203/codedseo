@@ -193,17 +193,24 @@ function Hero() {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="fr-ov-search" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
-            seo company frisco
-          </div>
-          <div className="fr-ov-card" aria-hidden="true">
-            <span className="fr-ov-pin"><MapPin size={20} strokeWidth={2.4} /></span>
-            <span>
-              <b><em>#1</em> Your Business</b>
-              <small>Google Maps · Frisco, TX</small>
-              <small className="g">Open now · Call · Directions</small>
-            </span>
+          <span className="fr-ov-pinbig" aria-hidden="true">
+            <svg width="64" height="78" viewBox="0 0 64 78"><path d="M32 2C15.4 2 2 15 2 31.5 2 54 32 76 32 76s30-22 30-44.5C62 15 48.6 2 32 2z" fill="#16a34a" /><circle cx="32" cy="31" r="13" fill="#fff" /><path d="M26 31l4.5 4.5L39 27" fill="none" stroke="#16a34a" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </span>
+          <div className="fr-ov" aria-hidden="true">
+            <div className="fr-ov-search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+              <span>seo company frisco</span>
+              <i className="fr-ov-caret" />
+            </div>
+            <div className="fr-ov-card">
+              <span className="fr-ov-pin"><MapPin size={22} strokeWidth={2.4} /></span>
+              <span>
+                <b><em>#1</em> Your Business</b>
+                <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(128)</small></span>
+                <small>SEO agency · Frisco, TX</small>
+                <small className="g">Open now · Call · Directions</small>
+              </span>
+            </div>
           </div>
         </figure>
       </div>
