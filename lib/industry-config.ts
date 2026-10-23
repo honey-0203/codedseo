@@ -1,0 +1,50 @@
+// Shared content shape for industry landing pages (food delivery, home security, ...).
+import type { LucideIcon } from "lucide-react";
+
+export type Img = { id: string; alt: string };
+export type IconItem = { icon: LucideIcon; t: string; d: string };
+export type Faq = { q: string; a: string };
+
+export type IndustryConfig = {
+  crumb: string;
+  h1: { pre: string; box: string; post: string; sub: string; subHl: string };
+  rotate: string[];
+  lead: string;
+  heroPoints: string[];
+  heroImg: Img;
+  sideImg: Img;
+  ctaImg: Img;
+  overlay: { icon: LucideIcon; name: string; cat: string; actions: string };
+  floatBig: { k: string; d: string };
+  floatChip: { icon: LucideIcon; text: string };
+  badge: string;
+  marquee: string[];
+  wa: string;
+  auditCta: string;
+  whatIs: { title: string; intro: string; pillars: { t: string; d: string }[] };
+  why: { eyebrow: string; title: string; paras: string[] };
+  factsTitle: string;
+  facts: { k: string; d: string }[];
+  sources: { label: string; url: string }[];
+  searches: { title: string; intro: string; rows: [string, string, string][] };
+  guide: { title: string; intro: string; steps: { t: string; d: string }[] };
+  checklists: { title: string; intro: string; left: { t: string; items: string[] }; right: { t: string; items: string[] } };
+  challengesTitle: string;
+  challenges: IconItem[];
+  mistakesTitle: string;
+  mistakes: { t: string; d: string }[];
+  services: { title: string; intro: string; items: (IconItem & { href: string })[] };
+  segments: { title: string; items: IconItem[] };
+  packagesTitle: string;
+  packageFor: [string, string, string];
+  ctaBand: { title: string; text: string };
+  process: { t: string; d: string }[];
+  kpisTitle: string;
+  kpis: { k: string; d: string }[];
+  compareFocus: string;
+  compareRow: [string, string, string];
+  ctas: [{ title: string; text: string; wa: string; cta?: string }, { title: string; text: string; wa: string; cta?: string }, { title: string; text: string; wa: string; cta?: string }];
+  faqTitle: string;
+  faqs: Faq[];
+  final: { title: string; text: string };
+};

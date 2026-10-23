@@ -2,7 +2,7 @@ import {
   Bike, Truck, ChefHat, Package, Store, Smartphone, MapPin, Star, Search, Wrench, Link2, PenTool,
   Percent, MapPinOff, PhoneOff, Layers, Sparkles, BarChart3, UtensilsCrossed, Clock,
 } from "lucide-react";
-import type { IndustryConfig } from "@/components/industry/IndustryPage";
+import type { IndustryConfig } from "@/lib/industry-config";
 
 /* Keywords ("food delivery service seo company" sheet, Semrush US):
    food delivery service seo company (260, KD 6, commercial) · food delivery service seo agency (40, KD 5)

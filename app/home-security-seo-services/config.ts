@@ -2,7 +2,7 @@ import {
   Shield, ShieldCheck, Camera, Lock, Bell, House, Building2, KeyRound, BadgeCheck, MapPin, Star, Search, Wrench, Link2,
   MapPinOff, PhoneOff, Layers, Sparkles, BarChart3, Megaphone,
 } from "lucide-react";
-import type { IndustryConfig } from "@/components/industry/IndustryPage";
+import type { IndustryConfig } from "@/lib/industry-config";
 
 /* Keywords ("home security seo services" sheet, Semrush US):
    home security systems seo agency (40) · home security seo services (30, CPC $22.57)
