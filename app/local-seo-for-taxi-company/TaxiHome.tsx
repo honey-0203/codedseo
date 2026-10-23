@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -84,6 +84,61 @@ const SEGMENTS = [
   { icon: Users, t: "Shuttles & group rides", d: "Weddings, tours and events" },
 ];
 
+
+const PILLARS = [
+  { t: "Google Business Profile", d: "Your free listing on Google Search and Maps. For a taxi company it does most of the heavy lifting: categories, service areas, hours, photos, reviews and the call button." },
+  { t: "Website & service pages", d: "Pages that prove to Google (and to riders) what you offer and where: towns, airports, accessible rides, corporate accounts, fares and how to book." },
+  { t: "Reputation & citations", d: "Reviews, replies and consistent listings on Apple Maps, Bing Places, Yelp and local directories. They tell Google you are real, active and trusted." },
+];
+
+const SEARCH_TYPES = [
+  ["Urgent rides", "taxi near me, cab near me now, 24 hour taxi [town]", "Google Business Profile + fast mobile homepage"],
+  ["Airport", "taxi to [airport], [airport] taxi service, airport cab [town]", "One page per airport with pickup points and typical fares"],
+  ["Town & suburb", "taxi in [town], [town] cab company, local taxi [ZIP]", "One page per town you actually serve"],
+  ["Specialist", "wheelchair taxi [town], minivan taxi, school taxi", "A page for each service you offer"],
+  ["Price checks", "taxi fare from [A] to [B], flat rate taxi [town]", "A fare guide or calculator page"],
+  ["Business", "corporate taxi account [town], business car service", "Corporate accounts page with a quote form"],
+];
+
+const GBP_CHECKLIST = [
+  "Primary category \"Taxi service\"; add secondary categories only for what you really offer (for example airport shuttle or chauffeur service)",
+  "Address hidden if riders don't come to your depot, with up to 20 service areas listed",
+  "Accurate hours (mark 24 hours only if you truly answer 24/7)",
+  "A local phone number that is answered, the same one used on your website",
+  "Photos of real vehicles, drivers and your livery, not stock images",
+  "Services listed one by one: airport transfers, long distance, accessible rides, corporate",
+  "A booking link that opens your booking form or WhatsApp",
+  "Weekly posts: airport tips, event-night service, holiday hours",
+];
+
+const SITE_CHECKLIST = [
+  "Click-to-call button visible on every phone screen",
+  "Booking form with no more than 3–4 fields",
+  "A page for each town and airport you serve",
+  "Fares or a fare estimate, plus accepted payment methods",
+  "Licence, insurance and vehicle details for trust",
+  "Real reviews shown on the page, linked to your Google profile",
+  "Pages that load in under 3 seconds on mobile data",
+  "TaxiService or LocalBusiness schema, with the same name and phone as Google",
+];
+
+const MISTAKES = [
+  { t: "Fake addresses for more towns", d: "Virtual offices or a friend's address to \"appear\" in another town can get your profile suspended. Use service areas instead." },
+  { t: "Keyword-stuffed business names", d: "Adding \"Best Cheap Airport Taxi\" to your Google name breaks Google's guidelines. Use your real business name." },
+  { t: "Copy-paste town pages", d: "Ten pages that only swap the town name are thin content. Each page needs real local details: pickup points, landmarks, typical trips." },
+  { t: "Ignoring reviews", d: "Unanswered complaints are read by every future rider. Reply to every review, good or bad, within a day or two." },
+  { t: "A slow, app-like website", d: "Heavy sliders and pop-ups push riders back to Google. Speed and a visible phone number beat fancy design." },
+];
+
+const KPIS = [
+  { k: "Calls", d: "Phone calls from Google Business Profile and from the website, tracked separately" },
+  { k: "Bookings", d: "Form and WhatsApp bookings, by page" },
+  { k: "Map Pack", d: "Position for \"taxi near me\" across a grid of your service area" },
+  { k: "Rankings", d: "Town and airport keywords, week by week" },
+  { k: "Reviews", d: "New reviews per month and average rating" },
+  { k: "AI visibility", d: "Whether ChatGPT and AI Overviews name your company" },
+];
+
 const PACKAGES = [
   { name: "Starter", price: "$199", inr: "≈ ₹16,500", note: "per month", for: "Single-town taxi companies starting with SEO", items: ["5 target keywords", "Google Business Profile setup", "Technical SEO audit", "Review request system", "Monthly reporting"], cta: "/free-audit", ctaText: "Start with a free audit" },
   { name: "Growth", price: "$499", inr: "≈ ₹41,500", note: "per month", for: "Taxi companies covering several towns or an airport", items: ["15 target keywords", "Town and airport pages", "Local citations and links", "Call tracking setup", "Weekly reporting"], cta: "/free-audit", ctaText: "Get my free audit", popular: true },
@@ -110,6 +165,7 @@ const COMPARE = [
 
 const UNSPLASH = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 const IMG_HERO = { id: "photo-1630717285906-29364ffacea0", alt: "Yellow taxi cab on a city street, the kind of taxi company local SEO helps rank for taxi near me" };
+const IMG_NIGHT = { id: "photo-1610886023290-6ba32b20e354", alt: "Taxi cab on a city road at night" };
 const IMG_SIDE = { id: "photo-1628947733273-cdae71c9bfd3", alt: "Taxi cab on the road near a city building" };
 
 function Photo({ id, alt }: { id: string; alt: string }) {
@@ -152,65 +208,145 @@ const MailSvg = () => (
 
 /* ================= SECTIONS ================= */
 
+const ROTATE = ["taxi near me", "airport taxi", "cab near me now", "24 hour taxi", "wheelchair taxi"];
+
+function useTyping(words: string[]) {
+  const [text, setText] = useState(words[0]);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let w = 0, i = words[0].length, del = true, t: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      const word = words[w];
+      if (del) {
+        i--;
+        if (i <= 0) { del = false; w = (w + 1) % words.length; }
+      } else {
+        i++;
+        if (i >= words[w].length) { del = true; setText(words[w]); t = setTimeout(tick, 1800); return; }
+      }
+      setText((del ? word : words[w]).slice(0, Math.max(i, 0)));
+      t = setTimeout(tick, del ? 45 : 85);
+    };
+    t = setTimeout(tick, 1800);
+    return () => clearTimeout(t);
+  }, [words]);
+  return text;
+}
+
 function Hero() {
+  const typed = useTyping(ROTATE);
   return (
-    <section className="hero">
-      <div className="wrap hero-grid">
-        <div className="hero-copy">
-          <nav className="fr-crumb" aria-label="Breadcrumb">
+    <section className="tx-hero">
+      <img
+        className="tx-hero-bg"
+        src={UNSPLASH(IMG_HERO.id, 1800)}
+        srcSet={`${UNSPLASH(IMG_HERO.id, 900)} 900w, ${UNSPLASH(IMG_HERO.id, 1400)} 1400w, ${UNSPLASH(IMG_HERO.id, 1800)} 1800w`}
+        sizes="100vw"
+        alt={IMG_HERO.alt}
+        width={1800}
+        height={1100}
+        fetchPriority="high"
+        decoding="async"
+      />
+      <div className="tx-hero-shade" aria-hidden="true" />
+      <div className="wrap tx-hero-grid">
+        <div className="tx-hero-copy">
+          <nav className="tx-crumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link> › <Link href="/services">SEO Services</Link> › <span>Taxi Companies</span>
           </nav>
-          <p className="pill">Local SEO for taxi & cab companies</p>
-          <h1>Local SEO for Taxi Companies That Turns <span className="hl">&quot;Taxi Near Me&quot; Into Booked Rides</span></h1>
-          <p className="lead">Local SEO for a taxi company is about one moment: someone nearby needs a ride and picks up their phone. CodedSEO puts your cab business in the Google Map Pack, on page one for your towns and airports, and inside AI answers, with a call button they can tap in one second.</p>
-          <ul className="ticks two fr-ticks">
+          <p className="tx-pill"><span className="tx-dot" />Local SEO for taxi & cab companies</p>
+          <h1 className="tx-h1">
+            <span className="tx-line" style={{ animationDelay: "0.05s" }}>Local SEO for</span>{" "}
+            <span className="tx-line tx-box" style={{ animationDelay: "0.2s" }}>Taxi</span>{" "}
+            <span className="tx-line" style={{ animationDelay: "0.3s" }}>Companies</span>
+            <span className="tx-sub tx-line" style={{ animationDelay: "0.45s" }}>That Turns Searches Into <span className="tx-hl">Booked Rides</span></span>
+          </h1>
+          <p className="tx-typed" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+            <span>{typed}</span><i className="tx-caret" />
+          </p>
+          <p className="tx-lead">Local SEO for a taxi company is about one moment: someone nearby needs a ride and picks up their phone. CodedSEO puts your cab business in the Google Map Pack, on page one for your towns and airports, and inside AI answers, with a call button they can tap in one second.</p>
+          <ul className="tx-ticks">
             {HERO_POINTS.map((p) => <li key={p}>{p}</li>)}
           </ul>
-          <div className="hero-cta">
+          <div className="tx-cta">
             <Link className="btn" href="/free-audit">Get my free taxi SEO audit <Chevron /></Link>
-            <a className="btn ghost" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a 30-min call</a>
+            <a className="btn tx-ghost" href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a 30-min call</a>
           </div>
-          <div className="fr-contact">
+          <div className="fr-contact tx-contact">
             <a className="fr-chip" href={telHref} aria-label={`Call ${CONTACT.phoneDisplay}`}><PhoneSvg />{CONTACT.phoneDisplay}</a>
             <a className="fr-chip wa" href={WA} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><WaSvg />WhatsApp</a>
           </div>
-          <p className="byline">Written by the <Link href="/team">CodedSEO strategy team</Link> · Updated October 2026</p>
+          <p className="tx-byline">Written by the <Link href="/team">CodedSEO strategy team</Link> · Updated October 2026</p>
         </div>
 
-        <figure className="fr-hero-img">
-          <img
-            src={UNSPLASH(IMG_HERO.id, 1100)}
-            srcSet={`${UNSPLASH(IMG_HERO.id, 600)} 600w, ${UNSPLASH(IMG_HERO.id, 900)} 900w, ${UNSPLASH(IMG_HERO.id, 1100)} 1100w`}
-            sizes="(max-width: 1000px) 100vw, 560px"
-            alt={IMG_HERO.alt}
-            width={1100}
-            height={1000}
-            fetchPriority="high"
-            decoding="async"
-          />
-          <span className="fr-ov-pinbig" aria-hidden="true">
-            <svg width="64" height="78" viewBox="0 0 64 78"><path d="M32 2C15.4 2 2 15 2 31.5 2 54 32 76 32 76s30-22 30-44.5C62 15 48.6 2 32 2z" fill="#16a34a" /><circle cx="32" cy="31" r="13" fill="#fff" /><path d="M26 31l4.5 4.5L39 27" fill="none" stroke="#16a34a" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </span>
-          <div className="fr-ov" aria-hidden="true">
-            <div className="fr-ov-search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
-              <span>taxi near me</span>
-              <i className="fr-ov-caret" />
-            </div>
-            <div className="fr-ov-card">
-              <span className="fr-ov-pin"><Car size={22} strokeWidth={2.4} /></span>
-              <span>
-                <b><em>#1</em> Your Taxi Co.</b>
-                <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(sample)</small></span>
-                <small>Taxi service · Open 24 hours</small>
-                <small className="g">Call · Book · Directions</small>
-              </span>
-            </div>
+        <div className="tx-float" aria-hidden="true">
+          <svg className="tx-badge" viewBox="0 0 120 120"><defs><path id="txc" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" /></defs><text><textPath href="#txc">FREE TAXI SEO AUDIT • FREE TAXI SEO AUDIT • </textPath></text></svg>
+          <div className="tx-fcard tx-f1">
+            <span className="fr-ov-pin"><Car size={22} strokeWidth={2.4} /></span>
+            <span>
+              <b><em>#1</em> Your Taxi Co.</b>
+              <span className="fr-ov-rate"><strong>4.9</strong> <span className="stars">★★★★★</span> <small>(sample)</small></span>
+              <small>Taxi service · Open 24 hours</small>
+              <small className="g">Call · Book · Directions</small>
+            </span>
           </div>
-        </figure>
+          <div className="tx-fcard tx-f2">
+            <span className="tx-fbig">+3x</span>
+            <small>Example goal: calls from Google Maps</small>
+          </div>
+          <div className="tx-fcard tx-f3">
+            <Plane size={18} strokeWidth={2.4} /> <span>taxi to the airport · page 1</span>
+          </div>
+        </div>
       </div>
     </section>
   );
+}
+
+const MARQUEE = ["Taxi near me", "Airport transfers", "Google Maps", "Review growth", "Town pages", "Click-to-call", "AI search", "Wheelchair taxis", "Corporate accounts", "24/7 rides"];
+
+function Marquee() {
+  return (
+    <div className="tx-mq-wrap" aria-hidden="true">
+      <div className="tx-marquee tx-mq-b">
+        <div className="tx-mq-track tx-rev">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => <span key={i}>{m}<i>✦</i></span>)}
+        </div>
+      </div>
+      <div className="tx-marquee">
+        <div className="tx-mq-track">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => <span key={i}>{m}<i>✦</i></span>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [shown, setShown] = useState(value);
+  useEffect(() => {
+    const m = value.match(/^([\d.]+)(.*)$/);
+    const el = ref.current;
+    if (!m || !el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const target = parseFloat(m[1]); const suffix = m[2];
+    setShown(`0${suffix}`);
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const t0 = performance.now();
+      const step = (now: number) => {
+        const k = Math.min((now - t0) / 1600, 1);
+        setShown(`${Math.round(target * (1 - Math.pow(1 - k, 3)))}${suffix}`);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+  return <p className="stat-num" ref={ref}>{shown}</p>;
 }
 
 function Stats() {
@@ -220,7 +356,7 @@ function Stats() {
         <div className="stats-card">
           {STATS.map((s) => (
             <div key={s.label} className="stat">
-              <p className="stat-num">{s.value}</p>
+              <CountUp value={s.value} />
               <p className="stat-label">{s.label}</p>
               <p className="stat-sub">{s.sub}</p>
             </div>
@@ -252,6 +388,118 @@ function Why() {
           <p className="fr-src">
             Sources: <a href="https://support.google.com/business/answer/10514137?hl=en" target="_blank" rel="noopener noreferrer nofollow">Google Business Profile Help: service-area businesses</a> · Semrush Keyword Magic Tool (US)
           </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function WhatIs() {
+  return (
+    <section className="sec soft">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">The basics</p>
+          <h2>What Is Local SEO for a Taxi Company?</h2>
+          <p className="grey">Local SEO for a taxi company means making your business the obvious choice when someone nearby searches for a ride. It is not one trick. It rests on three things working together, and if one is weak, the other two can&apos;t carry you.</p>
+        </div>
+        <div className="grid3">
+          {PILLARS.map((p, i) => (
+            <div key={p.t} className="icard">
+              <span className="fr-step">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{p.t}</h3>
+              <p>{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SearchTypes() {
+  return (
+    <section className="sec">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">Keywords</p>
+          <h2>The Searches Your Riders Actually Use</h2>
+          <p className="grey">Every type of search needs a different page. Replace [town] and [airport] with the places you serve and you have the start of your keyword plan.</p>
+        </div>
+        <div className="fr-table-wrap">
+          <table className="fr-table tx-table">
+            <thead><tr><th>Search type</th><th>Example searches</th><th>What ranks for it</th></tr></thead>
+            <tbody>
+              {SEARCH_TYPES.map((r) => (
+                <tr key={r[0]}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Checklists() {
+  return (
+    <section className="sec soft">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">Checklists</p>
+          <h2>Google Business Profile and Website Checklist for Taxi Companies</h2>
+          <p className="grey">Go through both lists. Every unchecked item is a ride going to someone else.</p>
+        </div>
+        <div className="tx-two">
+          <div className="tx-list">
+            <h3>Google Business Profile</h3>
+            <ul className="ticks">{GBP_CHECKLIST.map((x) => <li key={x}>{x}</li>)}</ul>
+          </div>
+          <div className="tx-list">
+            <h3>Your website</h3>
+            <ul className="ticks">{SITE_CHECKLIST.map((x) => <li key={x}>{x}</li>)}</ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Mistakes() {
+  return (
+    <section className="sec">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">Avoid these</p>
+          <h2>5 Taxi SEO Mistakes That Cost Rides</h2>
+        </div>
+        <div className="tx-mistakes">
+          {MISTAKES.map((m, i) => (
+            <div key={m.t} className="tx-mistake">
+              <span className="tx-x">{i + 1}</span>
+              <div><h3>{m.t}</h3><p>{m.d}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Kpis() {
+  return (
+    <section className="sec pt0">
+      <div className="wrap">
+        <div className="head">
+          <p className="eyebrow">Measuring results</p>
+          <h2>How to Know Your Taxi SEO Is Working</h2>
+          <p className="grey">Rankings are only part of it. These are the numbers we report every month.</p>
+        </div>
+        <div className="tx-kpis">
+          {KPIS.map((k) => (
+            <div key={k.k} className="tx-kpi"><b>{k.k}</b><span>{k.d}</span></div>
+          ))}
         </div>
       </div>
     </section>
@@ -382,15 +630,18 @@ function CtaBand() {
   return (
     <section className="sec">
       <div className="wrap">
-        <div className="cta-band">
-          <p className="cta-eyebrow">Free, no obligation</p>
-          <h2>See Where Your Taxi Company Ranks Today</h2>
-          <p>Our free audit checks your Map Pack position across the towns you serve, your Google Business Profile and the three competitors taking your rides, then gives you the three fixes that matter most.</p>
-          <div className="cta-btns">
-            <Link className="btn" href="/free-audit">Get my free audit <Chevron /></Link>
-            <a className="btn outline" href={WA} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        <div className="tx-ctaimg">
+          <img className="tx-ctaimg-bg" src={UNSPLASH(IMG_NIGHT.id, 1600)} alt="" width={1600} height={900} loading="lazy" decoding="async" />
+          <div className="tx-ctaimg-in">
+            <p className="cta-eyebrow">Free, no obligation</p>
+            <h2>See Where Your Taxi Company Ranks Today</h2>
+            <p>Our free audit checks your Map Pack position across the towns you serve, your Google Business Profile and the three competitors taking your rides, then gives you the three fixes that matter most.</p>
+            <div className="cta-btns">
+              <Link className="btn" href="/free-audit">Get my free audit <Chevron /></Link>
+              <a className="btn outline" href={WA} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+            </div>
+            <ul className="cta-trust"><li>No contracts</li><li>Delivered in 48 hours</li><li>Written by a real strategist</li></ul>
           </div>
-          <ul className="cta-trust"><li>No contracts</li><li>Delivered in 48 hours</li><li>Written by a real strategist</li></ul>
         </div>
       </div>
     </section>
@@ -530,22 +781,45 @@ function FinalCta() {
 
 /* ================= PAGE ================= */
 
+const REVEAL = ".tx-page .head, .tx-page .icard, .tx-page .tx-steps li, .tx-page .fr-table-wrap, .tx-page .pack, .tx-page .tx-mistake, .tx-page .tx-kpi, .tx-page .tx-list, .tx-page .ind, .tx-page .facts, .tx-page .fr-photo, .tx-page .fr-post";
+
+function useReveal() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const els = Array.from(document.querySelectorAll<HTMLElement>(REVEAL)).filter((el) => el.getBoundingClientRect().top > window.innerHeight * 0.9);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("tx-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach((el, i) => { el.classList.add("tx-rv"); el.style.transitionDelay = `${(i % 3) * 80}ms`; io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+}
+
 export default function TaxiHome({ posts = [] }: { posts?: RelatedPost[] }) {
+  useReveal();
   return (
     <>
       <SiteHeader />
-      <div className="isu">
+      <div className="isu tx-page">
         <main>
           <Hero />
+          <Marquee />
           <Stats />
+          <WhatIs />
           <Why />
+          <SearchTypes />
           <Guide />
+          <Checklists />
           <Challenges />
+          <Mistakes />
           <Services />
           <Segments />
           <Packages />
           <CtaBand />
           <Process />
+          <Kpis />
           <Compare />
           <Reading posts={posts} />
           <Faq />
