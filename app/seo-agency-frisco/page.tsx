@@ -105,7 +105,6 @@ const schema = {
       dateModified: "2026-10-24",
       primaryImageOfPage: { "@type": "ImageObject", url: "https://codedseo.com/images/seo-company-frisco-tx.svg" },
       about: { "@id": `${URL}#service` },
-      reviewedBy: { "@type": "Person", name: "Balbir Singh" },
     },
     {
       "@type": "BreadcrumbList",

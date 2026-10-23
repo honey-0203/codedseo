@@ -55,3 +55,9 @@
 .isu .fr-posts-more { margin-top: 32px; }
 @media (max-width: 1000px) { .isu .fr-posts { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .isu .fr-posts { grid-template-columns: 1fr; } }
+.isu .fr-help { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; padding: 22px 26px; background: var(--green-soft); border: 1px solid var(--green-line); border-radius: 20px; }
+.isu .fr-help h3 { margin: 0 0 4px; font-size: 19px; }
+.isu .fr-help p { margin: 0; font-size: 15px; color: var(--grey); }
+.isu .fr-help-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.isu .fr-help .fr-chip { padding: 9px 16px; font-size: 15px; }
+@media (max-width: 520px) { .isu .fr-help-btns { flex-wrap: nowrap; width: 100%; } .isu .fr-help .fr-chip { flex: 1; justify-content: center; padding: 9px 8px; font-size: 14px; } }

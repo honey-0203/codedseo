@@ -178,7 +178,7 @@ function Hero() {
               WhatsApp
             </a>
           </div>
-          <p className="byline">Reviewed by <Link href="/team">Balbir Singh, founder of CodedSEO</Link> · Updated October 2026</p>
+          <p className="byline">Written by the <Link href="/team">CodedSEO strategy team</Link> · Updated October 2026</p>
         </div>
 
         <figure className="fr-hero-img">
@@ -224,10 +224,7 @@ function Market() {
           <h2>A Fast-Growing City Means New Customers Searching Every Month</h2>
           <p className="grey">Growth brings opportunity and competition at the same time. National franchises, Dallas agencies and new local businesses all chase the same Frisco searches, and the results change a lot between Stonebriar in the south and the newer neighborhoods north of US-380.</p>
           <p className="grey">Frisco also spans Collin and Denton County and several ZIP codes, so &quot;near me&quot; results for the same service can look different a few miles apart. Our Frisco SEO services start from how your customers actually search here, not a generic Texas template.</p>
-          <div className="goal">
-            <strong>Founder&apos;s note</strong>
-            <span>&quot;In suburbs like Frisco, the businesses that win usually have three things: a page for every service, a Google Business Profile that&apos;s actively managed, and a steady flow of reviews. That beats publishing more blog posts.&quot; — Balbir Singh, <Link href="/about">CodedSEO</Link></span>
-          </div>
+
         </div>
         <div>
         <Photo id={IMG_CITY.id} alt={IMG_CITY.alt} />
@@ -511,7 +508,26 @@ function Faq() {
             </div>
           ))}
         </div>
-        <p className="center grey faq-more">Still have questions? <Link href="/contact">Contact our team</Link> call or WhatsApp <a href={telHref}>{CONTACT.phoneDisplay}</a>, or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+        <div className="fr-help">
+          <div>
+            <h3>Still have questions?</h3>
+            <p>Talk to a strategist on call, WhatsApp or email.</p>
+          </div>
+          <div className="fr-help-btns">
+            <a className="fr-chip" href={telHref}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              Call
+            </a>
+            <a className="fr-chip wa" href={WA} target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+              WhatsApp
+            </a>
+            <a className="fr-chip" href={`mailto:${EMAIL}`}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+              Email
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
