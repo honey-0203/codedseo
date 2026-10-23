@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import {
+  MapPin, Search, Wrench, Bot, PenTool, Link2, MapPinOff, Layers, PhoneOff, Sparkles, Building2, BarChart3,
+  House, Stethoscope, Scale, UtensilsCrossed, Dumbbell, Laptop, ShoppingBag,
+} from "lucide-react";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import "./frisco.css";
@@ -42,21 +47,21 @@ const FACTS = [
 ];
 
 const CHALLENGES = [
-  { t: "Stuck outside the Map Pack", d: "A competitor three miles away shows up first because their Google Business Profile has better categories, fresher reviews and more photos, not because they do better work." },
-  { t: "One page trying to rank everywhere", d: "A single \"Dallas-Fort Worth\" page can't win Frisco, Plano and McKinney at once. Google wants a clear page for each place you serve." },
-  { t: "Traffic, but the phone stays quiet", d: "Slow mobile pages, a phone number buried in the footer and a contact form with ten fields turn ready buyers into bounces." },
-  { t: "Missing from AI answers", d: "When someone asks ChatGPT or Google AI Overviews for the best provider in Frisco, AI tools name the brands they can verify. If your details are thin, you're left out." },
-  { t: "Fighting national brands and Dallas agencies", d: "Frisco's growth attracts franchises and big-budget advertisers. Small local businesses need sharper targeting, not a bigger budget." },
-  { t: "Reports that don't connect to revenue", d: "Rank screenshots don't tell you which searches turned into booked jobs. Without calls and forms tracked, you can't tell what's working." },
+  { icon: MapPinOff, t: "Stuck outside the Map Pack", d: "A competitor three miles away shows up first because their Google Business Profile has better categories, fresher reviews and more photos, not because they do better work." },
+  { icon: Layers, t: "One page trying to rank everywhere", d: "A single \"Dallas-Fort Worth\" page can't win Frisco, Plano and McKinney at once. Google wants a clear page for each place you serve." },
+  { icon: PhoneOff, t: "Traffic, but the phone stays quiet", d: "Slow mobile pages, a phone number buried in the footer and a contact form with ten fields turn ready buyers into bounces." },
+  { icon: Sparkles, t: "Missing from AI answers", d: "When someone asks ChatGPT or Google AI Overviews for the best provider in Frisco, AI tools name the brands they can verify. If your details are thin, you're left out." },
+  { icon: Building2, t: "Fighting national brands and Dallas agencies", d: "Frisco's growth attracts franchises and big-budget advertisers. Small local businesses need sharper targeting, not a bigger budget." },
+  { icon: BarChart3, t: "Reports that don't connect to revenue", d: "Rank screenshots don't tell you which searches turned into booked jobs. Without calls and forms tracked, you can't tell what's working." },
 ];
 
 const SERVICES = [
-  { t: "Local SEO Services Frisco TX", d: "Google Business Profile optimization, review strategy, local citations and NAP cleanup so you show up in Google Maps across Frisco ZIP codes.", href: "/services" },
-  { t: "Organic SEO", d: "Keyword research mapped to revenue, on-page optimization and internal linking for the service pages your Frisco buyers search for.", href: "/services/organic-seo" },
-  { t: "Technical SEO", d: "Crawling, indexing, Core Web Vitals, schema and mobile speed, with a prioritized fix list your developer can follow.", href: "/free-audit" },
-  { t: "AI SEO, AEO & GEO", d: "Entity-based SEO, structured data and answer-ready content so ChatGPT, Gemini and Google AI Overviews can cite your business.", href: "/blog/what-is-ai-seo" },
-  { t: "SEO Content Writing", d: "City and service pages written from interviews with your team, with real local detail and FAQs, not spun templates.", href: "/digital-marketing" },
-  { t: "Link Building & Digital PR", d: "Editorial links and mentions from relevant Texas and industry sites through outreach and guest posting, never link schemes.", href: "/services" },
+  { icon: MapPin, t: "Local SEO Services Frisco TX", d: "Google Business Profile optimization, review strategy, local citations and NAP cleanup so you show up in Google Maps across Frisco ZIP codes.", href: "/services" },
+  { icon: Search, t: "Organic SEO", d: "Keyword research mapped to revenue, on-page optimization and internal linking for the service pages your Frisco buyers search for.", href: "/services/organic-seo" },
+  { icon: Wrench, t: "Technical SEO", d: "Crawling, indexing, Core Web Vitals, schema and mobile speed, with a prioritized fix list your developer can follow.", href: "/free-audit" },
+  { icon: Bot, t: "AI SEO, AEO & GEO", d: "Entity-based SEO, structured data and answer-ready content so ChatGPT, Gemini and Google AI Overviews can cite your business.", href: "/blog/what-is-ai-seo" },
+  { icon: PenTool, t: "SEO Content Writing", d: "City and service pages written from interviews with your team, with real local detail and FAQs, not spun templates.", href: "/digital-marketing" },
+  { icon: Link2, t: "Link Building & Digital PR", d: "Editorial links and mentions from relevant Texas and industry sites through outreach and guest posting, never link schemes.", href: "/services" },
 ];
 
 const BENEFITS = [
@@ -74,14 +79,14 @@ const PACKAGES = [
 ];
 
 const INDUSTRIES = [
-  { t: "Home services", d: "HVAC, plumbing, roofing, pools" },
-  { t: "Healthcare & dental", d: "Clinics, dentists, med spas" },
-  { t: "Real estate & builders", d: "Agents, new-home builders" },
-  { t: "Legal", d: "Family, injury, estate planning" },
-  { t: "Restaurants & cafes", d: "Dining, catering, delivery" },
-  { t: "Sports & fitness", d: "Gyms, golf, youth sports" },
-  { t: "SaaS & B2B", d: "Tech firms along the Tollway" },
-  { t: "Retail & ecommerce", d: "Local shops and online stores" },
+  { icon: House, t: "Home services", d: "HVAC, plumbing, roofing, pools" },
+  { icon: Stethoscope, t: "Healthcare & dental", d: "Clinics, dentists, med spas" },
+  { icon: Building2, t: "Real estate & builders", d: "Agents, new-home builders" },
+  { icon: Scale, t: "Legal", d: "Family, injury, estate planning" },
+  { icon: UtensilsCrossed, t: "Restaurants & cafes", d: "Dining, catering, delivery" },
+  { icon: Dumbbell, t: "Sports & fitness", d: "Gyms, golf, youth sports" },
+  { icon: Laptop, t: "SaaS & B2B", d: "Tech firms along the Tollway" },
+  { icon: ShoppingBag, t: "Retail & ecommerce", d: "Local shops and online stores" },
 ];
 
 const AREAS = ["Frisco 75033", "Frisco 75034", "Frisco 75035", "Frisco 75036", "Stonebriar", "Frisco Square", "The Star district", "PGA Frisco area", "Plano", "McKinney", "Prosper", "Little Elm", "The Colony", "Allen"];
@@ -110,6 +115,32 @@ const READING = [
 ];
 
 
+
+/* ================= IMAGES (Unsplash, free license) ================= */
+
+const UNSPLASH = (id: string, w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const IMG_CITY = { id: "photo-1691635187988-d03b9ac5e045", alt: "Aerial view of a fast-growing North Texas city with new buildings and roads" };
+const IMG_DATA = { id: "photo-1526628953301-3e589a6a8b74", alt: "SEO analytics dashboard showing organic traffic and lead growth" };
+
+function Photo({ id, alt, className }: { id: string; alt: string; className?: string }) {
+  return (
+    <img
+      className={`fr-photo ${className ?? ""}`}
+      src={UNSPLASH(id, 1200)}
+      srcSet={`${UNSPLASH(id, 600)} 600w, ${UNSPLASH(id, 900)} 900w, ${UNSPLASH(id, 1200)} 1200w`}
+      sizes="(max-width: 1000px) 100vw, 560px"
+      alt={alt}
+      width={1200}
+      height={750}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
+function Ic({ icon: Icon }: { icon: LucideIcon }) {
+  return <span className="fr-ic" aria-hidden="true"><Icon size={22} strokeWidth={2} /></span>;
+}
 
 /* ================= SMALL PIECES ================= */
 
@@ -211,6 +242,8 @@ function Market() {
             <span>&quot;In suburbs like Frisco, the businesses that win usually have three things: a page for every service, a Google Business Profile that&apos;s actively managed, and a steady flow of reviews. That beats publishing more blog posts.&quot; — Balbir Singh, <Link href="/about">CodedSEO</Link></span>
           </div>
         </div>
+        <div>
+        <Photo id={IMG_CITY.id} alt={IMG_CITY.alt} />
         <div className="facts fr-facts">
           <h3>Frisco at a glance</h3>
           <dl>
@@ -221,6 +254,7 @@ function Market() {
           <p className="fr-src">
             Sources: <a href="https://www.friscotexas.gov/1454/Demographics" target="_blank" rel="noopener noreferrer nofollow">City of Frisco Demographics</a> · <a href="https://www.friscotexas.gov/DocumentCenter/View/36069/2040-Comp-Plan-Chapter-6-PDF" target="_blank" rel="noopener noreferrer nofollow">Frisco 2040 Comprehensive Plan</a> · Semrush Keyword Magic Tool (US, 15 Oct 2026)
           </p>
+        </div>
         </div>
       </div>
     </section>
@@ -239,6 +273,7 @@ function Challenges() {
         <div className="grid3">
           {CHALLENGES.map((c) => (
             <div key={c.t} className="icard">
+              <Ic icon={c.icon} />
               <h3>{c.t}</h3>
               <p>{c.d}</p>
             </div>
@@ -261,6 +296,7 @@ function Services() {
         <div className="grid3">
           {SERVICES.map((s) => (
             <Link key={s.t} className="icard" href={s.href}>
+              <Ic icon={s.icon} />
               <h3>{s.t}</h3>
               <p>{s.d}</p>
               <span className="card-link">Learn more <Chevron /></span>
@@ -280,6 +316,7 @@ function Benefits() {
           <p className="eyebrow">What you get</p>
           <h2>Outcomes Our Frisco SEO Agency Works Toward</h2>
           <p className="grey">We report on business results, not vanity metrics. Every month you see calls, form fills, direction requests and keyword movement for Frisco searches, plus a live log of every change we made.</p>
+          <Photo id={IMG_DATA.id} alt={IMG_DATA.alt} />
         </div>
         <div className="benefit-list">
           {BENEFITS.map((b, idx) => (
@@ -373,7 +410,8 @@ function Industries() {
         </div>
         <div className="ind-grid">
           {INDUSTRIES.map((ind) => (
-            <div key={ind.t} className="ind">
+            <div key={ind.t} className="ind fr-ind">
+              <Ic icon={ind.icon} />
               <h3>{ind.t}</h3>
               <p>{ind.d}</p>
             </div>

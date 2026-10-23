@@ -34,3 +34,7 @@
   .isu .fr-sticky-audit { background: var(--green); color: #fff; }
   body:has(.fr-sticky) { padding-bottom: 72px; }
 }
+.isu .fr-ic { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 12px; background: var(--green-soft); color: var(--green); margin-bottom: 16px; }
+.isu .fr-ind { display: flex; flex-direction: column; }
+.isu .fr-ind .fr-ic { width: 40px; height: 40px; margin-bottom: 12px; }
+.isu .fr-photo { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); margin: 0 0 20px; background: var(--soft); }
