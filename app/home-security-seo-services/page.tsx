@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Client from "./Client";
+import SecurityHome from "./SecurityHome";
 import { FAQS, STEPS } from "./config";
 import { CONTACT } from "@/lib/contact";
 import { getRelatedPosts } from "@/lib/related-posts";
-import "../seo-agency-usa/usa.css";
 
 // Blogs Sanity se live aate hain (har 10 min refresh). Koi fake card nahi.
 export const revalidate = 600;
@@ -91,7 +90,7 @@ export default async function HomeSecurityPage() {
   return (
     <div className={poppins.variable}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <Client posts={posts} />
+      <SecurityHome posts={posts} />
     </div>
   );
 }
