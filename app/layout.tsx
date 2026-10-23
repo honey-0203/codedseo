@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
+import { WhatsAppFloat } from "@/components/whatsapp-float"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background`}
       >
         {children}
+        <WhatsAppFloat />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
