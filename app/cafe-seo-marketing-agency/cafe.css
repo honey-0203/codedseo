@@ -1,3 +1,6 @@
+/* Header is h-16 (64px) below 1024px and h-20 (80px) above; JS refines this after load. */
+:root { --cf-hdr: 64px; }
+@media (min-width: 1024px) { :root { --cf-hdr: 80px; } }
 /* Cafe page – cafe-theme layout ideas, CodedSEO agency look (green, teal, #050807). Scoped to .cf */
 .cf {
   --g: var(--primary, oklch(0.55 0.25 145));
@@ -12,7 +15,7 @@
   font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
   color: var(--text);
   background: #fff;
-  padding-top: var(--cf-hdr, 96px);
+  padding-top: var(--cf-hdr);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -320,4 +323,5 @@
   .cf-bar > div { flex-basis: 100%; }
   .cf-bar .cf-btn { width: 100%; justify-content: center; }
   .cf-hero { padding-bottom: 90px; }
+  .cf-why-img::after { inset: 10px -8px -10px 10px; }
 }
