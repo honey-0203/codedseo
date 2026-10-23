@@ -9,7 +9,7 @@ import Link from "next/link"
 
 const stats = [
   { number: "12+", label: "Years Experience" },
-  { number: "500+", label: "Clients Worldwide" },
+  { number: "100+", label: "Clients Worldwide" },
   { number: "10M+", label: "Keywords Ranked" },
   { number: "98%", label: "Client Retention" },
 ]
@@ -69,7 +69,7 @@ export default function AboutPage() {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
               <Globe className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Trusted by 500+ Brands Worldwide</span>
+              <span className="text-sm font-medium text-primary">Trusted by 100+ Brands Worldwide</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               We&apos;re on a Mission to{" "}
@@ -78,7 +78,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              RankFlow combines cutting-edge AI technology with proven SEO strategies to help businesses 
+              CodedSEO combines cutting-edge AI technology with proven SEO strategies to help businesses 
               dominate search rankings and achieve sustainable organic growth.
             </p>
           </motion.div>
@@ -251,7 +251,7 @@ export default function AboutPage() {
               Ready to Grow Your Business?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join 500+ businesses that trust RankFlow to drive their organic growth. 
+              Join 100+ businesses that trust CodedSEO to drive their organic growth. 
               Let&apos;s discuss how we can help you achieve your goals.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

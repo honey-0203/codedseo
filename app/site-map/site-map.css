@@ -13,3 +13,4 @@
 .isu .sm-cols li { break-inside: avoid; }
 @media (max-width: 1000px) { .isu .sm-grid { grid-template-columns: 1fr 1fr; } .isu .sm-cols { columns: 2; } }
 @media (max-width: 640px) { .isu .sm-grid { grid-template-columns: 1fr; } .isu .sm-cols { columns: 1; } }
+.isu .sm-desc { margin: 4px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--grey); }

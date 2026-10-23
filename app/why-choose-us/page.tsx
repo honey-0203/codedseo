@@ -100,7 +100,7 @@ export default function WhyChooseUsPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Why Businesses Choose{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                RankFlow
+                CodedSEO
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -118,7 +118,7 @@ export default function WhyChooseUsPage() {
           >
             {[
               { number: "12+", label: "Years Experience" },
-              { number: "500+", label: "Happy Clients" },
+              { number: "100+", label: "Happy Clients" },
               { number: "97%", label: "Success Rate" },
               { number: "98%", label: "Retention Rate" },
             ].map((stat, index) => (
@@ -142,7 +142,7 @@ export default function WhyChooseUsPage() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">What Sets Us Apart</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Six key reasons why leading brands trust RankFlow for their SEO
+              Six key reasons why leading brands trust CodedSEO for their SEO
             </p>
           </motion.div>
 
@@ -179,7 +179,7 @@ export default function WhyChooseUsPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">RankFlow vs. Other Agencies</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">CodedSEO vs. Other Agencies</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               See how we stack up against traditional SEO agencies
             </p>
@@ -194,7 +194,7 @@ export default function WhyChooseUsPage() {
             <div className="rounded-2xl border border-border overflow-hidden">
               <div className="grid grid-cols-3 bg-muted/50 border-b border-border">
                 <div className="p-4 font-medium">Feature</div>
-                <div className="p-4 font-medium text-center text-primary border-x border-border">RankFlow</div>
+                <div className="p-4 font-medium text-center text-primary border-x border-border">CodedSEO</div>
                 <div className="p-4 font-medium text-center text-muted-foreground">Others</div>
               </div>
               {comparisons.map((item, index) => (
@@ -270,7 +270,7 @@ export default function WhyChooseUsPage() {
               Ready to Experience the Difference?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join 500+ businesses that have chosen RankFlow for superior SEO results.
+              Join 100+ businesses that have chosen CodedSEO for superior SEO results.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>
