@@ -157,7 +157,7 @@ function Hero() {
           </ul>
           <div className="rank-foot">
             <div><strong>KD 4–19</strong><small>Low to medium difficulty</small></div>
-            <div><strong>1,800+</strong><small>Monthly searches combined</small></div>
+            <div><strong>2,000+</strong><small>Monthly searches combined</small></div>
           </div>
           <p className="rank-note">US search volume for SEO-related searches in Frisco. Your industry has its own version of this list.</p>
         </div>
