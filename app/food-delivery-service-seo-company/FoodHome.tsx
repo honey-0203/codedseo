@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
 import "./food.css";
@@ -382,6 +383,7 @@ export default function FoodHome({ posts = [] }: { posts?: RelatedPost[] }) {
             </div></section>
           )}
 
+          <RelatedIndustries current="/food-delivery-service-seo-company" />
           {/* FAQ */}
           <section className="fd-sec cream"><div className="fd-wrap narrow">
             <Head script="FAQ" title={c.faqTitle} />

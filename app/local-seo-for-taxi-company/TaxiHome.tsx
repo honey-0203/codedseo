@@ -10,6 +10,7 @@ import {
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { FAQS } from "./faqs";
 import { InlineCta } from "@/components/inline-cta";
@@ -836,6 +837,7 @@ export default function TaxiHome({ posts = [] }: { posts?: RelatedPost[] }) {
           <Kpis />
           <Compare />
           <Reading posts={posts} />
+          <RelatedIndustries current="/local-seo-for-taxi-company" />
           <Faq />
           <FinalCta />
         </main>

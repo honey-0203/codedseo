@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Header as SiteHeader } from "@/components/header";
 import { Footer as SiteFooter } from "@/components/footer";
 import { CONTACT, telHref, whatsappHref } from "@/lib/contact";
+import { RelatedIndustries } from "@/components/related-industries";
 import type { RelatedPost } from "@/lib/related-posts";
 import { CFG } from "./config";
 import "./security.css";
@@ -366,6 +367,7 @@ export default function SecurityHome({ posts = [] }: { posts?: RelatedPost[] }) 
             </div></section>
           )}
 
+          <RelatedIndustries current="/home-security-seo-services" />
           {/* FAQ */}
           <section className="hs-sec soft"><div className="hs-wrap narrow">
             <Head eyebrow="FAQ" title={c.faqTitle} />
